@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exit Garden — Outdoor Living</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ═══ RESET & TOKENS ═══ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Brand palette — exact from logo PDF */
+      --olive:       #626148;   /* primary brand / logo colour */
+      --olive-dark:  #4a4a35;
+      --olive-light: #8a8a6a;
+      --khaki:       #ADA796;
+      --grayblue:    #A4ABA0;
+      --lightbrown:  #BBADA1;
+      --lightgrey:   #CBCBCB;
+
+      /* Site palette */
+      --cream:       #F5F0E8;
+      --cream-mid:   #EDE5D6;
+      --cream-dark:  #E3D9C8;
+      --white:       #FDFAF6;
+      --dark:        #1C1612;
+      --dark-mid:    #3A3228;
+      --border:      #D9CFBC;
+      --muted:       #8A7E70;
+      --beige:       #C4AB8A;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ═══ ANNOUNCEMENT BAR ═══ */
+    .annbar {
+      background: var(--olive);
+      color: rgba(255,255,255,.88);
+      text-align: center;
+      padding: 9px 20px;
+      font-size: 10px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+    }
+
+    /* ═══ NAVIGATION ═══ */
+    nav {
+      position: fixed; top: 34px; left: 0; right: 0;
+      z-index: 200;
+      padding: 20px 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .4s, padding .3s, top .4s, box-shadow .4s;
+    }
+    nav.scrolled {
+      top: 0;
+      background: rgba(253,250,246,.97);
+      padding: 14px 64px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Logo */
+    .logo { display: flex; align-items: center; gap: 16px; cursor: pointer; }
+    .logo-img {
+      height: 56px;
+      width: auto;
+      object-fit: contain;
+      /* on transparent/light bg: olive colour shows naturally */
+    }
+    .logo-img-white {
+      /* same image but CSS-inverted for dark/hero backgrounds */
+      filter: brightness(0) invert(1);
+    }
+
+    /* Nav links */
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--dark); position: relative;
+      transition: color .2s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute;
+      bottom: -4px; left: 0; right: 0; height: 1px;
+      background: var(--olive);
+      transform: scaleX(0); transition: transform .3s ease;
+    }
+    .nav-links a:hover { color: var(--olive); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    /* Hero nav: white links */
+    .hero-active .nav-links a { color: rgba(255,255,255,.85); }
+    .hero-active .nav-links a:hover { color: #fff; }
+    .hero-active .nav-lang span { color: rgba(255,255,255,.55); }
+    .hero-active .nav-lang span.on { color: #fff; border-color: rgba(255,255,255,.6); }
+    .hero-active .nav-icon { filter: brightness(0) invert(1); }
+
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-lang { font-size: 10px; letter-spacing: .15em; display: flex; gap: 6px; color: var(--muted); }
+    .nav-lang span { cursor: pointer; transition: color .2s; }
+    .nav-lang span.on { color: var(--dark); border-bottom: 1px solid var(--dark); padding-bottom: 1px; }
+    .nav-icon { cursor: pointer; opacity: .65; transition: opacity .2s; }
+    .nav-icon:hover { opacity: 1; }
+
+    /* ═══ HERO ═══ */
+    .hero {
+      height: 100vh; min-height: 680px;
+      position: relative; display: flex; align-items: flex-end;
+      overflow: hidden; background: var(--cream-dark);
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('hero_perla_ikili.jpg');
+      background-size: cover; background-position: center 40%;
+      animation: zoomIn 14s ease-out forwards;
+    }
+
+    /* Hero placeholder content (shown when no image loaded) */
+    .hero-img-placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 16px;
+      background: linear-gradient(135deg, var(--cream-dark) 0%, var(--khaki) 50%, var(--cream-mid) 100%);
+    }
+    .hero-img-placeholder p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 15px; color: var(--muted);
+      letter-spacing: .1em;
+    }
+
+    @keyframes zoomIn { from { transform: scale(1.06); } to { transform: scale(1); } }
+    .hero-vignette {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top,
+        rgba(28,22,18,.70) 0%,
+        rgba(28,22,18,.15) 45%,
+        transparent 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 80px 88px; max-width: 760px;
+    }
+    .hero-eyebrow {
+      display: block; font-size: 10px;
+      letter-spacing: .42em; text-transform: uppercase;
+      color: rgba(255,255,255,.65); margin-bottom: 22px;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 7vw, 96px);
+      font-weight: 300; line-height: 1.0;
+      color: #fff; margin-bottom: 36px;
+    }
+    .hero-title em { font-style: italic; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 16px;
+      color: #fff; font-size: 10px; letter-spacing: .32em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(255,255,255,.45);
+      padding-bottom: 8px; transition: border-color .2s, gap .3s;
+    }
+    .hero-cta:hover { border-color: #fff; gap: 26px; }
+    .hero-scroll {
+      position: absolute; bottom: 32px; right: 64px;
+      z-index: 3; display: flex; flex-direction: column;
+      align-items: center; gap: 10px;
+      font-size: 9px; letter-spacing: .3em; text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+    }
+    .hero-scroll-line {
+      width: 1px; height: 56px;
+      background: linear-gradient(to bottom, rgba(255,255,255,.4), transparent);
+      animation: scrollPulse 2.4s ease-in-out infinite;
+    }
+    @keyframes scrollPulse { 0%,100%{opacity:.5} 50%{opacity:1} }
+
+    /* ═══ INTRO STRIP ═══ */
+    .intro {
+      background: var(--white);
+      padding: 100px 80px; text-align: center;
+    }
+    .intro-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(26px, 3.2vw, 42px);
+      font-weight: 300; font-style: italic;
+      color: var(--dark-mid); max-width: 780px;
+      margin: 0 auto 36px; line-height: 1.45;
+    }
+    .divider      { width: 52px; height: 1px; background: var(--beige); margin: 0 auto; }
+    .divider-sm   { width: 32px; height: 1px; background: var(--beige); }
+
+    /* ═══ SECTION HELPERS ═══ */
+    .sec-label {
+      font-size: 10px; letter-spacing: .38em;
+      text-transform: uppercase; color: var(--olive);
+      margin-bottom: 16px; display: block;
+    }
+    .sec-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 3.8vw, 54px);
+      font-weight: 300; line-height: 1.1; color: var(--dark);
+    }
+
+    /* ═══ COLLECTIONS ═══ */
+    .collections { background: var(--cream); padding: 96px 80px 120px; }
+    .collections-head { margin-bottom: 56px; }
+    .col-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .85fr .85fr;
+      gap: 3px;
+    }
+    .col-card { position: relative; overflow: hidden; cursor: pointer; }
+    .col-img-wrap {
+      width: 100%; aspect-ratio: 5/6;
+      overflow: hidden;
+      background: var(--cream-dark);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .col-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .75s cubic-bezier(.25,.46,.45,.94);
+    }
+    .col-card:hover .col-img-wrap img { transform: scale(1.05); }
+    /* placeholder when no image */
+    .col-img-ph {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 13px; color: var(--muted);
+    }
+    .col-card-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 36px 32px 32px;
+      background: linear-gradient(to top, rgba(28,22,18,.72) 0%, transparent 100%);
+      color: #fff;
+    }
+    .col-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 300; margin-bottom: 4px;
+    }
+    .col-card-count { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; opacity: .6; }
+    .col-card-arrow {
+      position: absolute; right: 28px; bottom: 28px;
+      width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.4);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-size: 14px;
+      transition: background .2s, border-color .2s;
+    }
+    .col-card:hover .col-card-arrow { background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.8); }
+
+    /* ═══ FEATURED PRODUCT ═══ */
+    .featured { display: grid; grid-template-columns: 1fr 1fr; min-height: 720px; }
+    .featured-media {
+      position: relative; overflow: hidden;
+      background: var(--cream-mid);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .featured-media img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .7s ease;
+    }
+    .featured-media:hover img { transform: scale(1.04); }
+    .featured-media-ph {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 16px; width: 100%; height: 100%; min-height: 600px;
+      padding: 48px;
+      background: linear-gradient(160deg, var(--cream-mid) 0%, var(--lightbrown) 100%);
+    }
+    .featured-media-ph p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 14px;
+      color: var(--muted); text-align: center; line-height: 1.7;
+    }
+    .ph-icon { opacity: .3; }
+    .featured-badge {
+      position: absolute; top: 32px; left: 32px;
+      background: var(--olive); color: rgba(255,255,255,.9);
+      font-size: 9px; letter-spacing: .3em; text-transform: uppercase;
+      padding: 8px 18px; z-index: 2;
+    }
+    .featured-body {
+      background: var(--white);
+      padding: 80px 72px; display: flex;
+      flex-direction: column; justify-content: center;
+    }
+    .featured-body .sec-label { margin-bottom: 20px; }
+    .featured-body h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 4vw, 62px);
+      font-weight: 300; line-height: 1.06; margin-bottom: 10px;
+    }
+    .featured-body .sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 19px;
+      color: var(--muted); margin-bottom: 24px;
+    }
+    .featured-body p {
+      font-size: 13px; line-height: 1.85;
+      color: var(--dark-mid); max-width: 380px; margin-bottom: 32px;
+    }
+    /* Price */
+    .price-block { margin-bottom: 32px; }
+    .price-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px; font-weight: 400; color: var(--dark);
+    }
+    .price-vat {
+      font-size: 11px; letter-spacing: .1em;
+      color: var(--muted); margin-top: 2px;
+    }
+
+    /* Swatches */
+    .swatches { margin-bottom: 32px; }
+    .sw-row-label {
+      font-size: 9px; letter-spacing: .28em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
+    }
+    .sw-row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+    .sw {
+      width: 26px; height: 26px; border-radius: 50%;
+      cursor: pointer; border: 2px solid transparent;
+      transition: border-color .2s; flex-shrink: 0;
+    }
+    .sw:hover, .sw.on { border-color: var(--dark); }
+
+    /* Buttons */
+    .btn-row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 10px; letter-spacing: .3em;
+      text-transform: uppercase; transition: all .25s;
+    }
+    .btn-olive  { background: var(--olive); color: #fff; padding: 15px 40px; }
+    .btn-olive:hover  { background: var(--olive-dark); gap: 18px; }
+    .btn-outline { border: 1px solid var(--border); color: var(--dark); padding: 14px 36px; }
+    .btn-outline:hover { border-color: var(--dark); background: var(--dark); color: #fff; }
+    .btn-ghost { color: var(--olive); border-bottom: 1px solid var(--khaki); padding-bottom: 2px; }
+    .btn-ghost:hover { border-color: var(--olive); gap: 18px; }
+
+    /* ═══ LIFESTYLE GRID ═══ */
+    .lifestyle { background: var(--cream); }
+    .lg-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .lg-item { overflow: hidden; position: relative; }
+    .lg-item img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform .65s ease;
+    }
+    .lg-item:hover img { transform: scale(1.05); }
+    .lg-tall  { aspect-ratio: 3/4; }
+    .lg-wide  { grid-column: span 2; aspect-ratio: 16/9; }
+    .lg-dark {
+      background: var(--olive-dark);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 56px 48px; aspect-ratio: 3/4;
+    }
+    .lg-dark-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 300; font-style: italic;
+      color: var(--cream); line-height: 1.55; text-align: center;
+    }
+    .lg-dark-line { width: 28px; height: 1px; background: var(--khaki); margin: 28px auto; }
+    .lg-dark-attr {
+      font-size: 9px; letter-spacing: .35em;
+      text-transform: uppercase; color: var(--khaki); text-align: center;
+    }
+    /* Lifestyle photo placeholder */
+    .lg-ph {
+      background: var(--cream-dark);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 13px; color: var(--muted);
+    }
+
+    /* ═══ PRODUCTS CATALOGUE ═══ */
+    .products { background: var(--cream); padding: 96px 80px; }
+    .products-head {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; margin-bottom: 52px;
+    }
+    .products-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+    }
+    .prod-card { cursor: pointer; }
+    .prod-img-box {
+      aspect-ratio: 3/4; background: var(--cream-mid);
+      overflow: hidden; position: relative; margin-bottom: 16px;
+    }
+    .prod-img-box img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .6s ease;
+    }
+    .prod-card:hover .prod-img-box img { transform: scale(1.05); }
+    .prod-img-ph {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 12px; color: var(--muted);
+      background: linear-gradient(135deg, var(--cream-mid), var(--cream-dark));
+    }
+    .prod-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 300; margin-bottom: 2px;
+    }
+    .prod-cat  { font-size: 10px; letter-spacing: .2em; color: var(--muted); text-transform: uppercase; }
+    .prod-price {
+      font-size: 13px; font-weight: 500;
+      color: var(--dark); margin-top: 6px;
+    }
+    .prod-price-vat { font-size: 10px; color: var(--muted); }
+
+    /* ═══ BRAND STORY ═══ */
+    .story {
+      background: var(--white); padding: 120px 80px;
+      display: grid; grid-template-columns: 1.35fr 0.65fr;
+      gap: 72px; align-items: center;
+    }
+    .story-media { position: relative; }
+    .story-img-wrap {
+      width: 100%; aspect-ratio: 4/3;
+      overflow: hidden; position: relative;
+    }
+    .story-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center center;
+      display: block;
+    }
+    .story-media::before {
+      content: ''; position: absolute;
+      top: -22px; left: -22px; right: 22px; bottom: 22px;
+      border: 1px solid var(--border); z-index: -1;
+    }
+    .story-media-ph {
+      width: 100%; aspect-ratio: 4/5;
+      background: linear-gradient(160deg, var(--khaki) 0%, var(--lightbrown) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 14px; color: rgba(255,255,255,.7);
+    }
+    .story-caption {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--cream); padding: 22px 26px;
+      border: 1px solid var(--border);
+    }
+    .story-caption p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px; font-style: italic; color: var(--muted); line-height: 1.6;
+    }
+    .story-content .sec-label { margin-bottom: 22px; }
+    .story-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 3.2vw, 50px);
+      font-weight: 300; line-height: 1.18; margin-bottom: 30px;
+    }
+    .story-content h2 em { font-style: italic; color: var(--olive-light); }
+    .story-content p {
+      font-size: 13px; line-height: 1.9;
+      color: var(--dark-mid); margin-bottom: 18px;
+    }
+    .story-content .divider-sm { margin: 30px 0; }
+
+    /* ═══ PILLARS ═══ */
+    .pillars { background: var(--cream-mid); padding: 96px 80px; }
+    .pillars-head { margin-bottom: 72px; text-align: center; }
+    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 64px; }
+    .pillar { text-align: center; }
+    .pillar-icon { width: 48px; height: 48px; margin: 0 auto 28px; opacity: .6; }
+    .pillar-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 23px; font-weight: 400; margin-bottom: 14px; color: var(--dark);
+    }
+    .pillar-body { font-size: 12px; line-height: 1.85; color: var(--muted); }
+
+    /* ═══ PROJECTS ═══ */
+    .projects {
+      background: var(--dark);
+      display: grid; grid-template-columns: 1.35fr 0.65fr; min-height: 600px; overflow: hidden;
+    }
+    .projects-media {
+      position: relative; overflow: hidden;
+      background: var(--olive-dark);
+      min-height: 500px;
+    }
+    .projects-media img {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      opacity: .7;
+      transition: opacity .5s, transform .7s;
+    }
+    .projects-media:hover img { opacity: .85; transform: scale(1.04); }
+    .projects-media-ph {
+      width: 100%; height: 100%; min-height: 500px;
+      background: linear-gradient(135deg, var(--olive-dark), var(--dark-mid));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 14px; color: rgba(255,255,255,.35);
+    }
+    .projects-body {
+      padding: 80px 72px; display: flex;
+      flex-direction: column; justify-content: center; color: var(--cream);
+    }
+    .projects-body .sec-label { color: var(--grayblue); margin-bottom: 22px; }
+    .projects-body h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 3.6vw, 56px);
+      font-weight: 300; line-height: 1.1; margin-bottom: 24px; color: var(--cream);
+    }
+    .projects-body p {
+      font-size: 13px; line-height: 1.9;
+      color: rgba(245,240,232,.6); margin-bottom: 40px;
+    }
+    .btn-cream {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--cream); color: var(--dark);
+      padding: 15px 40px; font-size: 10px;
+      letter-spacing: .3em; text-transform: uppercase;
+      transition: background .2s, gap .3s; align-self: flex-start;
+    }
+    .btn-cream:hover { background: var(--white); gap: 22px; }
+    .projects-stats {
+      display: flex; gap: 48px; margin-top: 48px;
+      padding-top: 40px; border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .stat-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px; font-weight: 300; color: var(--khaki); line-height: 1;
+    }
+    .stat-label { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: rgba(245,240,232,.35); margin-top: 6px; }
+
+    /* ═══ CONTACT STRIP ═══ */
+    .contact-strip {
+      background: var(--cream); padding: 80px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--border);
+    }
+    .contact-strip-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 2.5vw, 34px);
+      font-weight: 300; font-style: italic;
+    }
+
+    /* ═══ FOOTER ═══ */
+    footer { background: var(--dark); color: var(--cream); padding: 88px 80px 40px; }
+    .ft-top {
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 56px; padding-bottom: 64px;
+      border-bottom: 1px solid rgba(255,255,255,.09); margin-bottom: 36px;
+    }
+    .ft-logo { height: 60px; width: auto; filter: brightness(0) invert(1); margin-bottom: 24px; }
+    .ft-tagline { font-size: 12px; line-height: 1.85; color: rgba(245,240,232,.4); margin-bottom: 28px; }
+    .ft-social { display: flex; gap: 14px; }
+    .ft-social a {
+      width: 34px; height: 34px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-size: 13px;
+      color: rgba(245,240,232,.5); transition: border-color .2s, color .2s;
+    }
+    .ft-social a:hover { border-color: var(--khaki); color: var(--khaki); }
+    .ft-col-title { font-size: 9px; letter-spacing: .35em; text-transform: uppercase; color: var(--khaki); margin-bottom: 24px; }
+    .ft-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .ft-links a { font-size: 12px; color: rgba(245,240,232,.48); transition: color .2s; }
+    .ft-links a:hover { color: var(--cream); }
+    .ft-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 10px; color: rgba(245,240,232,.25);
+    }
+
+    /* ═══ FADE-UP REVEAL ═══ */
+    .fu { opacity: 0; transform: translateY(32px); transition: opacity .8s ease, transform .8s ease; }
+    .fu.vis { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ░░ ANNOUNCEMENT BAR ░░ -->
+<div class="annbar">2025 Koleksiyonu — Dünya Geneli Teslimat &nbsp;·&nbsp; New 2025 Collection — Worldwide Delivery</div>
+
+<!-- ░░ NAVIGATION ░░ -->
+<nav id="mainNav" class="hero-active">
+  <a href="#" class="logo">
+    <img class="logo-img" src="logo_full_trans.png" alt="Exit Garden" onerror="this.style.display='none';document.getElementById('logoText').style.display='flex'">
+    <div id="logoText" style="display:none;flex-direction:column;">
+      <span style="font-family:'Montserrat',sans-serif;font-weight:500;font-size:11px;letter-spacing:.38em;color:#fff;">EXIT GARDEN</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;letter-spacing:.18em;color:rgba(255,255,255,.6);">Outdoor Living</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="nav-lang">
+      <span class="on">EN</span>
+      <span style="opacity:.3">/</span>
+      <span>TR</span>
+    </div>
+    <svg class="nav-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M12 12 L16 16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+    </svg>
+  </div>
+</nav>
+
+<!-- ░░ HERO ░░
+     ↓↓↓ Replace the placeholder div below with your actual hero image ↓↓↓
+     Example: <img src="perla_hero.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+-->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Exit Garden — 2025 Collection</span>
+    <h1 class="hero-title">Design Your<br><em>Outdoor</em><br>Living</h1>
+    <a href="#collections" class="hero-cta">
+      Explore Collections <span style="font-size:18px">→</span>
+    </a>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- ░░ INTRO ░░ -->
+<div class="intro fu">
+  <p class="intro-text">"We don't just design furniture. We design the spaces where life's most meaningful moments unfold."</p>
+  <div class="divider"></div>
+</div>
+
+<!-- ░░ COLLECTIONS ░░ -->
+<section class="collections fu" id="collections">
+  <div class="collections-head">
+    <span class="sec-label">Our Collections</span>
+    <h2 class="sec-title">Crafted for Every<br>Outdoor Space</h2>
+  </div>
+  <div class="col-grid">
+    <!-- Collection 1 — Garden Furniture (large card) -->
+    <div class="col-card">
+      <div class="col-img-wrap" style="aspect-ratio:4/3;">
+        <img src="sofa_group.jpg" alt="Garden Furniture — Oturma Grupları" style="object-fit:contain; background:var(--cream-mid);">
+      </div>
+      <div class="col-card-overlay">
+        <div class="col-card-name">Garden Furniture</div>
+        <div class="col-card-count">Seating · Dining · Lounge</div>
+        <div class="col-card-arrow">→</div>
+      </div>
+    </div>
+    <!-- Collection 2 — Sun Loungers -->
+    <div class="col-card">
+      <div class="col-img-wrap">
+        <img src="lounger_tekli.jpg" alt="Sun Loungers — Şezlonglar">
+      </div>
+      <div class="col-card-overlay">
+        <div class="col-card-name">Sun Loungers</div>
+        <div class="col-card-count">Şezlonglar · Daybeds</div>
+        <div class="col-card-arrow">→</div>
+      </div>
+    </div>
+    <!-- Collection 3 — Chairs -->
+    <div class="col-card">
+      <div class="col-img-wrap">
+        <img src="armchair.jpg" alt="Lounge Chairs — Koltuklar">
+      </div>
+      <div class="col-card-overlay">
+        <div class="col-card-name">Chairs</div>
+        <div class="col-card-count">Koltuklar · Sandalyeler</div>
+        <div class="col-card-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ FEATURED PRODUCT — Perla İkili ░░ -->
+<div class="featured fu">
+  <div class="featured-media">
+    <img src="perla_ikili_2.jpg" alt="Perla İkili Double Sun Lounger">
+    <div class="featured-badge">New Arrival</div>
+  </div>
+  <!-- RIGHT: Product info -->
+  <div class="featured-body">
+    <span class="sec-label">Featured Collection</span>
+    <h2>Perla İkili</h2>
+    <p class="sub">Double Sun Lounger / İkili Şezlong</p>
+    <p>An invitation to slow down. The Perla İkili redefines poolside luxury with its clean architectural aluminium frame, independent reclining backrests and premium solution-dyed cushions — designed for two, crafted for timeless spaces.</p>
+
+    <!-- Price -->
+    <div class="price-block">
+      <div class="price-main">₺ 10.000</div>
+      <div class="price-vat">+ KDV &nbsp;·&nbsp; Fiyatlar KDV hariçtir</div>
+    </div>
+
+    <!-- Colour Swatches -->
+    <div class="swatches">
+      <div class="sw-row-label">İskelet Rengi / Frame Colour — <span id="frameLabel" style="color:var(--dark);font-weight:500;">Pearl White</span></div>
+      <div class="sw-row" id="frameSwatches">
+        <div class="sw" style="background:#7A6A5A;" title="Mocha"></div>
+        <div class="sw" style="background:#EDE0D0;" title="Sand"></div>
+        <div class="sw on" style="background:#F5F1EC;border-color:var(--dark);" title="Pearl White"></div>
+        <div class="sw" style="background:#1C1612;" title="Charcoal Black"></div>
+        <div class="sw" style="background:#C5CBCC;" title="Silver Grey"></div>
+        <div class="sw" style="background:#9A8F85;" title="Taupe"></div>
+        <div class="sw" style="background:#3D4547;" title="Anthracite"></div>
+      </div>
+      <div class="sw-row-label" style="margin-top:14px;">Minder Rengi / Cushion Colour — <span id="cushionLabel" style="color:var(--dark);font-weight:500;">Camel</span></div>
+      <div class="sw-row" id="cushionSwatches">
+        <div class="sw" style="background:#C08B30;" title="Mustard"></div>
+        <div class="sw" style="background:#F0E6D3;" title="Linen"></div>
+        <div class="sw" style="background:#5A5E4A;" title="Olive"></div>
+        <div class="sw" style="background:#8A8D8A;" title="Slate"></div>
+        <div class="sw on" style="background:#B8A07A;border-color:var(--dark);" title="Camel"></div>
+        <div class="sw" style="background:#2A2C2C;" title="Noir"></div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <a href="#" class="btn btn-olive">Teklif Al / Get Quote →</a>
+      <a href="#" class="btn btn-outline">Detaylar</a>
+    </div>
+    <a href="#products" class="btn btn-ghost" style="margin-top:28px;">Tüm Şezlonglar / All Loungers →</a>
+  </div>
+</div>
+
+<div class="lifestyle fu">
+  <div class="lg-grid">
+    <div class="lg-item lg-wide">
+      <img src="sofa_group.jpg" alt="Garden Furniture Collection">
+    </div>
+    <div class="lg-dark">
+      <p class="lg-dark-quote">"The garden is where the day truly begins — and never wants to end."</p>
+      <div class="lg-dark-line"></div>
+      <p class="lg-dark-attr">Exit Garden · Outdoor Living</p>
+    </div>
+    <div class="lg-item lg-tall">
+      <img src="armchair.jpg" alt="Lounge Chair Detail">
+    </div>
+    <div class="lg-item lg-tall">
+      <img src="beach_chair.jpg" alt="Beach Chair">
+    </div>
+    <div class="lg-item lg-tall">
+      <img src="lounger_ahsap.jpg" alt="Ahşap Şezlong">
+    </div>
+  </div>
+</div>
+
+<!-- ░░ PRODUCT CATALOGUE ░░ -->
+<section class="products fu" id="products">
+  <div class="products-head">
+    <div>
+      <span class="sec-label">Tüm Ürünler</span>
+      <h2 class="sec-title">The Full Collection</h2>
+    </div>
+    <a href="#" class="btn btn-ghost">Tümünü Gör / View All →</a>
+  </div>
+  <div class="products-grid">
+    <div class="prod-card">
+      <div class="prod-img-box">
+        <img src="hero_perla_ikili.jpg" alt="Perla İkili">
+      </div>
+      <div class="prod-name">Perla İkili</div>
+      <div class="prod-cat">İkili Şezlong · Double Sun Lounger</div>
+      <div class="prod-price">₺ 10.000 <span class="prod-price-vat">+ KDV</span></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img-box">
+        <img src="lounger_tekli.jpg" alt="Tekli Şezlong">
+      </div>
+      <div class="prod-name">Tekli Şezlong</div>
+      <div class="prod-cat">Tekli Şezlong · Sun Lounger</div>
+      <div class="prod-price">₺ 6.500 <span class="prod-price-vat">+ KDV</span></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img-box">
+        <img src="beach_chair.jpg" alt="Beach Chair">
+      </div>
+      <div class="prod-name">Beach Chair</div>
+      <div class="prod-cat">Katlanır Sandalye · Folding Chair</div>
+      <div class="prod-price">₺ 4.800 <span class="prod-price-vat">+ KDV</span></div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img-box">
+        <img src="armchair.jpg" alt="Tekli Koltuk">
+      </div>
+      <div class="prod-name">Tekli Koltuk</div>
+      <div class="prod-cat">Koltuk · Lounge Chair</div>
+      <div class="prod-price">₺ 8.200 <span class="prod-price-vat">+ KDV</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ BRAND STORY ░░ -->
+<section class="story fu" id="story">
+  <div class="story-media">
+    <div class="story-img-wrap">
+      <img src="sofa_story.jpg" alt="Exit Garden — Outdoor Living">
+    </div>
+    <div class="story-caption">
+      <p>Handcrafted in Türkiye,<br>designed for the world.</p>
+    </div>
+  </div><!-- /.story-media -->
+  <div class="story-content">
+    <span class="sec-label">Our Story</span>
+    <h2>Timeless <em>design</em><br>for outdoor living</h2>
+    <p>Exit Garden was born from a belief that outdoor spaces deserve the same attention to craft, beauty and longevity as the finest interior design. Every piece is conceived for durability in all conditions — and comfort that lasts a lifetime.</p>
+    <p>Rooted in Turkey, reaching the world. Our designs draw from the clean lines of Mediterranean architecture and the warmth of Anatolian craftsmanship, refined for contemporary outdoor living.</p>
+    <div class="divider-sm"></div>
+    <a href="#" class="btn btn-ghost">About Exit Garden →</a>
+  </div>
+</section>
+
+<!-- ░░ THREE PILLARS ░░ -->
+<section class="pillars fu">
+  <div class="pillars-head">
+    <span class="sec-label" style="display:block;text-align:center;">Why Exit Garden</span>
+    <h2 class="sec-title" style="text-align:center;">Design · Quality · Experience</h2>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar">
+      <svg class="pillar-icon" viewBox="0 0 48 48" fill="none">
+        <path d="M24 6 C16 6 8 14 8 22 C8 34 24 42 24 42 C24 42 40 34 40 22 C40 14 32 6 24 6Z" stroke="#626148" stroke-width="1.4"/>
+        <path d="M24 18 C22 18 20 20 20 22 C20 26 24 30 24 30 C24 30 28 26 28 22 C28 20 26 18 24 18Z" stroke="#626148" stroke-width="1.4"/>
+      </svg>
+      <div class="pillar-title">Natural Materials</div>
+      <p class="pillar-body">Powder-coated aluminium, marine-grade rope weave and UV-resistant fabrics — selected for beauty that weathers gracefully through every season.</p>
+    </div>
+    <div class="pillar">
+      <svg class="pillar-icon" viewBox="0 0 48 48" fill="none">
+        <rect x="8" y="12" width="32" height="26" rx="1" stroke="#626148" stroke-width="1.4"/>
+        <path d="M16 12 L16 8 M24 12 L24 6 M32 12 L32 8" stroke="#626148" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M14 28 L22 34 L34 22" stroke="#626148" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="pillar-title">Timeless Design</div>
+      <p class="pillar-body">We reject seasonal trends. Every silhouette is designed for how it will look and feel ten years from now — in any setting, under any light.</p>
+    </div>
+    <div class="pillar">
+      <svg class="pillar-icon" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="16" stroke="#626148" stroke-width="1.4"/>
+        <path d="M24 14 L24 24 L32 28" stroke="#626148" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="24" cy="24" r="2" fill="#626148"/>
+      </svg>
+      <div class="pillar-title">Outdoor Expertise</div>
+      <p class="pillar-body">A decade of designing exclusively for outdoor environments — from private villas to five-star hotel projects across 28 countries.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ PROJECTS / B2B ░░ -->
+<section class="projects fu" id="projects">
+  <div class="projects-media">
+    <img src="sofa_group.jpg" alt="Exit Garden Projects">
+  </div>
+  <div class="projects-body">
+    <span class="sec-label">Projects &amp; Hospitality</span>
+    <h2>For Hotels, Resorts &amp; Architects</h2>
+    <p>Exit Garden partners with leading hospitality groups, landscape architects and interior designers across Europe and the Middle East. Custom configurations, exclusive finishes, full B2B service.</p>
+    <a href="#contact" class="btn-cream">Start a Project →</a>
+    <div class="projects-stats">
+      <div><div class="stat-val">200+</div><div class="stat-label">Projects</div></div>
+      <div><div class="stat-val">28</div><div class="stat-label">Countries</div></div>
+      <div><div class="stat-val">10+</div><div class="stat-label">Years</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ░░ CONTACT STRIP ░░ -->
+<div class="contact-strip fu" id="contact">
+  <p class="contact-strip-text">"Ready to design your outdoor space?"</p>
+  <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+    <a href="mailto:info@exitgarden.com" class="btn btn-olive">İletişime Geç / Get in Touch →</a>
+    <a href="#" class="btn btn-outline">Katalog İndir / Download Catalogue</a>
+  </div>
+</div>
+
+<!-- ░░ FOOTER ░░ -->
+<footer>
+  <div class="ft-top">
+    <div>
+      <img class="ft-logo" src="logo_full_trans.png" alt="Exit Garden"
+           onerror="this.style.display='none'">
+      <p class="ft-tagline">Crafted for timeless outdoor spaces.<br>Türkiye — Worldwide Projects<br>www.exitgarden.com</p>
+      <div class="ft-social">
+        <a href="#" title="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="#" title="LinkedIn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7 10v7M7 7v.5M11 17v-4c0-1.5 1-3 3-3s3 1 3 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+        <a href="#" title="Pinterest">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M12 7C9 7 7 9 7 11.5C7 13.5 8 14.5 9 15L9 17L10.5 14.5C11 15 11.5 15 12 15C15 15 17 12.5 17 10C17 8 15 7 12 7Z" stroke="currentColor" stroke-width="1.3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-col-title">Collections</div>
+      <ul class="ft-links">
+        <li><a href="#">Garden Furniture</a></li>
+        <li><a href="#">Sun Loungers</a></li>
+        <li><a href="#">Dining Sets</a></li>
+        <li><a href="#">Side Tables</a></li>
+        <li><a href="#">Accessories</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-col-title">Company</div>
+      <ul class="ft-links">
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Materials</a></li>
+        <li><a href="#">B2B &amp; Hospitality</a></li>
+        <li><a href="#">Showroom</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-col-title">Contact</div>
+      <ul class="ft-links">
+        <li><a href="mailto:info@exitgarden.com">info@exitgarden.com</a></li>
+        <li><a href="#">+90 — — — —</a></li>
+        <li style="margin-top:10px;font-size:11px;line-height:1.7;color:rgba(245,240,232,.28);">Istanbul, Türkiye<br>Worldwide Delivery</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span>© 2025 Exit Garden. All rights reserved.</span>
+    <span>Design · Quality · Experience</span>
+  </div>
+</footer>
+
+<!-- ░░ SCRIPTS ░░ -->
+<script>
+  /* Nav: transparent on hero, solid on scroll */
+  const nav  = document.getElementById('mainNav');
+  const hero = document.getElementById('hero');
+  const logoImg = document.querySelector('.logo-img');
+
+  function updateNav() {
+    const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+    const pastHero   = heroBottom < 80;
+    nav.classList.toggle('scrolled', pastHero);
+    nav.classList.toggle('hero-active', !pastHero);
+    if (logoImg) {
+      logoImg.classList.toggle('logo-img-white', !pastHero);
+    }
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  /* Fade-up reveal */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+
+  /* Swatch toggle — updates selected colour label, image stays pristine */
+  document.querySelectorAll('#frameSwatches .sw').forEach(sw => {
+    sw.addEventListener('click', () => {
+      document.querySelectorAll('#frameSwatches .sw').forEach(s => s.classList.remove('on'));
+      sw.classList.add('on');
+      document.getElementById('frameLabel').textContent = sw.title;
+    });
+  });
+
+  document.querySelectorAll('#cushionSwatches .sw').forEach(sw => {
+    sw.addEventListener('click', () => {
+      document.querySelectorAll('#cushionSwatches .sw').forEach(s => s.classList.remove('on'));
+      sw.classList.add('on');
+      document.getElementById('cushionLabel').textContent = sw.title;
+    });
+  });
+
+  /* Lang toggle */
+  document.querySelectorAll('.nav-lang span').forEach(span => {
+    span.addEventListener('click', () => {
+      document.querySelectorAll('.nav-lang span').forEach(s => s.classList.remove('on'));
+      span.classList.add('on');
+    });
+  });
+</script>
+</body>
+</html>
