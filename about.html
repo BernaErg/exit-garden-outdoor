@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EXIT Outdoor Living — Hakkımızda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ═══ RESET & TOKENS ═══ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --olive:       #626148;
+      --olive-dark:  #4a4a35;
+      --olive-light: #8a8a6a;
+      --khaki:       #ADA796;
+      --grayblue:    #A4ABA0;
+      --lightbrown:  #BBADA1;
+      --lightgrey:   #CBCBCB;
+      --cream:       #F5F0E8;
+      --cream-mid:   #EDE5D6;
+      --cream-dark:  #E3D9C8;
+      --white:       #FDFAF6;
+      --dark:        #1C1612;
+      --dark-mid:    #3A3228;
+      --border:      #D9CFBC;
+      --muted:       #8A7E70;
+      --beige:       #C4AB8A;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ═══ ANNOUNCEMENT BAR ═══ */
+    .annbar {
+      background: var(--olive);
+      color: rgba(255,255,255,.88);
+      text-align: center;
+      padding: 9px 20px;
+      font-size: 10px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+    }
+
+    /* ═══ NAVIGATION ═══ */
+    nav {
+      position: fixed; top: 34px; left: 0; right: 0;
+      z-index: 200;
+      padding: 20px 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .4s, padding .3s, top .4s, box-shadow .4s;
+    }
+    nav.scrolled {
+      top: 0;
+      background: rgba(253,250,246,.97);
+      padding: 14px 64px;
+      border-bottom: 1px solid var(--border);
+    }
+    nav.page-nav {
+      top: 0;
+      background: rgba(253,250,246,.97);
+      padding: 14px 64px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { display: flex; align-items: center; gap: 16px; cursor: pointer; }
+    .logo-img {
+      height: 56px; width: auto; object-fit: contain;
+    }
+
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--dark); position: relative;
+      transition: color .2s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute;
+      bottom: -4px; left: 0; right: 0; height: 1px;
+      background: var(--olive);
+      transform: scaleX(0); transition: transform .3s ease;
+    }
+    .nav-links a:hover { color: var(--olive); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a.active { color: var(--olive); }
+    .nav-links a.active::after { transform: scaleX(1); }
+
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-lang {
+      font-size: 10px; letter-spacing: .15em;
+      display: flex; gap: 6px; color: var(--muted);
+    }
+    .nav-lang span { cursor: pointer; transition: color .2s; }
+    .nav-lang span.on { color: var(--dark); border-bottom: 1px solid var(--dark); padding-bottom: 1px; }
+    .nav-icon { cursor: pointer; opacity: .65; transition: opacity .2s; }
+    .nav-icon:hover { opacity: 1; }
+
+    /* ═══ PAGE HEADER ═══ */
+    .page-header {
+      background: var(--cream-dark);
+      padding: 160px 80px 80px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header .sec-label { margin-bottom: 18px; }
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 5vw, 72px);
+      font-weight: 300; line-height: 1.08;
+      color: var(--dark); max-width: 800px;
+    }
+
+    /* ═══ SECTION HELPERS ═══ */
+    .sec-label {
+      font-size: 10px; letter-spacing: .38em;
+      text-transform: uppercase; color: var(--olive);
+      margin-bottom: 16px; display: block;
+    }
+    .sec-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 3.8vw, 54px);
+      font-weight: 300; line-height: 1.1; color: var(--dark);
+    }
+
+    /* ═══ ABOUT SECTION ═══ */
+    .about {
+      background: var(--white);
+      display: grid; grid-template-columns: 1.35fr 0.65fr;
+      gap: 72px; align-items: center;
+      padding: 120px 80px;
+    }
+    .about-media { position: relative; }
+    .about-img-wrap {
+      width: 100%; aspect-ratio: 16/9;
+      overflow: hidden; position: relative;
+    }
+    .about-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center center;
+      display: block;
+    }
+    .about-media::before {
+      content: ''; position: absolute;
+      top: -22px; left: -22px; right: 22px; bottom: 22px;
+      border: 1px solid var(--border); z-index: -1;
+    }
+    .about-content .sec-label { margin-bottom: 22px; }
+    .about-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 3vw, 46px);
+      font-weight: 300; line-height: 1.18; margin-bottom: 30px;
+    }
+    .about-content h2 em { font-style: italic; color: var(--olive-light); }
+    .about-content p {
+      font-size: 13px; line-height: 1.9;
+      color: var(--dark-mid); margin-bottom: 18px;
+    }
+
+    /* ═══ BRAND STORY ═══ */
+    .story {
+      background: var(--cream); padding: 120px 80px;
+      display: grid; grid-template-columns: 1.35fr 0.65fr;
+      gap: 72px; align-items: center;
+    }
+    .story-media { position: relative; }
+    .story-img-wrap {
+      width: 100%; aspect-ratio: 4/3;
+      overflow: hidden; position: relative;
+    }
+    .story-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center center;
+      display: block;
+    }
+    .story-media::before {
+      content: ''; position: absolute;
+      top: -22px; left: -22px; right: 22px; bottom: 22px;
+      border: 1px solid var(--border); z-index: -1;
+    }
+    .story-caption {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--cream); padding: 22px 26px;
+      border: 1px solid var(--border);
+    }
+    .story-caption p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px; font-style: italic; color: var(--muted); line-height: 1.6;
+    }
+    .story-content .sec-label { margin-bottom: 22px; }
+    .story-content h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 3.2vw, 50px);
+      font-weight: 300; line-height: 1.18; margin-bottom: 30px;
+    }
+    .story-content h2 em { font-style: italic; color: var(--olive-light); }
+    .story-content p {
+      font-size: 13px; line-height: 1.9;
+      color: var(--dark-mid); margin-bottom: 18px;
+    }
+    .story-content .divider-sm { margin: 30px 0; }
+    .divider-sm { width: 32px; height: 1px; background: var(--beige); }
+
+    /* ═══ FOOTER ═══ */
+    footer { background: var(--dark); color: var(--cream); padding: 88px 80px 40px; }
+    .ft-top {
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 56px; padding-bottom: 64px;
+      border-bottom: 1px solid rgba(255,255,255,.09); margin-bottom: 36px;
+    }
+    .ft-logo { height: 60px; width: auto; filter: brightness(0) invert(1); margin-bottom: 24px; }
+    .ft-tagline { font-size: 12px; line-height: 1.85; color: rgba(245,240,232,.4); margin-bottom: 28px; }
+    .ft-social { display: flex; gap: 14px; }
+    .ft-social a {
+      width: 34px; height: 34px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-size: 13px;
+      color: rgba(245,240,232,.5); transition: border-color .2s, color .2s;
+    }
+    .ft-social a:hover { border-color: var(--khaki); color: var(--khaki); }
+    .ft-col-title { font-size: 9px; letter-spacing: .35em; text-transform: uppercase; color: var(--khaki); margin-bottom: 24px; }
+    .ft-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .ft-links a { font-size: 12px; color: rgba(245,240,232,.48); transition: color .2s; }
+    .ft-links a:hover { color: var(--cream); }
+    .ft-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 10px; color: rgba(245,240,232,.25);
+    }
+
+    /* ═══ FADE-UP REVEAL ═══ */
+    .fu { opacity: 0; transform: translateY(32px); transition: opacity .8s ease, transform .8s ease; }
+    .fu.vis { opacity: 1; transform: translateY(0); }
+
+    /* ═══ LANG TRANSITION ═══ */
+    [data-t] { transition: opacity .18s ease; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 10px; letter-spacing: .3em;
+      text-transform: uppercase; transition: all .25s;
+    }
+    .btn-ghost { color: var(--olive); border-bottom: 1px solid var(--khaki); padding-bottom: 2px; }
+    .btn-ghost:hover { border-color: var(--olive); gap: 18px; }
+  </style>
+</head>
+<body>
+
+<!-- ░░ ANNOUNCEMENT BAR ░░ -->
+<div class="annbar" data-t="annbar">2025 Koleksiyonu &nbsp;·&nbsp; Dünya Geneli Teslimat</div>
+
+<!-- ░░ NAVIGATION ░░ -->
+<nav id="mainNav" class="page-nav">
+  <a href="index.html" class="logo">
+    <img class="logo-img" src="logo_full_trans.png" alt="EXIT Outdoor Living"
+         onerror="this.style.display='none';document.getElementById('logoText').style.display='flex'">
+    <div id="logoText" style="display:none;flex-direction:column;">
+      <span style="font-family:'Montserrat',sans-serif;font-weight:500;font-size:11px;letter-spacing:.38em;color:var(--dark);">EXIT OUTDOOR LIVING</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;letter-spacing:.18em;color:var(--muted);">Outdoor Living</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html#collections" data-t="navCollections">Koleksiyonlar</a></li>
+    <li><a href="about.html" class="active" data-t="navStory">Hakkımızda</a></li>
+    <li><a href="index.html#projects" data-t="navProjects">Projeler</a></li>
+    <li><a href="index.html#contact" data-t="navContact">İletişim</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="nav-lang">
+      <span class="on" data-lang="tr" onclick="setLang('tr')">TR</span>
+      <span style="opacity:.3;cursor:default;">/</span>
+      <span data-lang="en" onclick="setLang('en')">EN</span>
+    </div>
+    <svg class="nav-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M12 12 L16 16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+    </svg>
+  </div>
+</nav>
+
+<!-- ░░ ABOUT — YENİ GİRİŞ BÖLÜMÜ ░░ -->
+<section class="about fu" id="about">
+  <div class="about-media">
+    <div class="about-img-wrap">
+      <img src="uretim_tesisi.jpg" alt="EXIT Outdoor Living Üretim Tesisi — İnegöl"
+           onerror="this.style.background='var(--cream-dark)';this.style.display='flex';this.style.alignItems='center';this.style.justifyContent='center';">
+    </div>
+  </div>
+  <div class="about-content">
+    <span class="sec-label" data-t="aboutLabel">Hakkımızda</span>
+    <h2 data-t="aboutTitle">Üretimden tasarıma,<br>baştan sona <em>kendimiz</em></h2>
+    <p data-t="aboutP1">EXIT Outdoor Living, 2007 yılından bu yana BG Group çatısı altında faaliyet gösteriyor ve geniş çaplı bir horeca (otel, restoran, kafe) deneyimine sahip. Tüm ürünlerimiz İnegöl'deki kendi üretim tesisimizde tasarlanıyor ve üretiliyor.</p>
+    <p data-t="aboutP2">Üretimi kendimiz yaptığımız için koleksiyonlar arasında mix & match yapabiliyor, talep edilen ölçü ve özellikte özel üretim gerçekleştirebiliyoruz — standart bir kataloğun ötesinde, projeye özel çözümler.</p>
+  </div>
+</section>
+
+<!-- ░░ BRAND STORY — taşındı ░░ -->
+<section class="story fu" id="story">
+  <div class="story-media">
+    <div class="story-img-wrap">
+      <img src="sofa_story.jpg" alt="EXIT Outdoor Living">
+    </div>
+    <div class="story-caption">
+      <p data-t="storyCaption">Türkiye'de el işçiliğiyle,<br>dünya için tasarlandı.</p>
+    </div>
+  </div>
+  <div class="story-content">
+    <span class="sec-label" data-t="storyLabel">Hikayemiz</span>
+    <h2 data-t="storyTitle">Dış mekân yaşamı için<br><em>zamansız</em> tasarım</h2>
+    <p data-t="storyP1">EXIT Outdoor Living, dış mekân alanlarının en iyi iç mekan tasarımıyla aynı özen, güzellik ve uzun ömürlülüğü hak ettiği inancından doğdu. Her parça, her koşulda dayanıklılık için tasarlandı — ve ömür boyu süren konfor için üretildi.</p>
+    <p data-t="storyP2">Türkiye'den dünyaya uzanan bir marka. Tasarımlarımız Akdeniz mimarisinin temiz çizgilerinden ve Anadolu el sanatlarının sıcaklığından beslenerek çağdaş dış mekan yaşamı için rafine edilmiştir.</p>
+    <div class="divider-sm"></div>
+  </div>
+</section>
+
+<!-- ░░ FOOTER ░░ -->
+<footer>
+  <div class="ft-top">
+    <div>
+      <img class="ft-logo" src="logo_full_trans.png" alt="EXIT Outdoor Living" onerror="this.style.display='none'">
+      <p class="ft-tagline" data-t="ftTagline">Zamansız dış mekânlar için tasarlandı.<br>Türkiye — Dünya Geneli Projeler<br>www.exitgarden.com</p>
+      <div class="ft-social">
+        <a href="#" title="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+          </svg>
+        </a>
+        <a href="#" title="LinkedIn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7 10v7M7 7v.5M11 17v-4c0-1.5 1-3 3-3s3 1 3 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+        <a href="#" title="Pinterest">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M12 7C9 7 7 9 7 11.5C7 13.5 8 14.5 9 15L9 17L10.5 14.5C11 15 11.5 15 12 15C15 15 17 12.5 17 10C17 8 15 7 12 7Z" stroke="currentColor" stroke-width="1.3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-col-title" data-t="ftCol1">Koleksiyonlar</div>
+      <ul class="ft-links">
+        <li><a href="index.html#collections" data-t="ftLink1a">Bahçe Mobilyaları</a></li>
+        <li><a href="index.html#collections" data-t="ftLink1b">Şezlonglar</a></li>
+        <li><a href="index.html#collections" data-t="ftLink1c">Yemek Setleri</a></li>
+        <li><a href="index.html#collections" data-t="ftLink1d">Yan Masalar</a></li>
+        <li><a href="index.html#collections" data-t="ftLink1e">Aksesuarlar</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-col-title" data-t="ftCol2">Şirket</div>
+      <ul class="ft-links">
+        <li><a href="about.html" data-t="ftLink2a">Hakkımızda</a></li>
+        <li><a href="index.html#projects" data-t="ftLink2b">Projeler</a></li>
+        <li><a href="#" data-t="ftLink2c">Malzemeler</a></li>
+        <li><a href="index.html#projects" data-t="ftLink2d">B2B &amp; Otelcilik</a></li>
+        <li><a href="#" data-t="ftLink2e">Showroom</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-col-title" data-t="ftCol3">İletişim</div>
+      <ul class="ft-links">
+        <li><a href="mailto:info@exitgarden.com">info@exitgarden.com</a></li>
+        <li><a href="#">+90 — — — —</a></li>
+        <li style="margin-top:10px;font-size:11px;line-height:1.7;color:rgba(245,240,232,.28);">Istanbul, Türkiye<br>Worldwide Delivery</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span data-t="ftCopyright">© 2025 EXIT Outdoor Living. Tüm hakları saklıdır.</span>
+    <span data-t="ftMotto">Tasarım · Kalite · Deneyim</span>
+  </div>
+</footer>
+
+<!-- ░░ SCRIPTS ░░ -->
+<script>
+  /* ── TRANSLATIONS ────────────────────────────────────────── */
+  const T = {
+    tr: {
+      pageTitle:      'EXIT Outdoor Living — Hakkımızda',
+      annbar:         '2025 Koleksiyonu &nbsp;·&nbsp; Dünya Geneli Teslimat',
+      navCollections: 'Koleksiyonlar',
+      navStory:       'Hakkımızda',
+      navProjects:    'Projeler',
+      navContact:     'İletişim',
+      aboutLabel:     'Hakkımızda',
+      aboutTitle:     'Üretimden tasarıma,<br>baştan sona <em>kendimiz</em>',
+      aboutP1:        'EXIT Outdoor Living, 2007 yılından bu yana BG Group çatısı altında faaliyet gösteriyor ve geniş çaplı bir horeca (otel, restoran, kafe) deneyimine sahip. Tüm ürünlerimiz İnegöl\'deki kendi üretim tesisimizde tasarlanıyor ve üretiliyor.',
+      aboutP2:        'Üretimi kendimiz yaptığımız için koleksiyonlar arasında mix & match yapabiliyor, talep edilen ölçü ve özellikte özel üretim gerçekleştirebiliyoruz — standart bir kataloğun ötesinde, projeye özel çözümler.',
+      storyCaption:   'Türkiye\'de el işçiliğiyle,<br>dünya için tasarlandı.',
+      storyLabel:     'Hikayemiz',
+      storyTitle:     'Dış mekân yaşamı için<br><em>zamansız</em> tasarım',
+      storyP1:        'EXIT Outdoor Living, dış mekân alanlarının en iyi iç mekan tasarımıyla aynı özen, güzellik ve uzun ömürlülüğü hak ettiği inancından doğdu. Her parça, her koşulda dayanıklılık için tasarlandı — ve ömür boyu süren konfor için üretildi.',
+      storyP2:        'Türkiye\'den dünyaya uzanan bir marka. Tasarımlarımız Akdeniz mimarisinin temiz çizgilerinden ve Anadolu el sanatlarının sıcaklığından beslenerek çağdaş dış mekan yaşamı için rafine edilmiştir.',
+      ftTagline:      'Zamansız dış mekânlar için tasarlandı.<br>Türkiye — Dünya Geneli Projeler<br>www.exitgarden.com',
+      ftCol1:         'Koleksiyonlar',
+      ftLink1a:       'Bahçe Mobilyaları',
+      ftLink1b:       'Şezlonglar',
+      ftLink1c:       'Yemek Setleri',
+      ftLink1d:       'Yan Masalar',
+      ftLink1e:       'Aksesuarlar',
+      ftCol2:         'Şirket',
+      ftLink2a:       'Hakkımızda',
+      ftLink2b:       'Projeler',
+      ftLink2c:       'Malzemeler',
+      ftLink2d:       'B2B &amp; Otelcilik',
+      ftLink2e:       'Showroom',
+      ftCol3:         'İletişim',
+      ftCopyright:    '© 2025 EXIT Outdoor Living. Tüm hakları saklıdır.',
+      ftMotto:        'Tasarım · Kalite · Deneyim',
+    },
+    en: {
+      pageTitle:      'EXIT Outdoor Living — About Us',
+      annbar:         'New 2025 Collection &nbsp;·&nbsp; Worldwide Delivery',
+      navCollections: 'Collections',
+      navStory:       'About Us',
+      navProjects:    'Projects',
+      navContact:     'Contact',
+      aboutLabel:     'About Us',
+      aboutTitle:     'Manufactured entirely <em>in-house</em>,<br>from concept to completion',
+      aboutP1:        'EXIT Outdoor Living has operated under BG Group since 2007, bringing extensive hospitality (horeca) experience to outdoor furniture. Every piece is designed and manufactured at our own production facility in İnegöl, Turkey.',
+      aboutP2:        'Because we control our own manufacturing, we can mix and match across collections and produce custom sizes and features on request — solutions built around the project, not limited to a standard catalogue.',
+      storyCaption:   'Handcrafted in Türkiye,<br>designed for the world.',
+      storyLabel:     'Our Story',
+      storyTitle:     'Timeless <em>design</em><br>for outdoor living',
+      storyP1:        'EXIT Outdoor Living was born from a belief that outdoor spaces deserve the same attention to craft, beauty and longevity as the finest interior design. Every piece is conceived for durability in all conditions — and comfort that lasts a lifetime.',
+      storyP2:        'Rooted in Turkey, reaching the world. Our designs draw from the clean lines of Mediterranean architecture and the warmth of Anatolian craftsmanship, refined for contemporary outdoor living.',
+      ftTagline:      'Crafted for timeless outdoor spaces.<br>Türkiye — Worldwide Projects<br>www.exitgarden.com',
+      ftCol1:         'Collections',
+      ftLink1a:       'Garden Furniture',
+      ftLink1b:       'Sun Loungers',
+      ftLink1c:       'Dining Sets',
+      ftLink1d:       'Side Tables',
+      ftLink1e:       'Accessories',
+      ftCol2:         'Company',
+      ftLink2a:       'About Us',
+      ftLink2b:       'Projects',
+      ftLink2c:       'Materials',
+      ftLink2d:       'B2B &amp; Hospitality',
+      ftLink2e:       'Showroom',
+      ftCol3:         'Contact',
+      ftCopyright:    '© 2025 EXIT Outdoor Living. All rights reserved.',
+      ftMotto:        'Design · Quality · Experience',
+    }
+  };
+
+  /* ── LANG SWITCHER ───────────────────────────────────────── */
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.title = T[lang].pageTitle;
+
+    document.querySelectorAll('[data-t]').forEach(el => {
+      const key = el.dataset.t;
+      if (T[lang][key] !== undefined) {
+        el.innerHTML = T[lang][key];
+      }
+    });
+
+    document.querySelectorAll('.nav-lang span[data-lang]').forEach(s => {
+      s.classList.toggle('on', s.dataset.lang === lang);
+    });
+
+    localStorage.setItem('eg-lang', lang);
+  }
+
+  /* ── NAV: always solid on this page ─────────────────────── */
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  /* ── FADE-UP REVEAL ──────────────────────────────────────── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+
+  /* ── INIT LANGUAGE ───────────────────────────────────────── */
+  const savedLang = localStorage.getItem('eg-lang') || 'tr';
+  setLang(savedLang);
+</script>
+</body>
+</html>
