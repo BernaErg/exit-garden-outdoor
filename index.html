@@ -110,7 +110,7 @@
     }
     .hero-bg {
       position: absolute; inset: 0;
-      background-image: url('hero_perla_ikili.jpg');
+      background-image: url('enzo-oturma-grubu.png');
       background-size: cover; background-position: center 40%;
       animation: zoomIn 14s ease-out forwards;
     }
@@ -190,7 +190,7 @@
     .collections-head { margin-bottom: 56px; }
     .col-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 3px;
     }
     .col-card { position: relative; overflow: hidden; cursor: pointer; }
@@ -550,7 +550,7 @@
   <div class="hero-bg"></div>
   <div class="hero-vignette"></div>
   <div class="hero-content">
-    <span class="hero-eyebrow" data-t="heroEyebrow">EXIT Outdoor Living — 2025 Koleksiyonu</span>
+    <span class="hero-eyebrow" data-t="heroEyebrow">EXIT Outdoor Living, 2026 Koleksiyonu</span>
     <h1 class="hero-title" data-t="heroTitle">Dış Mekanınızı<br><em>Özgürce</em><br>Tasarlayın</h1>
     <a href="#collections" class="hero-cta">
       <span data-t="heroCta">Koleksiyonları Keşfet</span> <span style="font-size:18px">→</span>
@@ -564,7 +564,7 @@
 
 <!-- ░░ INTRO ░░ -->
 <div class="intro fu">
-  <p class="intro-text" data-t="introText">"Sadece mobilya tasarlamıyoruz. Hayatın en anlamlı anlarının yaşandığı mekânları tasarlıyoruz."</p>
+  <p class="intro-text" data-t="introText">"Dışarısı sadece bir geçiş yeri değil. Yaşamın kendisi."</p>
   <div class="divider"></div>
 </div>
 
@@ -573,12 +573,13 @@
   <div class="collections-head">
     <span class="sec-label" data-t="colLabel">Koleksiyonlarımız</span>
     <h2 class="sec-title" data-t="colTitle">Her Dış Mekân İçin<br>Özenle Tasarlandı</h2>
+    <p style="font-size:13px;color:var(--muted);margin-top:14px;" data-t="colSubtle">Sergilenen her parça kendi atölyemizde üretilir, ölçü ve detaylar tercihinize göre şekillenir.</p>
   </div>
   <div class="col-grid">
-    <!-- Collection 1 — Garden Furniture -->
+    <!-- Collection 1 — Seating Groups -->
     <div class="col-card">
       <div class="col-img-wrap">
-        <img src="sofa_group.jpg" alt="Garden Furniture" style="object-position: center 40%;">
+        <img src="burce-oturma-grubu-2.png" alt="Seating Groups" style="object-position: center 40%;">
       </div>
       <div class="col-card-overlay">
         <div class="col-card-name" data-t="col1Name">Bahçe Mobilyaları</div>
@@ -608,29 +609,39 @@
         <div class="col-card-arrow">→</div>
       </div>
     </div>
+    <!-- Collection 4 — Tables -->
+    <div class="col-card">
+      <div class="col-img-wrap">
+        <img src="Concept_Masa.png" alt="Tables">
+      </div>
+      <div class="col-card-overlay">
+        <div class="col-card-name" data-t="col4Name">Masalar</div>
+        <div class="col-card-count" data-t="col4Count">Yemek Masaları · Sehpalar</div>
+        <div class="col-card-arrow">→</div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ░░ FEATURED PRODUCT — Perla İkili ░░ -->
 <div class="featured fu">
   <div class="featured-media">
-    <img src="perla_ikili_2.jpg" alt="Perla İkili">
+    <img src="perla-ikili-sezlong.png" alt="Perla İkili">
     <div class="featured-badge" data-t="featBadge">Yeni Ürün</div>
   </div>
   <div class="featured-body">
     <span class="sec-label" data-t="featLabel">Öne Çıkan Ürün</span>
     <h2>Perla İkili</h2>
     <p class="sub" data-t="featSub">İkili Şezlong</p>
-    <p data-t="featDesc">Yavaşlamak için bir davet. Perla İkili, temiz mimari alüminyum çerçevesi, bağımsız ayarlanabilir arkalıkları ve premium solüsyon boyalı minderleriyle havuz başı lüksünü yeniden tanımlıyor — iki kişi için tasarlandı, zamansız mekânlar için üretildi.</p>
+    <p data-t="featDesc">Yavaşlamak için bir davet. Perla İkili, temiz mimari alüminyum çerçevesi, bağımsız ayarlanabilir arkalıkları ve premium solüsyon boyalı minderleriyle havuz başı lüksünü yeniden tanımlıyor, iki kişi için tasarlandı, zamansız mekânlar için üretildi.</p>
 
     <div class="price-block">
-      <div class="price-main">₺ 10.000</div>
-      <div class="price-vat" data-t="featVat">+ KDV &nbsp;·&nbsp; Fiyatlar KDV hariçtir</div>
+      <div class="price-vat" data-t="featPriceContact">Fiyat için iletişime geçin</div>
     </div>
 
     <div class="swatches">
       <div class="sw-row-label">
-        <span data-t="featFrameLabel">İskelet Rengi</span> — <span id="frameLabel" style="color:var(--dark);font-weight:500;">Pearl White</span>
+        <span data-t="featFrameLabel">İskelet Rengi</span>, <span id="frameLabel" style="color:var(--dark);font-weight:500;">Pearl White</span>
       </div>
       <div class="sw-row" id="frameSwatches">
         <div class="sw" style="background:#7A6A5A;" title="Mocha"></div>
@@ -642,7 +653,7 @@
         <div class="sw" style="background:#3D4547;" title="Anthracite"></div>
       </div>
       <div class="sw-row-label" style="margin-top:14px;">
-        <span data-t="featCushionLabel">Minder Rengi</span> — <span id="cushionLabel" style="color:var(--dark);font-weight:500;">Camel</span>
+        <span data-t="featCushionLabel">Minder Rengi</span>, <span id="cushionLabel" style="color:var(--dark);font-weight:500;">Camel</span>
       </div>
       <div class="sw-row" id="cushionSwatches">
         <div class="sw" style="background:#C08B30;" title="Mustard"></div>
@@ -666,7 +677,7 @@
 <div class="lifestyle fu">
   <div class="lg-grid">
     <div class="lg-item lg-wide">
-      <img src="sofa_group.jpg" alt="Garden Furniture Collection">
+      <img src="bianca-takim-oturma-grubu.png" alt="Garden Furniture Collection">
     </div>
     <div class="lg-dark">
       <p class="lg-dark-quote" data-t="lgQuote">"Bahçe, günün gerçekten başladığı ve hiç bitmek istemediği yerdir."</p>
@@ -697,35 +708,35 @@
   <div class="products-grid">
     <div class="prod-card">
       <div class="prod-img-box">
-        <img src="hero_perla_ikili.jpg" alt="Perla İkili">
+        <img src="armada-sezlong-cabana.png" alt="Armada">
       </div>
-      <div class="prod-name">Perla İkili</div>
-      <div class="prod-cat" data-t="prod1Cat">İkili Şezlong</div>
-      <div class="prod-price">₺ 10.000 <span class="prod-price-vat" data-t="prodVat">+ KDV</span></div>
+      <div class="prod-name">Armada</div>
+      <div class="prod-cat" data-t="prod1Cat">Şezlong Cabana</div>
+      <div class="prod-price" data-t="prodContact">Fiyat için iletişime geçin</div>
     </div>
     <div class="prod-card">
       <div class="prod-img-box">
-        <img src="lounger_tekli.jpg" alt="Tekli Şezlong">
+        <img src="enzo-masa-dogo-bank-iroco.png" alt="Enzo &amp; Dogo">
       </div>
-      <div class="prod-name">Tekli Şezlong</div>
-      <div class="prod-cat" data-t="prod2Cat">Şezlong</div>
-      <div class="prod-price">₺ 6.500 <span class="prod-price-vat" data-t="prodVat">+ KDV</span></div>
+      <div class="prod-name">Enzo &amp; Dogo</div>
+      <div class="prod-cat" data-t="prod2Cat">Masa &amp; Bank Takımı (Iroco)</div>
+      <div class="prod-price" data-t="prodContact">Fiyat için iletişime geçin</div>
     </div>
     <div class="prod-card">
       <div class="prod-img-box">
-        <img src="beach_chair.jpg" alt="Beach Chair">
+        <img src="comfort-sandalye-siyah-iskelet-bej-minder.png" alt="Comfort">
       </div>
-      <div class="prod-name">Beach Chair</div>
-      <div class="prod-cat" data-t="prod3Cat">Katlanır Sandalye</div>
-      <div class="prod-price">₺ 4.800 <span class="prod-price-vat" data-t="prodVat">+ KDV</span></div>
+      <div class="prod-name">Comfort</div>
+      <div class="prod-cat" data-t="prod3Cat">Tekli Koltuk</div>
+      <div class="prod-price" data-t="prodContact">Fiyat için iletişime geçin</div>
     </div>
     <div class="prod-card">
       <div class="prod-img-box">
-        <img src="armchair.jpg" alt="Tekli Koltuk">
+        <img src="daisy-sezlong-mint-iskelet-krem-kumas.png" alt="Daisy">
       </div>
-      <div class="prod-name">Tekli Koltuk</div>
-      <div class="prod-cat" data-t="prod4Cat">Koltuk</div>
-      <div class="prod-price">₺ 8.200 <span class="prod-price-vat" data-t="prodVat">+ KDV</span></div>
+      <div class="prod-name">Daisy</div>
+      <div class="prod-cat" data-t="prod4Cat">Şezlong</div>
+      <div class="prod-price" data-t="prodContact">Fiyat için iletişime geçin</div>
     </div>
   </div>
 </section>
@@ -744,7 +755,7 @@
         <path d="M24 18 C22 18 20 20 20 22 C20 26 24 30 24 30 C24 30 28 26 28 22 C28 20 26 18 24 18Z" stroke="#626148" stroke-width="1.4"/>
       </svg>
       <div class="pillar-title" data-t="pillar1Title">Doğal Malzemeler</div>
-      <p class="pillar-body" data-t="pillar1Body">Toz boyalı alüminyum, deniz kalitesinde halat örgü ve UV dayanımlı kumaşlar — her mevsimde zarafetle hava koşullarına dayanan güzellik için seçildi.</p>
+      <p class="pillar-body" data-t="pillar1Body">Toz boyalı alüminyum, deniz kalitesinde halat örgü ve UV dayanımlı kumaşlar, her mevsimde zarafetle hava koşullarına dayanan güzellik için seçildi.</p>
     </div>
     <div class="pillar">
       <svg class="pillar-icon" viewBox="0 0 48 48" fill="none">
@@ -753,7 +764,7 @@
         <path d="M14 28 L22 34 L34 22" stroke="#626148" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       <div class="pillar-title" data-t="pillar2Title">Zamansız Tasarım</div>
-      <p class="pillar-body" data-t="pillar2Body">Mevsimlik trendleri reddediyoruz. Her silüet, on yıl sonra nasıl görüneceği ve hissettireceği düşünülerek tasarlandı — her ortamda, her ışıkta.</p>
+      <p class="pillar-body" data-t="pillar2Body">Mevsimlik trendleri reddediyoruz. Her silüet, on yıl sonra nasıl görüneceği ve hissettireceği düşünülerek tasarlandı, her ortamda, her ışıkta.</p>
     </div>
     <div class="pillar">
       <svg class="pillar-icon" viewBox="0 0 48 48" fill="none">
@@ -770,7 +781,7 @@
 <!-- ░░ PROJECTS / B2B ░░ -->
 <section class="projects fu" id="projects">
   <div class="projects-media">
-    <img src="sofa_group.jpg" alt="Exit Garden Projects">
+    <img src="donna-masa-takimi-seramik-krem.png" alt="EXIT Outdoor Living Projects">
   </div>
   <div class="projects-body">
     <span class="sec-label" data-t="projLabel">Projeler &amp; Otelcilik</span>
@@ -799,7 +810,7 @@
   <div class="ft-top">
     <div>
       <img class="ft-logo" src="logo_full_trans.png" alt="EXIT Outdoor Living" onerror="this.style.display='none'">
-      <p class="ft-tagline" data-t="ftTagline">Zamansız dış mekânlar için tasarlandı.<br>Türkiye — Dünya Geneli Projeler<br>www.exitgarden.com</p>
+      <p class="ft-tagline" data-t="ftTagline">Zamansız dış mekânlar için tasarlandı.<br>Türkiye ve Dünya Geneli Projeler<br>www.exitgarden.com</p>
       <div class="ft-social">
         <a href="#" title="Instagram">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
@@ -868,24 +879,27 @@
       navStory:       'Hakkımızda',
       navProjects:    'Projeler',
       navContact:     'İletişim',
-      heroEyebrow:    'EXIT Outdoor Living — 2025 Koleksiyonu',
+      heroEyebrow:    'EXIT Outdoor Living, 2026 Koleksiyonu',
       heroTitle:      'Dış Mekanınızı<br><em>Özgürce</em><br>Tasarlayın',
-      heroCta:        'Koleksiyonları Keşfet',
+      heroCta:        'Koleksiyonu Keşfet',
       heroScroll:     'kaydır',
-      introText:      '"Dışarısı artık sadece bir geçiş yeri değil. Yaşamın kendisi."',
+      introText:      '"Dışarısı sadece bir geçiş yeri değil. Yaşamın kendisi."',
       colLabel:       'Koleksiyonlarımız',
       colTitle:       'Her Dış Mekân İçin<br>Özenle Tasarlandı',
-      col1Name:       'Bahçe Mobilyaları',
+      col1Name:       'Oturma Grupları',
       col1Count:      'Oturma · Yemek · Lounge',
-      col2Name:       'Şezlonglar',
+      col2Name:       'Şezlonglar & Daybeds',
       col2Count:      'Şezlonglar · Daybeds',
       col3Name:       'Sandalyeler',
       col3Count:      'Koltuklar · Sandalyeler',
+      col4Name:       'Masalar',
+      col4Count:      'Yemek Masaları · Sehpalar',
+      colSubtle:      'Sergilenen her parça kendi atölyemizde üretilir, ölçü ve detaylar tercihinize göre şekillenir.',
       featBadge:      'Yeni Ürün',
       featLabel:      'Öne Çıkan Ürün',
       featSub:        'İkili Şezlong',
-      featDesc:       'Yavaşlamak için bir davet. Perla İkili, temiz mimari alüminyum çerçevesi, bağımsız ayarlanabilir arkalıkları ve premium solüsyon boyalı minderleriyle havuz başı lüksünü yeniden tanımlıyor — iki kişi için tasarlandı, zamansız mekânlar için üretildi.',
-      featVat:        '+ KDV &nbsp;·&nbsp; Fiyatlar KDV hariçtir',
+      featDesc:       'Yavaşlamak için bir davet. Perla İkili, temiz mimari alüminyum çerçevesi, bağımsız ayarlanabilir arkalıkları ve premium solüsyon boyalı minderleriyle havuz başı lüksünü yeniden tanımlıyor, iki kişi için tasarlandı, zamansız mekânlar için üretildi.',
+      featPriceContact: 'Fiyat için iletişime geçin',
       featFrameLabel: 'İskelet Rengi',
       featCushionLabel:'Minder Rengi',
       featBtnQuote:   'Teklif Al →',
@@ -893,25 +907,19 @@
       featBtnAll:     'Tüm Şezlonglar →',
       lgQuote:        '"Bahçe, günün gerçekten başladığı ve hiç bitmek istemediği yerdir."',
       prodLabel:      'Tüm Ürünler',
-      prodTitle:      'Tüm Koleksiyon',
+      prodTitle:      'Koleksiyon',
       prodViewAll:    'Tümünü Gör →',
-      prod1Cat:       'İkili Şezlong',
-      prod2Cat:       'Şezlong',
-      prod3Cat:       'Katlanır Sandalye',
-      prod4Cat:       'Koltuk',
-      prodVat:        '+ KDV',
-      storyCaption:   'Türkiye\'de el işçiliğiyle,<br>dünya için tasarlandı.',
-      storyLabel:     'Hikayemiz',
-      storyTitle:     'Dış mekân yaşamı için<br><em>zamansız</em> tasarım',
-      storyP1:        'Exit Garden, dış mekân alanlarının en iyi iç mekan tasarımıyla aynı özen, güzellik ve uzun ömürlülüğü hak ettiği inancından doğdu. Her parça, her koşulda dayanıklılık için tasarlandı — ve ömür boyu süren konfor için üretildi.',
-      storyP2:        'Türkiye\'den dünyaya uzanan bir marka. Tasarımlarımız Akdeniz mimarisinin temiz çizgilerinden ve Anadolu el sanatlarının sıcaklığından beslenerek çağdaş dış mekan yaşamı için rafine edilmiştir.',
-      storyBtn:       'EXIT Outdoor Living Hakkında →',
+      prod1Cat:       'Şezlong Cabana',
+      prod2Cat:       'Masa & Bank Takımı (Iroco)',
+      prod3Cat:       'Tekli Koltuk',
+      prod4Cat:       'Şezlong',
+      prodContact:    'Fiyat için iletişime geçin',
       pillarsLabel:   'Neden EXIT Outdoor Living',
       pillarsTitle:   'Tasarım · Kalite · Deneyim',
       pillar1Title:   'Doğal Malzemeler',
-      pillar1Body:    'Toz boyalı alüminyum, deniz kalitesinde halat örgü ve UV dayanımlı kumaşlar — her mevsimde zarafetle hava koşullarına dayanan güzellik için seçildi.',
+      pillar1Body:    'Toz boyalı alüminyum, deniz kalitesinde halat örgü ve UV dayanımlı kumaşlar, her mevsimde zarafetle hava koşullarına dayanan güzellik için seçildi.',
       pillar2Title:   'Zamansız Tasarım',
-      pillar2Body:    'Mevsimlik trendleri reddediyoruz. Her silüet, on yıl sonra nasıl görüneceği ve hissettireceği düşünülerek tasarlandı — her ortamda, her ışıkta.',
+      pillar2Body:    'Mevsimlik trendleri reddediyoruz. Her silüet, on yıl sonra nasıl görüneceği ve hissettireceği düşünülerek tasarlandı, her ortamda, her ışıkta.',
       pillar3Title:   'Açık Hava Uzmanlığı',
       pillar3Body:    'Özel villalardan 28 ülkedeki beş yıldızlı otel projelerine kadar, on yıldır yalnızca dış mekân ortamları için tasarım yapıyoruz.',
       projLabel:      'Projeler &amp; Otelcilik',
@@ -924,7 +932,7 @@
       contactQuote:   '"Dış mekanınızı tasarlamaya hazır mısınız?"',
       contactBtn1:    'İletişime Geç →',
       contactBtn2:    'Katalog İndir',
-      ftTagline:      'Zamansız dış mekânlar için tasarlandı.<br>Türkiye — Dünya Geneli Projeler<br>www.exitgarden.com',
+      ftTagline:      'Zamansız dış mekânlar için tasarlandı.<br>Türkiye ve Dünya Geneli Projeler<br>www.exitgarden.com',
       ftCol1:         'Koleksiyonlar',
       ftLink1a:       'Bahçe Mobilyaları',
       ftLink1b:       'Şezlonglar',
@@ -948,52 +956,49 @@
       navStory:       'About Us',
       navProjects:    'Projects',
       navContact:     'Contact',
-      heroEyebrow:    'EXIT Outdoor Living — 2025 Collection',
+      heroEyebrow:    'EXIT Outdoor Living, 2026 Collection',
       heroTitle:      'Design Your<br><em>Outdoor</em><br>Living',
-      heroCta:        'Explore Collections',
+      heroCta:        'Explore The Collection',
       heroScroll:     'scroll',
-      introText:      '"The outdoors isn\'t a passage anymore. It\'s where life happens."',
+      introText:      '"The outdoors isn\'t a passage. It\'s where life happens."',
       colLabel:       'Our Collections',
-      colTitle:       'Crafted for Every<br>Outdoor Space',
-      col1Name:       'Garden Furniture',
+      colTitle:       'Crafted for Every Outdoor Space',
+      col1Name:       'Seating Groups',
       col1Count:      'Seating · Dining · Lounge',
-      col2Name:       'Sun Loungers',
+      col2Name:       'Loungers & Daybeds',
       col2Count:      'Loungers · Daybeds',
       col3Name:       'Chairs',
       col3Count:      'Lounge Chairs · Armchairs',
+      col4Name:       'Tables',
+      col4Count:      'Dining Tables · Side Tables',
+      colSubtle:      'Every piece shown here is made in our own workshop, shaped to the size and detail you choose.',
       featBadge:      'New Arrival',
       featLabel:      'Featured Product',
       featSub:        'Double Sun Lounger',
-      featDesc:       'An invitation to slow down. The Perla İkili redefines poolside luxury with its clean architectural aluminium frame, independent reclining backrests and premium solution-dyed cushions — designed for two, crafted for timeless spaces.',
-      featVat:        '+ VAT &nbsp;·&nbsp; Prices excl. VAT',
+      featDesc:       'An invitation to slow down. The Perla İkili redefines poolside luxury with its clean architectural aluminium frame, independent reclining backrests and premium solution-dyed cushions, designed for two, crafted for timeless spaces.',
+      featPriceContact: 'Contact for pricing',
       featFrameLabel: 'Frame Colour',
       featCushionLabel:'Cushion Colour',
       featBtnQuote:   'Get Quote →',
       featBtnDetails: 'Details',
       featBtnAll:     'All Loungers →',
-      lgQuote:        '"The garden is where the day truly begins — and never wants to end."',
+      lgQuote:        '"The garden is where the day truly begins and never wants to end."',
       prodLabel:      'All Products',
-      prodTitle:      'The Full Collection',
+      prodTitle:      'The Collection',
       prodViewAll:    'View All →',
-      prod1Cat:       'Double Sun Lounger',
-      prod2Cat:       'Sun Lounger',
-      prod3Cat:       'Folding Chair',
-      prod4Cat:       'Lounge Chair',
-      prodVat:        '+ VAT',
-      storyCaption:   'Handcrafted in Türkiye,<br>designed for the world.',
-      storyLabel:     'Our Story',
-      storyTitle:     'Timeless <em>design</em><br>for outdoor living',
-      storyP1:        'Exit Garden was born from a belief that outdoor spaces deserve the same attention to craft, beauty and longevity as the finest interior design. Every piece is conceived for durability in all conditions — and comfort that lasts a lifetime.',
-      storyP2:        'Rooted in Turkey, reaching the world. Our designs draw from the clean lines of Mediterranean architecture and the warmth of Anatolian craftsmanship, refined for contemporary outdoor living.',
-      storyBtn:       'About EXIT Outdoor Living →',
+      prod1Cat:       'Cabana Lounger',
+      prod2Cat:       'Table & Bench Set (Iroco)',
+      prod3Cat:       'Lounge Chair',
+      prod4Cat:       'Sun Lounger',
+      prodContact:    'Contact for pricing',
       pillarsLabel:   'Why EXIT Outdoor Living',
       pillarsTitle:   'Design · Quality · Experience',
       pillar1Title:   'Natural Materials',
-      pillar1Body:    'Powder-coated aluminium, marine-grade rope weave and UV-resistant fabrics — selected for beauty that weathers gracefully through every season.',
+      pillar1Body:    'Powder-coated aluminium, marine-grade rope weave and UV-resistant fabrics, selected for beauty that weathers gracefully through every season.',
       pillar2Title:   'Timeless Design',
-      pillar2Body:    'We reject seasonal trends. Every silhouette is designed for how it will look and feel ten years from now — in any setting, under any light.',
+      pillar2Body:    'We reject seasonal trends. Every silhouette is designed for how it will look and feel ten years from now, in any setting, under any light.',
       pillar3Title:   'Outdoor Expertise',
-      pillar3Body:    'A decade of designing exclusively for outdoor environments — from private villas to five-star hotel projects across 28 countries.',
+      pillar3Body:    'A decade of designing exclusively for outdoor environments, from private villas to five-star hotel projects across 28 countries.',
       projLabel:      'Projects &amp; Hospitality',
       projTitle:      'For Hotels, Resorts &amp; Architects',
       projDesc:       'EXIT Outdoor Living partners with leading hospitality groups, landscape architects and interior designers across Europe and the Middle East. Custom configurations, exclusive finishes, full B2B service.',
@@ -1004,7 +1009,7 @@
       contactQuote:   '"Ready to design your outdoor space?"',
       contactBtn1:    'Get in Touch →',
       contactBtn2:    'Download Catalogue',
-      ftTagline:      'Crafted for timeless outdoor spaces.<br>Türkiye — Worldwide Projects<br>www.exitgarden.com',
+      ftTagline:      'Crafted for timeless outdoor spaces.<br>Türkiye and Worldwide Projects<br>www.exitgarden.com',
       ftCol1:         'Collections',
       ftLink1a:       'Garden Furniture',
       ftLink1b:       'Sun Loungers',
