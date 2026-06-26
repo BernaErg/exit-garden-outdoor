@@ -54,7 +54,7 @@
       position: fixed; top: 34px; left: 0; right: 0;
       z-index: 200;
       padding: 20px 64px;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: flex-start; gap: 56px;
       transition: background .4s, padding .3s, top .4s, box-shadow .4s;
     }
     nav.scrolled {
@@ -65,7 +65,7 @@
     }
     .logo { display: flex; align-items: center; gap: 16px; cursor: pointer; }
     .logo-img {
-      height: 56px; width: auto; object-fit: contain;
+      height: 76px; width: auto; object-fit: contain;
     }
     .logo-img-white { filter: brightness(0) invert(1); }
 
@@ -85,14 +85,15 @@
     .nav-links a:hover { color: var(--olive); }
     .nav-links a:hover::after { transform: scaleX(1); }
 
-    /* Hero nav: white links */
+    /* Hero nav: white links on olive bg */
+    nav.hero-active { background: var(--olive); }
     .hero-active .nav-links a { color: rgba(255,255,255,.85); }
     .hero-active .nav-links a:hover { color: #fff; }
     .hero-active .nav-lang span { color: rgba(255,255,255,.55); }
     .hero-active .nav-lang span.on { color: #fff; border-color: rgba(255,255,255,.6); }
     .hero-active .nav-icon { filter: brightness(0) invert(1); }
 
-    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-right { display: flex; align-items: center; gap: 24px; margin-left: auto; }
     .nav-lang {
       font-size: 10px; letter-spacing: .15em;
       display: flex; gap: 6px; color: var(--muted);
@@ -180,7 +181,7 @@
     @keyframes scrollPulse { 0%,100%{opacity:.5} 50%{opacity:1} }
 
     /* ═══ INTRO STRIP ═══ */
-    .intro { background: var(--white); padding: 100px 80px; text-align: center; }
+    .intro { background: var(--white); padding: 56px 80px; text-align: center; }
     .intro-text {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(26px, 3.2vw, 42px);
@@ -206,6 +207,16 @@
     /* ═══ COLLECTIONS ═══ */
     .collections { background: var(--cream); padding: 96px 80px 120px; }
     .collections-head { margin-bottom: 56px; }
+    .catalog-split {
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 64px;
+      min-height: 520px; margin-bottom: 64px;
+    }
+    .catalog-split-media { height: 100%; overflow: hidden; }
+    .catalog-split-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    @media (max-width: 860px) {
+      .catalog-split { grid-template-columns: 1fr; }
+    }
     .col-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -358,7 +369,7 @@
       display: flex; justify-content: space-between;
       align-items: flex-end; margin-bottom: 52px;
     }
-    .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
     .prod-card { cursor: pointer; }
     .prod-img-box {
       aspect-ratio: 3/4; background: var(--cream-mid);
@@ -366,9 +377,10 @@
     }
     .prod-img-box img {
       width: 100%; height: 100%; object-fit: cover;
-      transition: transform .6s ease;
+      transition: transform .6s ease, filter .4s ease;
+      filter: brightness(0.82);
     }
-    .prod-card:hover .prod-img-box img { transform: scale(1.05); }
+    .prod-card:hover .prod-img-box img { transform: scale(1.05); filter: brightness(1); }
     .prod-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: 20px; font-weight: 300; margin-bottom: 2px;
@@ -480,6 +492,24 @@
     }
     .stat-label { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: rgba(245,240,232,.35); margin-top: 6px; }
 
+    /* ═══ PROJECTS TEASER ═══ */
+    .projects-teaser { position: relative; min-height: 520px; overflow: hidden; }
+    .projects-teaser img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+    .projects-teaser-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(28,22,18,.65) 0%, rgba(28,22,18,.05) 55%, transparent 100%);
+    }
+    .projects-teaser-content {
+      position: relative; z-index: 2;
+      height: 100%; min-height: 520px;
+      display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+      padding-bottom: 48px; gap: 10px;
+    }
+    .projects-teaser-link {
+      font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,.45); padding-bottom: 6px; cursor: default;
+    }
+
     /* ═══ CONTACT STRIP ═══ */
     .contact-strip {
       background: var(--cream); padding: 80px;
@@ -544,7 +574,7 @@
   </a>
 
   <ul class="nav-links">
-    <li><a href="#collections" data-t="navCollections">Koleksiyonlar</a></li>
+    <li><a href="koleksiyon.html" data-t="navCollections">Koleksiyonlar</a></li>
     <li><a href="about.html" data-t="navStory">Hikayemiz</a></li>
     <li><a href="#projects" data-t="navProjects">Projeler</a></li>
     <li><a href="#contact" data-t="navContact">İletişim</a></li>
@@ -576,7 +606,7 @@
   </div>
   <div class="hero-vignette"></div>
   <div class="hero-content">
-    <span class="hero-eyebrow" data-t="heroEyebrow">EXIT Outdoor Living, 2026 Koleksiyonu</span>
+    <span class="hero-eyebrow" data-t="heroEyebrow">EXIT Outdoor <span lang="en">Living</span>, 2026 Koleksiyonu</span>
     <h1 class="hero-title" data-t="heroTitle">Dış Mekanınızı<br><em>Özgürce</em><br>Tasarlayın</h1>
     <a href="#collections" class="hero-cta">
       <span data-t="heroCta">Koleksiyonları Keşfet</span> <span style="font-size:18px">→</span>
@@ -596,10 +626,15 @@
 
 <!-- ░░ COLLECTIONS ░░ -->
 <section class="collections fu" id="collections">
-  <div class="collections-head">
-    <span class="sec-label" data-t="colLabel">Koleksiyonlarımız</span>
-    <h2 class="sec-title" data-t="colTitle">Her Dış Mekân İçin<br>Özenle Tasarlandı</h2>
-    <p style="font-size:13px;color:var(--muted);margin-top:14px;" data-t="colSubtle">Sergilenen her parça kendi atölyemizde üretilir, ölçü ve detaylar tercihinize göre şekillenir.</p>
+  <div class="catalog-split">
+    <div class="catalog-split-body">
+      <span class="sec-label" data-t="colLabel">Koleksiyonlarımız</span>
+      <h2 class="sec-title" data-t="colTitle">Tüm Dış Mekanlar için Özenle Tasarlandı</h2>
+      <p style="font-size:13px;color:var(--muted);margin-top:14px;" data-t="colSubtle">Sergilenen her parça kendi atölyemizde üretilir, ölçü ve detaylar tercihinize göre şekillenir.</p>
+    </div>
+    <div class="catalog-split-media">
+      <img src="hero-perla-ikili.jpg" alt="EXIT Outdoor Living Katalog">
+    </div>
   </div>
   <div class="col-grid">
     <!-- Collection 1 — Seating Groups -->
@@ -649,55 +684,6 @@
   </div>
 </section>
 
-<!-- ░░ FEATURED PRODUCT — Perla İkili ░░ -->
-<div class="featured fu">
-  <div class="featured-media">
-    <img src="perla-ikili-sezlong.png" alt="Perla İkili">
-    <div class="featured-badge" data-t="featBadge">Yeni Ürün</div>
-  </div>
-  <div class="featured-body">
-    <span class="sec-label" data-t="featLabel">Öne Çıkan Ürün</span>
-    <h2>Perla İkili</h2>
-    <p class="sub" data-t="featSub">İkili Şezlong</p>
-    <p data-t="featDesc">Yavaşlamak için bir davet. Perla İkili, temiz mimari alüminyum çerçevesi, bağımsız ayarlanabilir arkalıkları ve premium solüsyon boyalı minderleriyle havuz başı lüksünü yeniden tanımlıyor, iki kişi için tasarlandı, zamansız mekânlar için üretildi.</p>
-
-    <div class="price-block">
-      <div class="price-vat" data-t="featPriceContact">Fiyat için iletişime geçin</div>
-    </div>
-
-    <div class="swatches">
-      <div class="sw-row-label">
-        <span data-t="featFrameLabel">İskelet Rengi</span>, <span id="frameLabel" style="color:var(--dark);font-weight:500;">Pearl White</span>
-      </div>
-      <div class="sw-row" id="frameSwatches">
-        <div class="sw" style="background:#7A6A5A;" title="Mocha"></div>
-        <div class="sw" style="background:#EDE0D0;" title="Sand"></div>
-        <div class="sw on" style="background:#F5F1EC;border-color:var(--dark);" title="Pearl White"></div>
-        <div class="sw" style="background:#1C1612;" title="Charcoal Black"></div>
-        <div class="sw" style="background:#C5CBCC;" title="Silver Grey"></div>
-        <div class="sw" style="background:#9A8F85;" title="Taupe"></div>
-        <div class="sw" style="background:#3D4547;" title="Anthracite"></div>
-      </div>
-      <div class="sw-row-label" style="margin-top:14px;">
-        <span data-t="featCushionLabel">Minder Rengi</span>, <span id="cushionLabel" style="color:var(--dark);font-weight:500;">Camel</span>
-      </div>
-      <div class="sw-row" id="cushionSwatches">
-        <div class="sw" style="background:#C08B30;" title="Mustard"></div>
-        <div class="sw" style="background:#F0E6D3;" title="Linen"></div>
-        <div class="sw" style="background:#5A5E4A;" title="Olive"></div>
-        <div class="sw" style="background:#8A8D8A;" title="Slate"></div>
-        <div class="sw on" style="background:#B8A07A;border-color:var(--dark);" title="Camel"></div>
-        <div class="sw" style="background:#2A2C2C;" title="Noir"></div>
-      </div>
-    </div>
-
-    <div class="btn-row">
-      <a href="#" class="btn btn-olive" data-t="featBtnQuote">Teklif Al →</a>
-      <a href="#" class="btn btn-outline" data-t="featBtnDetails">Detaylar</a>
-    </div>
-    <a href="#products" class="btn btn-ghost" style="margin-top:28px;" data-t="featBtnAll">Tüm Şezlonglar →</a>
-  </div>
-</div>
 
 <!-- ░░ LIFESTYLE GRID ░░ -->
 <div class="lifestyle fu">
@@ -708,70 +694,16 @@
     <div class="lg-dark">
       <p class="lg-dark-quote" data-t="lgQuote">"Bahçe, günün gerçekten başladığı ve hiç bitmek istemediği yerdir."</p>
       <div class="lg-dark-line"></div>
-      <p class="lg-dark-attr">EXIT Outdoor Living</p>
-    </div>
-    <div class="lg-item lg-tall">
-      <img src="armchair.jpg" alt="Lounge Chair">
-    </div>
-    <div class="lg-item lg-tall">
-      <img src="beach_chair.jpg" alt="Beach Chair">
-    </div>
-    <div class="lg-item lg-tall">
-      <img src="lounger_ahsap.jpg" alt="Ahşap Şezlong">
+      <p class="lg-dark-attr">EXIT Outdoor <span lang="en">Living</span></p>
     </div>
   </div>
 </div>
-
-<!-- ░░ PRODUCT CATALOGUE ░░ -->
-<section class="products fu" id="products">
-  <div class="products-head">
-    <div>
-      <span class="sec-label" data-t="prodLabel">Tüm Ürünler</span>
-      <h2 class="sec-title" data-t="prodTitle">Tüm Koleksiyon</h2>
-    </div>
-    <a href="#" class="btn btn-ghost" data-t="prodViewAll">Tümünü Gör →</a>
-  </div>
-  <div class="products-grid">
-    <div class="prod-card">
-      <div class="prod-img-box">
-        <img src="armada-sezlong-cabana.png" alt="Armada">
-      </div>
-      <div class="prod-name">Armada</div>
-      <div class="prod-cat" data-t="prod1Cat">Şezlong Cabana</div>
-      <div class="prod-price" data-t="prodContact">Fiyat için iletişime geçin</div>
-    </div>
-    <div class="prod-card">
-      <div class="prod-img-box">
-        <img src="enzo-masa-dogo-bank-iroco.png" alt="Enzo &amp; Dogo">
-      </div>
-      <div class="prod-name">Enzo &amp; Dogo</div>
-      <div class="prod-cat" data-t="prod2Cat">Masa &amp; Bank Takımı (Iroco)</div>
-      <div class="prod-price" data-t="prodContact">Fiyat için iletişime geçin</div>
-    </div>
-    <div class="prod-card">
-      <div class="prod-img-box">
-        <img src="comfort-sandalye-siyah-iskelet-bej-minder.png" alt="Comfort">
-      </div>
-      <div class="prod-name">Comfort</div>
-      <div class="prod-cat" data-t="prod3Cat">Tekli Koltuk</div>
-      <div class="prod-price" data-t="prodContact">Fiyat için iletişime geçin</div>
-    </div>
-    <div class="prod-card">
-      <div class="prod-img-box">
-        <img src="daisy-sezlong-mint-iskelet-krem-kumas.png" alt="Daisy">
-      </div>
-      <div class="prod-name">Daisy</div>
-      <div class="prod-cat" data-t="prod4Cat">Şezlong</div>
-      <div class="prod-price" data-t="prodContact">Fiyat için iletişime geçin</div>
-    </div>
-  </div>
-</section>
 
 
 <!-- ░░ THREE PILLARS ░░ -->
 <section class="pillars fu">
   <div class="pillars-head">
-    <span class="sec-label" style="display:block;text-align:center;" data-t="pillarsLabel">Neden EXIT Outdoor Living</span>
+    <span class="sec-label" style="display:block;text-align:center;" data-t="pillarsLabel">Neden EXIT Outdoor <span lang="en">Living</span></span>
     <h2 class="sec-title" style="text-align:center;" data-t="pillarsTitle">Tasarım · Kalite · Deneyim</h2>
   </div>
   <div class="pillars-grid">
@@ -804,20 +736,14 @@
   </div>
 </section>
 
-<!-- ░░ PROJECTS / B2B ░░ -->
+<!-- ░░ PROJECTS TEASER ░░ -->
 <section class="projects fu" id="projects">
-  <div class="projects-media">
-    <img src="donna-masa-takimi-seramik-krem.png" alt="EXIT Outdoor Living Projects">
-  </div>
-  <div class="projects-body">
-    <span class="sec-label" data-t="projLabel">Projeler &amp; Otelcilik</span>
-    <h2 data-t="projTitle">Oteller, Tatil Köyleri &amp; Mimarlar İçin</h2>
-    <p data-t="projDesc">EXIT Outdoor Living; Avrupa ve Orta Doğu'daki önde gelen otelcilik grupları, peyzaj mimarları ve iç mekan tasarımcılarıyla ortaklık kuruyor. Özel konfigürasyonlar, özel kaplamalar, eksiksiz B2B hizmet.</p>
-    <a href="#contact" class="btn-cream" data-t="projBtn">Proje Başlat →</a>
-    <div class="projects-stats">
-      <div><div class="stat-val">200+</div><div class="stat-label" data-t="statProjects">Proje</div></div>
-      <div><div class="stat-val">28</div><div class="stat-label" data-t="statCountries">Ülke</div></div>
-      <div><div class="stat-val">10+</div><div class="stat-label" data-t="statYears">Yıl</div></div>
+  <div class="projects-teaser">
+    <img src="nirvana-takim.png" alt="EXIT Outdoor Living Projeler">
+    <div class="projects-teaser-overlay"></div>
+    <div class="projects-teaser-content">
+      <span class="sec-label" data-t="projLabel" style="color:rgba(255,255,255,.75);">Projeler</span>
+      <span class="projects-teaser-link" data-t="projBtn">İnceleyin</span>
     </div>
   </div>
 </section>
@@ -905,13 +831,13 @@
       navStory:       'Hakkımızda',
       navProjects:    'Projeler',
       navContact:     'İletişim',
-      heroEyebrow:    'EXIT Outdoor Living, 2026 Koleksiyonu',
+      heroEyebrow:    'EXIT Outdoor <span lang="en">Living</span>, 2026 Koleksiyonu',
       heroTitle:      'Dış Mekanınızı<br><em>Özgürce</em><br>Tasarlayın',
       heroCta:        'Koleksiyonu Keşfet',
       heroScroll:     'kaydır',
       introText:      '"Dışarısı sadece bir geçiş yeri değil. Yaşamın kendisi."',
       colLabel:       'Koleksiyonlarımız',
-      colTitle:       'Her Dış Mekân İçin<br>Özenle Tasarlandı',
+      colTitle:       'Tüm Dış Mekanlar için Özenle Tasarlandı',
       col1Name:       'Oturma Grupları',
       col1Count:      'Oturma · Yemek · Lounge',
       col2Name:       'Şezlonglar & Daybeds',
@@ -940,7 +866,7 @@
       prod3Cat:       'Tekli Koltuk',
       prod4Cat:       'Şezlong',
       prodContact:    'Fiyat için iletişime geçin',
-      pillarsLabel:   'Neden EXIT Outdoor Living',
+      pillarsLabel:   'Neden EXIT Outdoor <span lang="en">Living</span>',
       pillarsTitle:   'Tasarım · Kalite · Deneyim',
       pillar1Title:   'Doğal Malzemeler',
       pillar1Body:    'Toz boyalı alüminyum, deniz kalitesinde halat örgü ve UV dayanımlı kumaşlar, her mevsimde zarafetle hava koşullarına dayanan güzellik için seçildi.',
@@ -948,10 +874,10 @@
       pillar2Body:    'Mevsimlik trendleri reddediyoruz. Her silüet, on yıl sonra nasıl görüneceği ve hissettireceği düşünülerek tasarlandı, her ortamda, her ışıkta.',
       pillar3Title:   'Açık Hava Uzmanlığı',
       pillar3Body:    'Özel villalardan 28 ülkedeki beş yıldızlı otel projelerine kadar, on yıldır yalnızca dış mekân ortamları için tasarım yapıyoruz.',
-      projLabel:      'Projeler &amp; Otelcilik',
+      projLabel:      'Projeler',
       projTitle:      'Oteller, Tatil Köyleri &amp; Mimarlar İçin',
       projDesc:       'EXIT Outdoor Living; Avrupa ve Orta Doğu\'daki önde gelen otelcilik grupları, peyzaj mimarları ve iç mekan tasarımcılarıyla ortaklık kuruyor. Özel konfigürasyonlar, özel kaplamalar, eksiksiz B2B hizmet.',
-      projBtn:        'Proje Başlat →',
+      projBtn:        'İnceleyin',
       statProjects:   'Proje',
       statCountries:  'Ülke',
       statYears:      'Yıl',
@@ -1025,10 +951,10 @@
       pillar2Body:    'We reject seasonal trends. Every silhouette is designed for how it will look and feel ten years from now, in any setting, under any light.',
       pillar3Title:   'Outdoor Expertise',
       pillar3Body:    'A decade of designing exclusively for outdoor environments, from private villas to five-star hotel projects across 28 countries.',
-      projLabel:      'Projects &amp; Hospitality',
+      projLabel:      'Projects',
       projTitle:      'For Hotels, Resorts &amp; Architects',
       projDesc:       'EXIT Outdoor Living partners with leading hospitality groups, landscape architects and interior designers across Europe and the Middle East. Custom configurations, exclusive finishes, full B2B service.',
-      projBtn:        'Start a Project →',
+      projBtn:        'View',
       statProjects:   'Projects',
       statCountries:  'Countries',
       statYears:      'Years',
@@ -1129,7 +1055,7 @@
       if (slides[i].tagName === 'VIDEO') {
         slides[i].play().catch(() => {});
       }
-    }, 6000);
+    }, 4000);
   })();
 </script>
 </body>
