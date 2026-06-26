@@ -57,8 +57,8 @@
       display: flex; align-items: center; justify-content: center; gap: 40px;
       transition: background .4s, padding .3s, top .4s, box-shadow .4s;
     }
+    nav.pinned { top: 0; }
     nav.scrolled {
-      top: 0;
       background: rgba(253,250,246,.97);
       padding: 14px 64px;
       border-bottom: 1px solid var(--border);
@@ -587,7 +587,7 @@
 <body>
 
 <!-- ░░ ANNOUNCEMENT BAR ░░ -->
-<div class="annbar" data-t="annbar">2025 Koleksiyonu &nbsp;·&nbsp; Dünya Geneli Teslimat</div>
+<div class="annbar" data-t="annbar">2026 Koleksiyonu &nbsp;·&nbsp; Dünya Geneli Teslimat</div>
 
 <!-- ░░ NAVIGATION ░░ -->
 <nav id="mainNav" class="hero-active">
@@ -626,7 +626,7 @@
     <video class="hero-slide is-video active" muted autoplay loop playsinline preload="auto" poster="enzo-oturma-grubu.png">
       <source src="enzo-video-1.mp4" type="video/mp4">
     </video>
-    <video class="hero-slide is-video" muted autoplay loop playsinline preload="auto" poster="donna-masa-takimi-antrasit.png">
+    <video class="hero-slide is-video" muted loop playsinline preload="auto" poster="donna-masa-takimi-antrasit.png">
       <source src="donna-video-1.mp4" type="video/mp4">
     </video>
     <div class="hero-slide" style="background-image:url('sofa_story.jpg')"></div>
@@ -813,7 +813,7 @@
   const T = {
     tr: {
       pageTitle:      'EXIT Outdoor Living — Açık Hava Yaşamı',
-      annbar:         '2025 Koleksiyonu &nbsp;·&nbsp; Dünya Geneli Teslimat',
+      annbar:         '2026 Koleksiyonu &nbsp;·&nbsp; Dünya Geneli Teslimat',
       navCollections: 'Koleksiyonlar',
       navStory:       'Hakkımızda',
       navProjects:    'Projeler',
@@ -891,7 +891,7 @@
     },
     en: {
       pageTitle:      'EXIT Outdoor Living — Outdoor Living',
-      annbar:         'New 2025 Collection &nbsp;·&nbsp; Worldwide Delivery',
+      annbar:         'New 2026 Collection &nbsp;·&nbsp; Worldwide Delivery',
       navCollections: 'Collections',
       navStory:       'About Us',
       navProjects:    'Projects',
@@ -997,6 +997,8 @@
   function updateNav() {
     const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
     const pastHero   = heroBottom < 80;
+    const pinned     = window.scrollY > 0;
+    nav.classList.toggle('pinned',       pinned);
     nav.classList.toggle('scrolled',     pastHero);
     nav.classList.toggle('hero-active', !pastHero);
     if (logoImg) logoImg.classList.toggle('logo-img-white', !pastHero);
@@ -1038,11 +1040,15 @@
     if (slides.length < 2) return;
     let i = 0;
     setInterval(() => {
-      slides[i].classList.remove('active');
+      const prev = slides[i];
+      if (prev.tagName === 'VIDEO') prev.pause();
+      prev.classList.remove('active');
       i = (i + 1) % slides.length;
-      slides[i].classList.add('active');
-      if (slides[i].tagName === 'VIDEO') {
-        slides[i].play().catch(() => {});
+      const next = slides[i];
+      next.classList.add('active');
+      if (next.tagName === 'VIDEO') {
+        next.currentTime = 0;
+        next.play().catch(() => {});
       }
     }, 4000);
   })();
