@@ -54,7 +54,7 @@
       position: fixed; top: 34px; left: 0; right: 0;
       z-index: 200;
       padding: 20px 64px;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: center; justify-content: center; gap: 40px;
       transition: background .4s, padding .3s, top .4s, box-shadow .4s;
     }
     nav.scrolled {
@@ -92,7 +92,11 @@
     .nav-links a.active { color: var(--olive); }
     .nav-links a.active::after { transform: scaleX(1); }
 
-    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-right {
+      position: absolute; top: 50%; right: 64px;
+      transform: translateY(-50%);
+      display: flex; align-items: center; gap: 24px;
+    }
     .nav-lang {
       font-size: 10px; letter-spacing: .15em;
       display: flex; gap: 6px; color: var(--muted);

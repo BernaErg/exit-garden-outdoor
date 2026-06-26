@@ -54,7 +54,7 @@
       position: fixed; top: 34px; left: 0; right: 0;
       z-index: 200;
       padding: 20px 64px;
-      display: flex; align-items: center; justify-content: flex-start; gap: 56px;
+      display: flex; align-items: center; justify-content: center; gap: 40px;
       transition: background .4s, padding .3s, top .4s, box-shadow .4s;
     }
     nav.scrolled {
@@ -93,7 +93,11 @@
     .hero-active .nav-lang span.on { color: #fff; border-color: rgba(255,255,255,.6); }
     .hero-active .nav-icon { filter: brightness(0) invert(1); }
 
-    .nav-right { display: flex; align-items: center; gap: 24px; margin-left: auto; }
+    .nav-right {
+      position: absolute; top: 50%; right: 64px;
+      transform: translateY(-50%);
+      display: flex; align-items: center; gap: 24px;
+    }
     .nav-lang {
       font-size: 10px; letter-spacing: .15em;
       display: flex; gap: 6px; color: var(--muted);
@@ -181,14 +185,16 @@
     @keyframes scrollPulse { 0%,100%{opacity:.5} 50%{opacity:1} }
 
     /* ═══ INTRO STRIP ═══ */
-    .intro { background: var(--white); padding: 56px 80px; text-align: center; }
+    .intro { background: var(--white); padding: 26px 80px; text-align: center; }
     .intro-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(26px, 3.2vw, 42px);
+      font-size: clamp(16px, 1.6vw, 22px);
       font-weight: 300; font-style: italic;
-      color: var(--dark-mid); max-width: 780px;
-      margin: 0 auto 36px; line-height: 1.45;
+      color: var(--dark-mid); max-width: 1000px;
+      margin: 0 auto 14px; line-height: 1.4;
+      white-space: nowrap;
     }
+    @media (max-width: 600px) { .intro-text { white-space: normal; } }
     .divider      { width: 52px; height: 1px; background: var(--beige); margin: 0 auto; }
     .divider-sm   { width: 32px; height: 1px; background: var(--beige); }
 
@@ -216,6 +222,27 @@
     .catalog-split-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
     @media (max-width: 860px) {
       .catalog-split { grid-template-columns: 1fr; }
+    }
+    .katalog-teaser { position: relative; height: 100%; min-height: 520px; overflow: hidden; }
+    .katalog-teaser img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; filter: blur(6px) brightness(.55); transform: scale(1.1);
+    }
+    .katalog-teaser-overlay { position: absolute; inset: 0; background: rgba(20,16,12,.35); }
+    .katalog-teaser-content {
+      position: relative; z-index: 2; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 48px; gap: 16px;
+    }
+    .katalog-teaser-title {
+      font-family: 'Cormorant Garamond', serif; font-weight: 300;
+      font-size: clamp(40px, 5vw, 64px); letter-spacing: .08em;
+      text-transform: uppercase; color: #fff;
+    }
+    .katalog-teaser-desc { font-size: 12px; line-height: 1.8; color: rgba(255,255,255,.7); max-width: 360px; }
+    .katalog-teaser-link {
+      font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,.45); padding-bottom: 6px; margin-top: 8px; cursor: default;
     }
     .col-grid {
       display: grid;
@@ -628,58 +655,19 @@
 <section class="collections fu" id="collections">
   <div class="catalog-split">
     <div class="catalog-split-body">
-      <span class="sec-label" data-t="colLabel">Koleksiyonlarımız</span>
-      <h2 class="sec-title" data-t="colTitle">Tüm Dış Mekanlar için Özenle Tasarlandı</h2>
-      <p style="font-size:13px;color:var(--muted);margin-top:14px;" data-t="colSubtle">Sergilenen her parça kendi atölyemizde üretilir, ölçü ve detaylar tercihinize göre şekillenir.</p>
+      <div class="katalog-teaser">
+        <img src="burce-oturma-grubu-2.png" alt="EXIT Outdoor Living Katalog">
+        <div class="katalog-teaser-overlay"></div>
+        <div class="katalog-teaser-content">
+          <span class="sec-label" data-t="colLabel" style="color:rgba(255,255,255,.7);text-align:center;">Dış Mekan Koleksiyonu</span>
+          <h2 class="katalog-teaser-title" data-t="colTitle">Katalog</h2>
+          <p class="katalog-teaser-desc" data-t="colSubtle">Sergilenen her parça kendi atölyemizde üretilir, ölçü ve detaylar tercihinize göre şekillenir.</p>
+          <span class="katalog-teaser-link" data-t="colBtn">İnceleyin</span>
+        </div>
+      </div>
     </div>
     <div class="catalog-split-media">
       <img src="hero-perla-ikili.jpg" alt="EXIT Outdoor Living Katalog">
-    </div>
-  </div>
-  <div class="col-grid">
-    <!-- Collection 1 — Seating Groups -->
-    <div class="col-card">
-      <div class="col-img-wrap">
-        <img src="burce-oturma-grubu-2.png" alt="Seating Groups" style="object-position: center 40%;">
-      </div>
-      <div class="col-card-overlay">
-        <div class="col-card-name" data-t="col1Name">Bahçe Mobilyaları</div>
-        <div class="col-card-count" data-t="col1Count">Oturma · Yemek · Lounge</div>
-        <div class="col-card-arrow">→</div>
-      </div>
-    </div>
-    <!-- Collection 2 — Sun Loungers -->
-    <div class="col-card">
-      <div class="col-img-wrap">
-        <img src="lounger_tekli.jpg" alt="Sun Loungers">
-      </div>
-      <div class="col-card-overlay">
-        <div class="col-card-name" data-t="col2Name">Şezlonglar</div>
-        <div class="col-card-count" data-t="col2Count">Şezlonglar · Daybeds</div>
-        <div class="col-card-arrow">→</div>
-      </div>
-    </div>
-    <!-- Collection 3 — Chairs -->
-    <div class="col-card">
-      <div class="col-img-wrap">
-        <img src="armchair.jpg" alt="Chairs">
-      </div>
-      <div class="col-card-overlay">
-        <div class="col-card-name" data-t="col3Name">Sandalyeler</div>
-        <div class="col-card-count" data-t="col3Count">Koltuklar · Sandalyeler</div>
-        <div class="col-card-arrow">→</div>
-      </div>
-    </div>
-    <!-- Collection 4 — Tables -->
-    <div class="col-card">
-      <div class="col-img-wrap">
-        <img src="Concept_Masa.png" alt="Tables">
-      </div>
-      <div class="col-card-overlay">
-        <div class="col-card-name" data-t="col4Name">Masalar</div>
-        <div class="col-card-count" data-t="col4Count">Yemek Masaları · Sehpalar</div>
-        <div class="col-card-arrow">→</div>
-      </div>
     </div>
   </div>
 </section>
@@ -699,6 +687,18 @@
   </div>
 </div>
 
+
+<!-- ░░ PROJECTS TEASER ░░ -->
+<section class="fu" id="projects">
+  <div class="projects-teaser">
+    <img src="nirvana-takim.png" alt="EXIT Outdoor Living Projeler">
+    <div class="projects-teaser-overlay"></div>
+    <div class="projects-teaser-content">
+      <span class="sec-label" data-t="projLabel" style="color:rgba(255,255,255,.75);">Projeler</span>
+      <span class="projects-teaser-link" data-t="projBtn">İnceleyin</span>
+    </div>
+  </div>
+</section>
 
 <!-- ░░ THREE PILLARS ░░ -->
 <section class="pillars fu">
@@ -732,18 +732,6 @@
       </svg>
       <div class="pillar-title" data-t="pillar3Title">Açık Hava Uzmanlığı</div>
       <p class="pillar-body" data-t="pillar3Body">Özel villalardan 28 ülkedeki beş yıldızlı otel projelerine kadar, on yıldır yalnızca dış mekân ortamları için tasarım yapıyoruz.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ░░ PROJECTS TEASER ░░ -->
-<section class="projects fu" id="projects">
-  <div class="projects-teaser">
-    <img src="nirvana-takim.png" alt="EXIT Outdoor Living Projeler">
-    <div class="projects-teaser-overlay"></div>
-    <div class="projects-teaser-content">
-      <span class="sec-label" data-t="projLabel" style="color:rgba(255,255,255,.75);">Projeler</span>
-      <span class="projects-teaser-link" data-t="projBtn">İnceleyin</span>
     </div>
   </div>
 </section>
@@ -836,8 +824,9 @@
       heroCta:        'Koleksiyonu Keşfet',
       heroScroll:     'kaydır',
       introText:      '"Dışarısı sadece bir geçiş yeri değil. Yaşamın kendisi."',
-      colLabel:       'Koleksiyonlarımız',
-      colTitle:       'Tüm Dış Mekanlar için Özenle Tasarlandı',
+      colLabel:       'Dış Mekan Koleksiyonu',
+      colTitle:       'Katalog',
+      colBtn:         'İnceleyin',
       col1Name:       'Oturma Grupları',
       col1Count:      'Oturma · Yemek · Lounge',
       col2Name:       'Şezlonglar & Daybeds',
@@ -913,8 +902,9 @@
       heroCta:        'Explore The Collection',
       heroScroll:     'scroll',
       introText:      '"The outdoors isn\'t a passage. It\'s where life happens."',
-      colLabel:       'Our Collections',
-      colTitle:       'Crafted for Every Outdoor Space',
+      colLabel:       'Outdoor Collection',
+      colTitle:       'Catalog',
+      colBtn:         'View',
       col1Name:       'Seating Groups',
       col1Count:      'Seating · Dining · Lounge',
       col2Name:       'Loungers & Daybeds',

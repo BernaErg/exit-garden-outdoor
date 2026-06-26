@@ -6,7 +6,6 @@
   <title>EXIT Outdoor Living — Koleksiyon</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* ═══ RESET & TOKENS ═══ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --olive:       #626148;
@@ -54,7 +53,7 @@
       position: fixed; top: 34px; left: 0; right: 0;
       z-index: 200;
       padding: 20px 64px;
-      display: flex; align-items: center; justify-content: flex-start; gap: 56px;
+      display: flex; align-items: center; justify-content: center; gap: 40px;
       transition: background .4s, padding .3s, top .4s, box-shadow .4s;
     }
     nav.scrolled {
@@ -90,7 +89,11 @@
     .nav-links a.active { color: var(--olive); }
     .nav-links a.active::after { transform: scaleX(1); }
 
-    .nav-right { display: flex; align-items: center; gap: 24px; margin-left: auto; }
+    .nav-right {
+      position: absolute; top: 50%; right: 64px;
+      transform: translateY(-50%);
+      display: flex; align-items: center; gap: 24px;
+    }
     .nav-lang {
       font-size: 10px; letter-spacing: .15em;
       display: flex; gap: 6px; color: var(--muted);
@@ -121,14 +124,62 @@
     .btn-ghost { color: var(--olive); border-bottom: 1px solid var(--khaki); padding-bottom: 2px; }
     .btn-ghost:hover { border-color: var(--olive); gap: 18px; }
 
+    /* ═══ COLLECTION CARDS ═══ */
+    .col-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px;
+      margin-bottom: 80px;
+    }
+    .col-card { position: relative; overflow: hidden; cursor: pointer; }
+    .col-img-wrap {
+      width: 100%; aspect-ratio: 5/6;
+      overflow: hidden;
+      background: var(--cream-dark);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .col-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .75s cubic-bezier(.25,.46,.45,.94);
+    }
+    .col-card:hover .col-img-wrap img { transform: scale(1.05); }
+    .col-card-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 36px 32px 32px;
+      background: linear-gradient(to top, rgba(28,22,18,.72) 0%, transparent 100%);
+      color: #fff;
+    }
+    .col-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 300; margin-bottom: 4px;
+    }
+    .col-card-count { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; opacity: .6; }
+    .col-card-arrow {
+      position: absolute; right: 28px; bottom: 28px;
+      width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.4);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-size: 14px;
+      transition: background .2s, border-color .2s;
+    }
+    .col-card:hover .col-card-arrow { background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.8); }
+
     /* ═══ PRODUCTS CATALOGUE ═══ */
     .products { background: var(--cream); padding: 140px 80px 96px; }
     .products-head {
       display: flex; justify-content: space-between;
       align-items: flex-end; margin-bottom: 52px;
     }
-    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-    .prod-card { cursor: pointer; }
+    .prod-category { margin-bottom: 64px; }
+    .prod-cat-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 2vw, 32px); font-weight: 300;
+      color: var(--dark); margin-bottom: 24px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--border);
+    }
+    .prod-cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .prod-card {
+      cursor: pointer; display: block; color: inherit;
+    }
     .prod-img-box {
       aspect-ratio: 3/4; background: var(--cream-mid);
       overflow: hidden; position: relative; margin-bottom: 16px;
@@ -226,38 +277,101 @@
     </div>
     <a href="#" class="btn btn-ghost" data-t="prodViewAll">Tümünü Gör →</a>
   </div>
-  <div class="products-grid">
-    <div class="prod-card">
-      <div class="prod-img-box">
-        <img src="armada-sezlong-cabana.png" alt="Armada">
+
+  <!-- Category cards -->
+  <div class="col-grid">
+    <div class="col-card">
+      <div class="col-img-wrap">
+        <img src="burce-oturma-grubu-2.png" alt="Oturma Grupları" style="object-position: center 40%;">
       </div>
-      <div class="prod-name">Armada</div>
-      <div class="prod-cat" data-t="prod1Cat">Şezlong Cabana</div>
-      <div class="prod-price" data-t="prodContact">Fiyat için iletişime geçin</div>
+      <div class="col-card-overlay">
+        <div class="col-card-name" data-t="col1Name">Oturma Grupları</div>
+        <div class="col-card-count" data-t="col1Count">Oturma · Yemek · Lounge</div>
+        <div class="col-card-arrow">→</div>
+      </div>
     </div>
-    <div class="prod-card">
-      <div class="prod-img-box">
-        <img src="enzo-masa-dogo-bank-iroco.png" alt="Enzo &amp; Dogo">
+    <div class="col-card">
+      <div class="col-img-wrap">
+        <img src="lounger_tekli.jpg" alt="Şezlonglar">
       </div>
-      <div class="prod-name">Enzo &amp; Dogo</div>
-      <div class="prod-cat" data-t="prod2Cat">Masa &amp; Bank Takımı (Iroco)</div>
-      <div class="prod-price" data-t="prodContact">Fiyat için iletişime geçin</div>
+      <div class="col-card-overlay">
+        <div class="col-card-name" data-t="col2Name">Şezlonglar &amp; Daybeds</div>
+        <div class="col-card-count" data-t="col2Count">Şezlonglar · Daybeds</div>
+        <div class="col-card-arrow">→</div>
+      </div>
     </div>
-    <div class="prod-card">
-      <div class="prod-img-box">
-        <img src="comfort-sandalye-siyah-iskelet-bej-minder.png" alt="Comfort">
+    <div class="col-card">
+      <div class="col-img-wrap">
+        <img src="armchair.jpg" alt="Sandalyeler">
       </div>
-      <div class="prod-name">Comfort</div>
-      <div class="prod-cat" data-t="prod3Cat">Tekli Koltuk</div>
-      <div class="prod-price" data-t="prodContact">Fiyat için iletişime geçin</div>
+      <div class="col-card-overlay">
+        <div class="col-card-name" data-t="col3Name">Sandalyeler</div>
+        <div class="col-card-count" data-t="col3Count">Koltuklar · Sandalyeler</div>
+        <div class="col-card-arrow">→</div>
+      </div>
     </div>
-    <div class="prod-card">
-      <div class="prod-img-box">
-        <img src="daisy-sezlong-mint-iskelet-krem-kumas.png" alt="Daisy">
+    <div class="col-card">
+      <div class="col-img-wrap">
+        <img src="Concept_Masa.png" alt="Masalar">
       </div>
-      <div class="prod-name">Daisy</div>
-      <div class="prod-cat" data-t="prod4Cat">Şezlong</div>
-      <div class="prod-price" data-t="prodContact">Fiyat için iletişime geçin</div>
+      <div class="col-card-overlay">
+        <div class="col-card-name" data-t="col4Name">Masalar</div>
+        <div class="col-card-count" data-t="col4Count">Yemek Masaları · Sehpalar</div>
+        <div class="col-card-arrow">→</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Şezlonglar -->
+  <div class="prod-category">
+    <h3 class="prod-cat-title" data-t="catSezlong">Şezlonglar</h3>
+    <div class="prod-cat-grid">
+      <a href="urun-armada.html" class="prod-card">
+        <div class="prod-img-box">
+          <img src="armada-sezlong-cabana.png" alt="Armada">
+        </div>
+        <div class="prod-name">Armada</div>
+        <div class="prod-cat" data-t="prod1Cat">Şezlong Cabana</div>
+        <div class="prod-price" data-t="prodContact">Fiyat için iletişime geçin</div>
+      </a>
+      <a href="urun-daisy.html" class="prod-card">
+        <div class="prod-img-box">
+          <img src="daisy-sezlong-mint-iskelet-krem-kumas.png" alt="Daisy">
+        </div>
+        <div class="prod-name">Daisy</div>
+        <div class="prod-cat" data-t="prod4Cat">Şezlong</div>
+        <div class="prod-price" data-t="prodContact">Fiyat için iletişime geçin</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Sandalyeler -->
+  <div class="prod-category">
+    <h3 class="prod-cat-title" data-t="catSandalye">Sandalyeler</h3>
+    <div class="prod-cat-grid">
+      <a href="urun-comfort.html" class="prod-card">
+        <div class="prod-img-box">
+          <img src="comfort-sandalye-siyah-iskelet-bej-minder.png" alt="Comfort">
+        </div>
+        <div class="prod-name">Comfort</div>
+        <div class="prod-cat" data-t="prod3Cat">Tekli Koltuk</div>
+        <div class="prod-price" data-t="prodContact">Fiyat için iletişime geçin</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Masalar -->
+  <div class="prod-category">
+    <h3 class="prod-cat-title" data-t="catMasa">Masalar</h3>
+    <div class="prod-cat-grid">
+      <a href="urun-enzo-dogo.html" class="prod-card">
+        <div class="prod-img-box">
+          <img src="enzo-masa-dogo-bank-iroco.png" alt="Enzo &amp; Dogo">
+        </div>
+        <div class="prod-name">Enzo &amp; Dogo</div>
+        <div class="prod-cat" data-t="prod2Cat">Masa &amp; Bank Takımı (Iroco)</div>
+        <div class="prod-price" data-t="prodContact">Fiyat için iletişime geçin</div>
+      </a>
     </div>
   </div>
 </section>
@@ -325,7 +439,6 @@
   </div>
 </footer>
 
-<!-- ░░ SCRIPTS ░░ -->
 <script>
   const T = {
     tr: {
@@ -338,6 +451,17 @@
       prodLabel:      'Tüm Ürünler',
       prodTitle:      'Koleksiyon',
       prodViewAll:    'Tümünü Gör →',
+      col1Name:       'Oturma Grupları',
+      col1Count:      'Oturma · Yemek · Lounge',
+      col2Name:       'Şezlonglar & Daybeds',
+      col2Count:      'Şezlonglar · Daybeds',
+      col3Name:       'Sandalyeler',
+      col3Count:      'Koltuklar · Sandalyeler',
+      col4Name:       'Masalar',
+      col4Count:      'Yemek Masaları · Sehpalar',
+      catSezlong:     'Şezlonglar',
+      catSandalye:    'Sandalyeler',
+      catMasa:        'Masalar',
       prod1Cat:       'Şezlong Cabana',
       prod2Cat:       'Masa & Bank Takımı (Iroco)',
       prod3Cat:       'Tekli Koltuk',
@@ -370,6 +494,17 @@
       prodLabel:      'All Products',
       prodTitle:      'The Collection',
       prodViewAll:    'View All →',
+      col1Name:       'Seating Groups',
+      col1Count:      'Seating · Dining · Lounge',
+      col2Name:       'Loungers & Daybeds',
+      col2Count:      'Loungers · Daybeds',
+      col3Name:       'Chairs',
+      col3Count:      'Lounge Chairs · Armchairs',
+      col4Name:       'Tables',
+      col4Count:      'Dining Tables · Side Tables',
+      catSezlong:     'Loungers',
+      catSandalye:    'Chairs',
+      catMasa:        'Tables',
       prod1Cat:       'Cabana Lounger',
       prod2Cat:       'Table & Bench Set (Iroco)',
       prod3Cat:       'Lounge Chair',
