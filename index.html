@@ -536,6 +536,9 @@
       font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: #fff;
       border-bottom: 1px solid rgba(255,255,255,.45); padding-bottom: 6px; cursor: default;
     }
+    .visit-fairs-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
+    .visit-fairs-grid .projects-teaser { display:block; }
+    @media (max-width:760px) { .visit-fairs-grid { grid-template-columns:1fr; } }
 
     /* ═══ CONTACT STRIP ═══ */
     .contact-strip {
@@ -687,6 +690,27 @@
   </div>
 </section>
 
+<section class="fu" id="visit-fairs" style="margin-bottom:32px;">
+  <div class="visit-fairs-grid">
+    <a href="ziyaret-edin.html" class="projects-teaser">
+      <img src="showroom-disgorunum.png" alt="EXIT Outdoor Living Showroom">
+      <div class="projects-teaser-overlay"></div>
+      <div class="projects-teaser-content">
+        <span class="sec-label" data-t="showroomLabel" style="color:rgba(255,255,255,.75);">Showroom</span>
+        <span class="projects-teaser-link" data-t="showroomBtn">Bizi Ziyaret Edin</span>
+      </div>
+    </a>
+    <a href="etkinlikler-fuarlar.html" class="projects-teaser">
+      <img src="fuar-gorsel.png" alt="EXIT Outdoor Living Etkinlik ve Fuarlar">
+      <div class="projects-teaser-overlay"></div>
+      <div class="projects-teaser-content">
+        <span class="sec-label" data-t="fairsLabel" style="color:rgba(255,255,255,.75);">Etkinlikler</span>
+        <span class="projects-teaser-link" data-t="fairsBtn">Etkinlik ve Fuarlar</span>
+      </div>
+    </a>
+  </div>
+</section>
+
 <!-- ░░ LIFESTYLE GRID ░░ -->
 <div class="lifestyle fu">
   <div class="lg-grid">
@@ -791,7 +815,7 @@
         <li><a href="#" data-t="ftLink2b">Projeler</a></li>
         <li><a href="#" data-t="ftLink2c">Malzemeler</a></li>
         <li><a href="#" data-t="ftLink2d">B2B &amp; Otelcilik</a></li>
-        <li><a href="#" data-t="ftLink2e">Showroom</a></li>
+        <li><a href="ziyaret-edin.html" data-t="ftLink2e">Showroom</a></li>
       </ul>
     </div>
     <div>
@@ -868,6 +892,10 @@
       projTitle:      'Oteller, Tatil Köyleri &amp; Mimarlar İçin',
       projDesc:       'EXIT Outdoor Living; Avrupa ve Orta Doğu\'daki önde gelen otelcilik grupları, peyzaj mimarları ve iç mekan tasarımcılarıyla ortaklık kuruyor. Özel konfigürasyonlar, özel kaplamalar, eksiksiz B2B hizmet.',
       projBtn:        'İnceleyin',
+      showroomLabel:  'Showroom',
+      showroomBtn:    'Bizi Ziyaret Edin',
+      fairsLabel:     'Etkinlikler',
+      fairsBtn:       'Etkinlik ve Fuarlar',
       statProjects:   'Proje',
       statCountries:  'Ülke',
       statYears:      'Yıl',
@@ -946,6 +974,10 @@
       projTitle:      'For Hotels, Resorts &amp; Architects',
       projDesc:       'EXIT Outdoor Living partners with leading hospitality groups, landscape architects and interior designers across Europe and the Middle East. Custom configurations, exclusive finishes, full B2B service.',
       projBtn:        'View',
+      showroomLabel:  'Showroom',
+      showroomBtn:    'Visit Us',
+      fairsLabel:     'Events',
+      fairsBtn:       'Events &amp; Fairs',
       statProjects:   'Projects',
       statCountries:  'Countries',
       statYears:      'Years',
