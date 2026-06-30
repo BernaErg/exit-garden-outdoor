@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EXIT Outdoor Living — Donna Masa Takımı Seramik Krem</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --olive:#626148; --olive-dark:#4a4a35; --olive-light:#8a8a6a;
+      --khaki:#ADA796; --cream:#F5F0E8; --cream-mid:#EDE5D6; --cream-dark:#E3D9C8;
+      --white:#FDFAF6; --dark:#1C1612; --dark-mid:#3A3228; --border:#D9CFBC; --muted:#8A7E70; --beige:#C4AB8A;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Montserrat',sans-serif; background:var(--cream); color:var(--dark); overflow-x:hidden; font-size:13px; line-height:1.75; }
+    img { display:block; max-width:100%; }
+    a { text-decoration:none; color:inherit; }
+    .annbar { background:var(--olive); color:rgba(255,255,255,.88); text-align:center; padding:9px 20px; font-size:10px; letter-spacing:.32em; text-transform:uppercase; }
+    nav { position:fixed; top:34px; left:0; right:0; z-index:200; padding:20px 64px; display:flex; align-items:center; justify-content:center; gap:40px; transition:background .4s,padding .3s,top .4s; }
+    nav.scrolled { top:0; background:rgba(253,250,246,.97); padding:14px 64px; border-bottom:1px solid var(--border); }
+    nav.page-nav { top:0; background:rgba(253,250,246,.97); padding:14px 64px; border-bottom:1px solid var(--border); }
+    .logo { display:flex; align-items:center; gap:16px; cursor:pointer; }
+    .logo-img { height:76px; width:auto; object-fit:contain; }
+    .nav-links { display:flex; gap:36px; list-style:none; }
+    .nav-links a { font-size:10px; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--dark); position:relative; transition:color .2s; }
+    .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--olive); transform:scaleX(0); transition:transform .3s ease; }
+    .nav-links a:hover { color:var(--olive); }
+    .nav-links a:hover::after { transform:scaleX(1); }
+    .nav-links a.active { color:var(--olive); }
+    .nav-links a.active::after { transform:scaleX(1); }
+    .nav-right { position:absolute; top:50%; right:64px; transform:translateY(-50%); display:flex; align-items:center; gap:24px; }
+    .nav-lang { font-size:10px; letter-spacing:.15em; display:flex; gap:6px; color:var(--muted); }
+    .nav-lang span { cursor:pointer; transition:color .2s; }
+    .nav-lang span.on { color:var(--dark); border-bottom:1px solid var(--dark); padding-bottom:1px; }
+    .nav-icon { cursor:pointer; opacity:.65; transition:opacity .2s; }
+    .nav-icon:hover { opacity:1; }
+    .prod-page { padding:140px 80px 96px; max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+    .prod-page-img { width:100%; aspect-ratio:3/4; overflow:hidden; background:var(--cream-mid); }
+    .prod-page-img img { width:100%; height:100%; object-fit:cover; }
+    .prod-page-body { padding-top:24px; }
+    .prod-page-back { font-size:10px; letter-spacing:.22em; color:var(--muted); text-transform:uppercase; margin-bottom:40px; display:inline-flex; align-items:center; gap:8px; transition:color .2s; }
+    .prod-page-back:hover { color:var(--olive); }
+    .prod-page-name { font-family:'Cormorant Garamond',serif; font-size:clamp(42px,5vw,72px); font-weight:300; line-height:1.05; margin-bottom:10px; }
+    .prod-page-cat { font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--muted); margin-bottom:32px; }
+    .prod-page-price { font-size:13px; font-weight:500; color:var(--dark); padding:20px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    footer { background:var(--dark); color:var(--cream); padding:88px 80px 40px; }
+    .ft-top { display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:56px; padding-bottom:64px; border-bottom:1px solid rgba(255,255,255,.09); margin-bottom:36px; }
+    .ft-logo { height:60px; width:auto; filter:brightness(0) invert(1); margin-bottom:24px; }
+    .ft-tagline { font-size:12px; line-height:1.85; color:rgba(245,240,232,.4); margin-bottom:28px; }
+    .ft-social { display:flex; gap:14px; }
+    .ft-social a { width:34px; height:34px; border:1px solid rgba(255,255,255,.18); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; color:rgba(245,240,232,.5); transition:border-color .2s,color .2s; }
+    .ft-social a:hover { border-color:var(--khaki); color:var(--khaki); }
+    .ft-col-title { font-size:9px; letter-spacing:.35em; text-transform:uppercase; color:var(--khaki); margin-bottom:24px; }
+    .ft-links { list-style:none; display:flex; flex-direction:column; gap:10px; }
+    .ft-links a { font-size:12px; color:rgba(245,240,232,.48); transition:color .2s; }
+    .ft-links a:hover { color:var(--cream); }
+    .ft-bottom { display:flex; justify-content:space-between; align-items:center; font-size:10px; color:rgba(245,240,232,.25); }
+    .fu { opacity:0; transform:translateY(32px); transition:opacity .8s ease,transform .8s ease; }
+    .fu.vis { opacity:1; transform:translateY(0); }
+    [data-t] { transition:opacity .18s ease; }
+  </style>
+</head>
+<body>
+
+<div class="annbar" data-t="annbar">2026 Koleksiyonu &nbsp;·&nbsp; Dünya Geneli Teslimat</div>
+
+<nav id="mainNav" class="page-nav">
+  <a href="index.html" class="logo">
+    <img class="logo-img" src="logo_full_trans.png" alt="EXIT Outdoor Living"
+         onerror="this.style.display='none';document.getElementById('logoText').style.display='flex'">
+    <div id="logoText" style="display:none;flex-direction:column;">
+      <span style="font-family:'Montserrat',sans-serif;font-weight:500;font-size:11px;letter-spacing:.38em;color:var(--dark);">EXIT OUTDOOR <span lang="en">LIVING</span></span>
+      <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;letter-spacing:.18em;color:var(--muted);">Outdoor <span lang="en">Living</span></span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="koleksiyon.html" class="active" data-t="navCollections">Koleksiyonlar</a></li>
+    <li><a href="about.html" data-t="navStory">Hakkımızda</a></li>
+    <li><a href="index.html#projects" data-t="navProjects">Projeler</a></li>
+    <li><a href="index.html#contact" data-t="navContact">İletişim</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-lang">
+      <span class="on" data-lang="tr" onclick="setLang('tr')">TR</span>
+      <span style="opacity:.3;cursor:default;">/</span>
+      <span data-lang="en" onclick="setLang('en')">EN</span>
+    </div>
+    <svg class="nav-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M12 12 L16 16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+    </svg>
+  </div>
+</nav>
+
+<div class="prod-page fu">
+  <div class="prod-page-img">
+    <img src="donna-masa-takimi-seramik-krem.png" alt="Donna Masa Takımı Seramik Krem">
+  </div>
+  <div class="prod-page-body">
+    <a href="kategori-oturma-grubu.html" class="prod-page-back" data-t="backLink">← Oturma Grupları</a>
+    <h1 class="prod-page-name">Donna Masa Takımı Seramik Krem</h1>
+    <div class="prod-page-cat" data-t="prodCat">Oturma Grubu</div>
+    <div class="prod-page-price" data-t="prodContact">Fiyat için iletişime geçin</div>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-top">
+    <div>
+      <img class="ft-logo" src="logo_full_trans.png" alt="EXIT Outdoor Living" onerror="this.style.display='none'">
+      <p class="ft-tagline" data-t="ftTagline">Zamansız dış mekânlar için tasarlandı.<br>Türkiye ve Dünya Geneli Projeler<br>www.exitgarden.com</p>
+      <div class="ft-social">
+        <a href="#" title="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="#" title="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M7 10v7M7 7v.5M11 17v-4c0-1.5 1-3 3-3s3 1 3 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <div class="ft-col-title" data-t="ftCol1">Koleksiyonlar</div>
+      <ul class="ft-links">
+        <li><a href="koleksiyon.html" data-t="ftLink1a">Bahçe Mobilyaları</a></li>
+        <li><a href="koleksiyon.html" data-t="ftLink1b">Şezlonglar</a></li>
+        <li><a href="koleksiyon.html" data-t="ftLink1c">Yemek Setleri</a></li>
+        <li><a href="koleksiyon.html" data-t="ftLink1d">Yan Masalar</a></li>
+        <li><a href="koleksiyon.html" data-t="ftLink1e">Aksesuarlar</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-col-title" data-t="ftCol2">Şirket</div>
+      <ul class="ft-links">
+        <li><a href="about.html" data-t="ftLink2a">Hakkımızda</a></li>
+        <li><a href="index.html#projects" data-t="ftLink2b">Projeler</a></li>
+        <li><a href="#" data-t="ftLink2c">Malzemeler</a></li>
+        <li><a href="index.html#projects" data-t="ftLink2d">B2B &amp; Otelcilik</a></li>
+        <li><a href="#" data-t="ftLink2e">Showroom</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-col-title" data-t="ftCol3">İletişim</div>
+      <ul class="ft-links">
+        <li><a href="mailto:info@exitgarden.com">info@exitgarden.com</a></li>
+        <li><a href="#">+90 — — — —</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span data-t="ftCopyright">© 2025 EXIT Outdoor Living. Tüm hakları saklıdır.</span>
+    <span data-t="ftMotto">Tasarım · Kalite · Deneyim</span>
+  </div>
+</footer>
+
+<script>
+  const T = {
+    tr: { pageTitle:'EXIT Outdoor Living — Donna Masa Takımı Seramik Krem', annbar:'2026 Koleksiyonu &nbsp;·&nbsp; Dünya Geneli Teslimat', navCollections:'Koleksiyonlar', navStory:'Hakkımızda', navProjects:'Projeler', navContact:'İletişim', backLink:'← Oturma Grupları', prodCat:'Oturma Grubu', prodContact:'Fiyat için iletişime geçin', ftTagline:'Zamansız dış mekânlar için tasarlandı.<br>Türkiye ve Dünya Geneli Projeler<br>www.exitgarden.com', ftCol1:'Koleksiyonlar', ftLink1a:'Bahçe Mobilyaları', ftLink1b:'Şezlonglar', ftLink1c:'Yemek Setleri', ftLink1d:'Yan Masalar', ftLink1e:'Aksesuarlar', ftCol2:'Şirket', ftLink2a:'Hakkımızda', ftLink2b:'Projeler', ftLink2c:'Malzemeler', ftLink2d:'B2B &amp; Otelcilik', ftLink2e:'Showroom', ftCol3:'İletişim', ftCopyright:'© 2025 EXIT Outdoor Living. Tüm hakları saklıdır.', ftMotto:'Tasarım · Kalite · Deneyim' },
+    en: { pageTitle:'EXIT Outdoor Living — Donna Dining Set Ceramic Cream', annbar:'New 2026 Collection &nbsp;·&nbsp; Worldwide Delivery', navCollections:'Collections', navStory:'About Us', navProjects:'Projects', navContact:'Contact', backLink:'← Seating Groups', prodCat:'Seating Group', prodContact:'Contact for pricing', ftTagline:'Crafted for timeless outdoor spaces.<br>Türkiye and Worldwide Projects<br>www.exitgarden.com', ftCol1:'Collections', ftLink1a:'Garden Furniture', ftLink1b:'Sun Loungers', ftLink1c:'Dining Sets', ftLink1d:'Side Tables', ftLink1e:'Accessories', ftCol2:'Company', ftLink2a:'About Us', ftLink2b:'Projects', ftLink2c:'Materials', ftLink2d:'B2B &amp; Hospitality', ftLink2e:'Showroom', ftCol3:'Contact', ftCopyright:'© 2025 EXIT Outdoor Living. All rights reserved.', ftMotto:'Design · Quality · Experience' }
+  };
+  function setLang(lang) {
+    document.documentElement.lang = lang; document.title = T[lang].pageTitle;
+    document.querySelectorAll('[data-t]').forEach(el => { const k = el.dataset.t; if (T[lang][k] !== undefined) el.innerHTML = T[lang][k]; });
+    document.querySelectorAll('.nav-lang span[data-lang]').forEach(s => s.classList.toggle('on', s.dataset.lang === lang));
+    localStorage.setItem('eg-lang', lang);
+  }
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+  const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.1 });
+  document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+  setLang(localStorage.getItem('eg-lang') || 'tr');
+</script>
+</body>
+</html>

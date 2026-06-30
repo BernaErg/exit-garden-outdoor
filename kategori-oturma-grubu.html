@@ -32,7 +32,12 @@
     .products-head { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:52px; }
     .back-link { font-size:10px; letter-spacing:.22em; color:var(--muted); text-transform:uppercase; display:inline-flex; align-items:center; gap:8px; transition:color .2s; }
     .back-link:hover { color:var(--olive); }
-    .coming-soon { text-align:center; padding:80px 0; font-size:13px; color:var(--muted); }
+    .prod-cat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+    .prod-card { cursor:pointer; display:block; color:inherit; }
+    .prod-img-box { aspect-ratio:3/4; background:var(--cream-mid); overflow:hidden; position:relative; margin-bottom:16px; }
+    .prod-img-box img { width:100%; height:100%; object-fit:cover; transition:transform .6s ease,filter .4s ease; filter:brightness(0.82); }
+    .prod-card:hover .prod-img-box img { transform:scale(1.05); filter:brightness(1); }
+    .prod-name { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:300; margin-bottom:2px; }
     footer { background:var(--dark); color:var(--cream); padding:88px 80px 40px; }
     .ft-top { display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:56px; padding-bottom:64px; border-bottom:1px solid rgba(255,255,255,.09); margin-bottom:36px; }
     .ft-logo { height:60px; width:auto; filter:brightness(0) invert(1); margin-bottom:24px; }
@@ -62,7 +67,32 @@
     <h2 class="sec-title" data-t="catTitle">Oturma Grupları</h2>
     <a href="koleksiyon.html" class="back-link" data-t="backLink">← Tüm Koleksiyon</a>
   </div>
-  <p class="coming-soon" data-t="comingSoon">Yeni ürünler yakında eklenecek.</p>
+  <div class="prod-cat-grid">
+    <a href="urun-burce-oturma-grubu.html" class="prod-card">
+      <div class="prod-img-box"><img src="burce-oturma-grubu-2.png" alt="Burce Oturma Grubu"></div>
+      <div class="prod-name">Burce Oturma Grubu</div>
+    </a>
+    <a href="urun-enzo-oturma-grubu.html" class="prod-card">
+      <div class="prod-img-box"><img src="enzo-oturma-grubu.png" alt="Enzo Oturma Grubu"></div>
+      <div class="prod-name">Enzo Oturma Grubu</div>
+    </a>
+    <a href="urun-bianca-takim-oturma-grubu.html" class="prod-card">
+      <div class="prod-img-box"><img src="bianca-takim-oturma-grubu.png" alt="Bianca Takım Oturma Grubu"></div>
+      <div class="prod-name">Bianca Takım Oturma Grubu</div>
+    </a>
+    <a href="urun-donna-masa-takimi-seramik-krem.html" class="prod-card">
+      <div class="prod-img-box"><img src="donna-masa-takimi-seramik-krem.png" alt="Donna Masa Takımı Seramik Krem"></div>
+      <div class="prod-name">Donna Masa Takımı Seramik Krem</div>
+    </a>
+    <a href="urun-sofa-story.html" class="prod-card">
+      <div class="prod-img-box"><img src="sofa_story.jpg" alt="Sofa Story"></div>
+      <div class="prod-name">Sofa Story</div>
+    </a>
+    <a href="urun-nirvana-takim.html" class="prod-card">
+      <div class="prod-img-box"><img src="nirvana-takim.png" alt="Nirvana Takım"></div>
+      <div class="prod-name">Nirvana Takım</div>
+    </a>
+  </div>
 </section>
 
 <footer>
