@@ -125,8 +125,10 @@
       position: absolute; inset: 0;
       background-size: cover; background-position: center;
       opacity: 0;
-      transform: scale(1.08);
       transition: opacity 1.4s ease;
+    }
+    .hero-slide:not(.is-video) {
+      transform: scale(1.08);
       animation: heroZoom 9s ease-in-out infinite;
     }
     .hero-slide.active { opacity: 1; }
@@ -135,14 +137,12 @@
       100% { transform: scale(1.08); }
     }
     @media (prefers-reduced-motion: reduce) {
-      .hero-slide { animation: none; transform: none; }
+      .hero-slide:not(.is-video) { animation: none; transform: none; }
     }
     .hero-slide.is-video {
       object-fit: cover;
       width: 100%;
       height: 100%;
-      animation: none;
-      transform: none;
     }
     .hero-vignette {
       position: absolute; inset: 0;
@@ -633,13 +633,13 @@
 <!-- ░░ HERO ░░ -->
 <section class="hero" id="hero">
   <div class="hero-bg">
-    <video class="hero-slide is-video active" muted autoplay loop playsinline preload="auto" poster="enzo-video-1-poster.jpg">
+    <video class="hero-slide is-video active" muted autoplay loop playsinline preload="auto">
       <source src="enzo-video-1.mp4" type="video/mp4">
     </video>
-    <video class="hero-slide is-video" muted loop playsinline preload="auto" poster="nirvana-hero-banner-3-poster.jpg">
+    <video class="hero-slide is-video" muted loop playsinline preload="auto">
       <source src="nirvana-hero-banner-3.mp4" type="video/mp4">
     </video>
-    <video class="hero-slide is-video" muted loop playsinline preload="auto" poster="sofa-story-video-poster.jpg">
+    <video class="hero-slide is-video" muted loop playsinline preload="auto">
       <source src="sofa-story-video.mp4" type="video/mp4">
     </video>
   </div>
