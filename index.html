@@ -144,7 +144,7 @@
       width: 100%;
       height: 100%;
       opacity: 0;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.8s ease;
     }
     .hero-slide.is-video.playing { opacity: 1; }
     .hero-vignette {
@@ -1084,28 +1084,53 @@
   const savedLang = localStorage.getItem('eg-lang') || 'tr';
   setLang(savedLang);
 
-  /* ── HERO VIDEO: show only when actually playing (no static first-frame flash) ── */
-  document.querySelectorAll('.hero-slide.is-video').forEach(function(v) {
-    v.addEventListener('playing', function() { v.classList.add('playing'); });
-    setTimeout(function() { v.classList.add('playing'); }, 1200); // fallback if event misses
-  });
-
   /* ── HERO CAROUSEL ───────────────────────────────────────── */
   (function () {
-    const slides = document.querySelectorAll('.hero-slide');
+    const slides = Array.from(document.querySelectorAll('.hero-slide'));
     if (slides.length < 2) return;
-    let i = 0;
-    setInterval(() => {
-      const prev = slides[i];
-      if (prev.tagName === 'VIDEO') { prev.pause(); prev.classList.remove('playing'); }
-      prev.classList.remove('active');
+
+    // Init all videos: slow playback + show only when truly playing
+    slides.forEach(function(s) {
+      if (s.tagName !== 'VIDEO') return;
+      s.playbackRate = 0.8;
+      s.addEventListener('playing', function() { s.classList.add('playing'); });
+    });
+
+    // Fallback for first video only (autoplay may delay playing event)
+    var firstVid = slides[0];
+    if (firstVid && firstVid.tagName === 'VIDEO') {
+      setTimeout(function() { firstVid.classList.add('playing'); }, 1200);
+    }
+
+    var i = 0;
+    setInterval(function() {
+      var prev = slides[i];
       i = (i + 1) % slides.length;
-      const next = slides[i];
+      var next = slides[i];
+
+      // Pre-seek next to start BEFORE transition begins
+      if (next.tagName === 'VIDEO') next.currentTime = 0;
+
+      // Fade in next immediately
       next.classList.add('active');
       if (next.tagName === 'VIDEO') {
-        next.currentTime = 0;
-        next.play().catch(() => {});
+        next.playbackRate = 0.8;
+        // Play after seek completes to avoid mid-loop start
+        next.addEventListener('seeked', function playOnSeek() {
+          next.removeEventListener('seeked', playOnSeek);
+          next.play().catch(function() { next.classList.add('playing'); });
+        });
+        // Fallback if seeked doesn't fire
+        setTimeout(function() {
+          if (next.paused) next.play().catch(function() { next.classList.add('playing'); });
+        }, 400);
       }
+
+      // Fade out prev with delay — creates crossfade overlap with next
+      setTimeout(function() {
+        if (prev.tagName === 'VIDEO') { prev.pause(); prev.classList.remove('playing'); }
+        prev.classList.remove('active');
+      }, 250);
     }, 4000);
   })();
 </script>
