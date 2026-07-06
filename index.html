@@ -118,9 +118,9 @@
     .hero {
       height: 56.25vw; min-height: 580px; max-height: 100vh;
       position: relative; display: flex; align-items: flex-end;
-      overflow: hidden; background: var(--cream-dark);
+      overflow: hidden; background: var(--dark);
     }
-    .hero-bg { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; overflow: hidden; }
     .hero-slide {
       position: absolute; inset: 0;
       background-size: cover; background-position: center;
@@ -143,7 +143,10 @@
       object-fit: cover;
       width: 100%;
       height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
+    .hero-slide.is-video.playing { opacity: 1; }
     .hero-vignette {
       position: absolute; inset: 0;
       background: linear-gradient(to top,
@@ -1081,6 +1084,12 @@
   const savedLang = localStorage.getItem('eg-lang') || 'tr';
   setLang(savedLang);
 
+  /* ── HERO VIDEO: show only when actually playing (no static first-frame flash) ── */
+  document.querySelectorAll('.hero-slide.is-video').forEach(function(v) {
+    v.addEventListener('playing', function() { v.classList.add('playing'); });
+    setTimeout(function() { v.classList.add('playing'); }, 1200); // fallback if event misses
+  });
+
   /* ── HERO CAROUSEL ───────────────────────────────────────── */
   (function () {
     const slides = document.querySelectorAll('.hero-slide');
@@ -1088,7 +1097,7 @@
     let i = 0;
     setInterval(() => {
       const prev = slides[i];
-      if (prev.tagName === 'VIDEO') prev.pause();
+      if (prev.tagName === 'VIDEO') { prev.pause(); prev.classList.remove('playing'); }
       prev.classList.remove('active');
       i = (i + 1) % slides.length;
       const next = slides[i];
