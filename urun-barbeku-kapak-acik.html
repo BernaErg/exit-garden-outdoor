@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EXIT Outdoor Living — Barbekü Kapak Açık</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -20,7 +20,9 @@
     nav { position:fixed; top:34px; left:0; right:0; z-index:200; padding:16px 64px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; transition:background .4s,padding .3s,top .4s; }
     nav.scrolled { top:0; background:rgba(253,250,246,.97); padding:10px 64px; border-bottom:1px solid var(--border); }
     nav.page-nav { top:0; background:rgba(253,250,246,.97); padding:10px 64px; border-bottom:1px solid var(--border); }
-    .logo-wordmark { font-family:'Montserrat',sans-serif; font-size:13px; font-weight:600; letter-spacing:.38em; text-transform:uppercase; color:var(--dark); text-decoration:none; transition:color .2s; }
+    .logo-wordmark { display:flex; flex-direction:column; align-items:center; text-decoration:none; gap:3px; }
+    .logo-exit { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--dark); line-height:1; transition:color .2s; }
+    .logo-sub { font-family:'Montserrat',sans-serif; font-size:8px; font-weight:300; letter-spacing:.45em; text-transform:uppercase; color:var(--olive); line-height:1; transition:color .2s; }
 
     .nav-links { display:flex; gap:24px; list-style:none; }
     .nav-links a { font-size:10px; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--dark); position:relative; transition:color .2s; }
@@ -64,7 +66,10 @@
 <body>
 <div class="annbar" data-t="annbar">2026 Koleksiyonu &nbsp;·&nbsp; Dünya Geneli Teslimat</div>
 <nav id="mainNav" class="page-nav">
-  <a href="index.html" class="logo-wordmark">EXIT OUTDOOR LIVING</a>
+  <a href="index.html" class="logo-wordmark">
+  <span class="logo-exit">EXIT</span>
+  <span class="logo-sub">OUTDOOR LIVING</span>
+</a>
   <ul class="nav-links">
     <li><a href="koleksiyon.html" class="active" data-t="navCollections">Koleksiyonlar</a></li>
     <li><a href="about.html" data-t="navStory">Hakkımızda</a></li>
