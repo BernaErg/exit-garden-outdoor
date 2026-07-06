@@ -13,11 +13,11 @@
     img { display:block; max-width:100%; }
     a { text-decoration:none; color:inherit; }
     .annbar { background:var(--olive); color:rgba(255,255,255,.88); text-align:center; padding:9px 20px; font-size:10px; letter-spacing:.32em; text-transform:uppercase; }
-    nav { position:fixed; top:34px; left:0; right:0; z-index:200; padding:20px 64px; display:flex; align-items:center; justify-content:center; gap:40px; transition:background .4s,padding .3s,top .4s; }
-    nav.scrolled { top:0; background:rgba(253,250,246,.97); padding:14px 64px; border-bottom:1px solid var(--border); }
-    nav.page-nav { top:0; background:rgba(253,250,246,.97); padding:14px 64px; border-bottom:1px solid var(--border); }
-    .logo { display:flex; align-items:center; gap:16px; cursor:pointer; }
-    .logo-img { height:76px; width:auto; object-fit:contain; }
+    nav { position:fixed; top:34px; left:0; right:0; z-index:200; padding:16px 64px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; transition:background .4s,padding .3s,top .4s; }
+    nav.scrolled { top:0; background:rgba(253,250,246,.97); padding:10px 64px; border-bottom:1px solid var(--border); }
+    nav.page-nav { top:0; background:rgba(253,250,246,.97); padding:10px 64px; border-bottom:1px solid var(--border); }
+    .logo-wordmark { font-family:'Montserrat',sans-serif; font-size:13px; font-weight:600; letter-spacing:.38em; text-transform:uppercase; color:var(--dark); text-decoration:none; transition:color .2s; }
+
     .nav-links { display:flex; gap:24px; list-style:none; }
     .nav-links a { font-size:10px; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--dark); position:relative; transition:color .2s; }
     .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--olive); transform:scaleX(0); transition:transform .3s ease; }
@@ -63,10 +63,7 @@
 <body>
 <div class="annbar" data-t="annbar">2026 Koleksiyonu &nbsp;·&nbsp; Dünya Geneli Teslimat</div>
 <nav id="mainNav" class="page-nav">
-  <a href="index.html" class="logo">
-    <img class="logo-img" src="logo_full_trans.png" alt="EXIT Outdoor Living" onerror="this.style.display='none';document.getElementById('logoText').style.display='flex'">
-    <div id="logoText" style="display:none;flex-direction:column;"><span style="font-family:'Montserrat',sans-serif;font-weight:500;font-size:11px;letter-spacing:.38em;color:var(--dark);">EXIT OUTDOOR <span lang="en">LIVING</span></span><span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;letter-spacing:.18em;color:var(--muted);">Outdoor <span lang="en">Living</span></span></div>
-  </a>
+  <a href="index.html" class="logo-wordmark">EXIT OUTDOOR LIVING</a>
   <ul class="nav-links">
     <li><a href="koleksiyon.html" class="active" data-t="navCollections">Koleksiyonlar</a></li>
     <li><a href="about.html" data-t="navStory">Hakkımızda</a></li>

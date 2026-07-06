@@ -53,26 +53,24 @@
     nav {
       position: fixed; top: 34px; left: 0; right: 0;
       z-index: 200;
-      padding: 20px 64px;
-      display: flex; align-items: center; justify-content: center; gap: 40px;
+      padding: 16px 64px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
       transition: background .4s, padding .3s, top .4s, box-shadow .4s;
     }
     nav.scrolled {
       top: 0;
       background: rgba(253,250,246,.97);
-      padding: 14px 64px;
+      padding: 10px 64px;
       border-bottom: 1px solid var(--border);
     }
     nav.page-nav {
       top: 0;
       background: rgba(253,250,246,.97);
-      padding: 14px 64px;
+      padding: 10px 64px;
       border-bottom: 1px solid var(--border);
     }
-    .logo { display: flex; align-items: center; gap: 16px; cursor: pointer; }
-    .logo-img {
-      height: 56px; width: auto; object-fit: contain;
-    }
+
+    .logo-wordmark { font-family:'Montserrat',sans-serif; font-size:13px; font-weight:600; letter-spacing:.38em; text-transform:uppercase; color:var(--dark); text-decoration:none; transition:color .2s; }
 
     .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a {
@@ -261,14 +259,7 @@
 
 <!-- ░░ NAVIGATION ░░ -->
 <nav id="mainNav" class="page-nav">
-  <a href="index.html" class="logo">
-    <img class="logo-img" src="logo_full_trans.png" alt="EXIT Outdoor Living"
-         onerror="this.style.display='none';document.getElementById('logoText').style.display='flex'">
-    <div id="logoText" style="display:none;flex-direction:column;">
-      <span style="font-family:'Montserrat',sans-serif;font-weight:500;font-size:11px;letter-spacing:.38em;color:var(--dark);">EXIT OUTDOOR LIVING</span>
-      <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;letter-spacing:.18em;color:var(--muted);">Outdoor Living</span>
-    </div>
-  </a>
+  <a href="index.html" class="logo-wordmark">EXIT OUTDOOR LIVING</a>
 
   <ul class="nav-links">
     <li><a href="koleksiyon.html" data-t="navCollections">Koleksiyonlar</a></li>
