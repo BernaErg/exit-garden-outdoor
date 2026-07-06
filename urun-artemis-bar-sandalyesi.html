@@ -24,6 +24,12 @@
     .logo-exit { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--dark); line-height:1; transition:color .2s; }
     .logo-sub { font-family:'Cormorant Garamond',serif; font-size:10px; font-weight:300; letter-spacing:.42em; text-transform:uppercase; color:var(--olive); line-height:1; transition:color .2s; }
 
+    .nav-divider { display:flex; align-items:center; gap:7px; width:100px; margin:0 auto 2px; }
+    .nav-divider::before, .nav-divider::after { content:''; flex:1; height:0.5px; background:var(--olive); opacity:.45; }
+    .nav-gem { width:4px; height:4px; border:0.5px solid var(--olive); transform:rotate(45deg); opacity:.6; flex-shrink:0; }
+    .hero-active .nav-divider::before, .hero-active .nav-divider::after { background:rgba(255,255,255,.35); opacity:1; }
+    .hero-active .nav-gem { border-color:rgba(255,255,255,.35); opacity:1; }
+
     .nav-links { display:flex; gap:24px; list-style:none; }
     .nav-links a { font-size:10px; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--dark); position:relative; transition:color .2s; }
     .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--olive); transform:scaleX(0); transition:transform .3s ease; }
@@ -69,6 +75,7 @@
   <span class="logo-exit">EXIT</span>
   <span class="logo-sub">OUTDOOR LIVING</span>
 </a>
+  <div class="nav-divider"><span class="nav-gem"></span></div>
   <ul class="nav-links">
     <li><a href="koleksiyon.html" class="active" data-t="navCollections">Koleksiyonlar</a></li>
     <li><a href="about.html" data-t="navStory">Hakkımızda</a></li>
