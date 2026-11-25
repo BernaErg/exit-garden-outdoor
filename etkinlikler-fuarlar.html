@@ -15,7 +15,7 @@
     nav { position:fixed; top:34px; left:0; right:0; z-index:200; padding:16px 64px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; transition:background .4s,padding .3s,top .4s; }
     nav.scrolled { top:0; background:rgba(253,250,246,.97); padding:10px 64px; border-bottom:1px solid var(--border); }
     nav.page-nav { top:0; background:rgba(253,250,246,.97); padding:10px 64px; border-bottom:1px solid var(--border); }
-    .nav-logo { height:52px; width:auto; display:block; }
+    .nav-logo { height:72px; width:auto; display:block; }
     .logo-wordmark { display:flex; flex-direction:column; align-items:center; text-decoration:none; gap:3px; }
     .logo-exit { font-family:'Philosopher',serif; font-size:24px; font-weight:400; letter-spacing:.18em; text-transform:uppercase; color:var(--dark); line-height:1; transition:color .2s; }
     .logo-sub { font-family:'Philosopher',serif; font-size:9px; font-weight:400; letter-spacing:.40em; text-transform:uppercase; color:var(--olive); line-height:1; transition:color .2s; }
@@ -49,7 +49,7 @@
     .fair-name { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:300; margin-bottom:8px; }
     .fair-desc { font-size:13px; line-height:1.8; color:var(--dark); max-width:560px; }
     @media (max-width:680px) { .fair-item { grid-template-columns:1fr; } }
-    footer { background:var(--dark); color:var(--cream); padding:88px 80px 40px; }
+    footer { background: var(--olive-dark); color:var(--cream); padding:88px 80px 40px; }
     .ft-top { display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:56px; padding-bottom:64px; border-bottom:1px solid rgba(255,255,255,.09); margin-bottom:36px; }
     .ft-logo { height:60px; width:auto; filter:brightness(0) invert(1); margin-bottom:24px; }
     .ft-tagline { font-size:12px; line-height:1.85; color:rgba(245,240,232,.4); margin-bottom:28px; }
@@ -70,8 +70,7 @@
   <a href="index.html" class="logo-wordmark">
     <img src="exit-garden-logo.png" alt="EXIT Garden" class="nav-logo">
   </a>
-  <div class="nav-divider"><span class="nav-gem"></span></div>
-  <ul class="nav-links"><li><a href="koleksiyon.html" data-t="navCollections">Koleksiyonlar</a></li><li><a href="about.html" data-t="navStory">Hakkımızda</a></li><li><a href="index.html#projects" data-t="navProjects">Projeler</a></li><li><a href="#" data-t="navDesigners">Tasarımcılar</a></li><li><a href="#" data-t="navEvents">Etkinlikler</a></li><li><a href="#" data-t="navLounge">EXIT Lounge</a></li><li><a href="uretim.html">Üretim</a></li><li><a href="surdurulebilirlik.html">Sürdürülebilirlik</a></li><li><a href="iletisim.html" data-t="navContact">İletişim</a></li><li><a href="sss.html" data-t="navSSS">SSS</a></li></ul>
+  <ul class="nav-links"><li><a href="koleksiyon.html" data-t="navCollections">Koleksiyonlar</a></li><li><a href="about.html" data-t="navStory">Hakkımızda</a></li><li><a href="index.html#projects" data-t="navProjects">Projeler</a></li><li><a href="#" data-t="navEvents">Etkinlikler</a></li><li><a href="uretim.html">Üretim</a></li><li><a href="surdurulebilirlik.html">Sürdürülebilirlik</a></li><li><a href="iletisim.html" data-t="navContact">İletişim</a></li><li><a href="sss.html" data-t="navSSS">SSS</a></li></ul>
   <div class="nav-right"><div class="nav-lang"><span class="on" data-lang="tr" onclick="setLang('tr')">TR</span><span style="opacity:.3;cursor:default;">/</span><span data-lang="en" onclick="setLang('en')">EN</span></div><svg class="nav-icon" width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M12 12 L16 16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
 </nav>
 
@@ -110,7 +109,7 @@
 
 <footer>
   <div class="ft-top">
-    <div><img class="ft-logo" src="logo_full_trans.png" alt="EXIT Outdoor Living" onerror="this.style.display='none'"><p class="ft-tagline" data-t="ftTagline">Zamansız dış mekânlar için tasarlandı.<br>Türkiye ve Dünya Geneli Projeler<br>www.exitgarden.com</p><div class="ft-social"><a href="#" title="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a></div></div>
+    <div><img class="ft-logo" src="exit-garden-logo.png" alt="EXIT Outdoor Living" onerror="this.style.display='none'"><p class="ft-tagline" data-t="ftTagline">Zamansız dış mekânlar için tasarlandı.<br>Türkiye ve Dünya Geneli Projeler<br>www.exitgarden.com</p><div class="ft-social"><a href="#" title="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a></div></div>
     <div><div class="ft-col-title" data-t="ftCol1">Koleksiyonlar</div><ul class="ft-links"><li><a href="koleksiyon.html" data-t="ftLink1a">Bahçe Mobilyaları</a></li><li><a href="koleksiyon.html" data-t="ftLink1b">Şezlonglar</a></li><li><a href="koleksiyon.html" data-t="ftLink1c">Yemek Setleri</a></li><li><a href="koleksiyon.html" data-t="ftLink1d">Yan Masalar</a></li><li><a href="koleksiyon.html" data-t="ftLink1e">Aksesuarlar</a></li></ul></div>
     <div><div class="ft-col-title" data-t="ftCol2">Şirket</div><ul class="ft-links"><li><a href="about.html" data-t="ftLink2a">Hakkımızda</a></li><li><a href="index.html#projects" data-t="ftLink2b">Projeler</a></li><li><a href="#" data-t="ftLink2c">Malzemeler</a></li><li><a href="index.html#projects" data-t="ftLink2d">B2B &amp; Otelcilik</a></li><li><a href="ziyaret-edin.html" data-t="ftLink2e">Showroom</a></li></ul></div>
     <div><div class="ft-col-title" data-t="ftCol3">İletişim</div><ul class="ft-links"><li><a href="mailto:info@exitgarden.com.tr">info@exitgarden.com.tr</a></li><li><a href="tel:02244110724">0 224 411 07 24</a></li><li style="margin-top:4px;"><a href="https://wa.me/905547784570" target="_blank" rel="noopener" style="font-size:12px;color:rgba(245,240,232,.48);">WhatsApp: +90 554 778 45 70</a></li></ul></div>
