@@ -20,6 +20,7 @@
     /* NAV */
     nav { position:fixed; top:0; left:0; right:0; z-index:200; padding:10px 64px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; background:rgba(253,250,246,.97); border-bottom:1px solid var(--border); transition:box-shadow .3s; }
     nav.scrolled { box-shadow:0 2px 20px rgba(0,0,0,.06); }
+    .nav-logo { height:52px; width:auto; display:block; }
     .logo-wordmark { display:flex; flex-direction:column; align-items:center; text-decoration:none; gap:3px; }
     .logo-exit { font-family:'Philosopher',serif; font-size:24px; font-weight:400; letter-spacing:.18em; text-transform:uppercase; color:var(--dark); line-height:1; }
     .logo-sub { font-family:'Philosopher',serif; font-size:9px; font-weight:400; letter-spacing:.40em; text-transform:uppercase; color:var(--olive); line-height:1; }
@@ -125,7 +126,6 @@
     .mvs-card {
       background:var(--dark); padding:48px 44px;
     }
-    .mvs-num { font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; color:rgba(255,255,255,.08); line-height:1; margin-bottom:16px; }
     .mvs-title { font-size:9px; letter-spacing:.4em; text-transform:uppercase; color:var(--khaki); margin-bottom:20px; }
     .mvs-card p { font-size:14px; line-height:1.9; color:rgba(245,240,232,.6); }
 
@@ -184,8 +184,7 @@
 
 <nav id="mainNav">
   <a href="index.html" class="logo-wordmark">
-    <span class="logo-exit">EXIT</span>
-    <span class="logo-sub">OUTDOOR LIVING</span>
+    <img src="exit-garden-logo.png" alt="EXIT Garden" class="nav-logo">
   </a>
   <div class="nav-divider"><span class="nav-gem"></span></div>
   <ul class="nav-links">
@@ -214,7 +213,7 @@
 <section class="about-hero fu">
   <img class="brand-logo" src="exit-garden-logo.png" alt="EXIT Garden" onerror="this.style.display='none'">
   <span class="hero-label" data-t="heroLabel">Hakkımızda</span>
-  <h1 data-t="heroTitle">Üretimden tasarıma,<br>baştan sona <em>kendimiz</em></h1>
+  <h1 data-t="heroTitle">Üretimden tasarıma, baştan sona <em>kendimiz</em></h1>
   <p class="hero-sub" data-t="heroSub">2007'den bu yana BG Group çatısı altında, kendi tesislerimizde tasarlayıp ürettiğimiz ürünlerle Türkiye ve dünya genelinde hizmet veriyoruz.</p>
 </section>
 
@@ -234,8 +233,6 @@
 
 <!-- KOL ŞİRKETLER -->
 <section class="divisions fu">
-  <span class="divisions-label" data-t="divLabel">Grup Şirketleri</span>
-  <h2 data-t="divTitle">Üç güçlü marka,<br>tek çatı altında</h2>
   <div class="div-grid">
     <div class="div-card">
       <div class="div-card-name">EXIT<span>garden</span></div>
@@ -258,20 +255,17 @@
 <!-- MİSYON / VİZYON / STRATEJİ -->
 <section class="mvs fu">
   <span class="mvs-label" data-t="mvsLabel">Kurumsal Kimlik</span>
-  <h2 data-t="mvsTitle">Misyon, Vizyon<br>ve Strateji</h2>
+  <h2 data-t="mvsTitle">Misyon, Vizyon ve Strateji</h2>
   <div class="mvs-grid">
     <div class="mvs-card">
-      <div class="mvs-num">01</div>
       <div class="mvs-title" data-t="mvsT1">Misyon</div>
       <p data-t="mvsP1">Faaliyet gösterdiğimiz sektörlerde, tasarım gücümüzü ve ürün kalitemizi sürekli geliştirerek, konforlu ve ekonomik ürünler üretmek.</p>
     </div>
     <div class="mvs-card">
-      <div class="mvs-num">02</div>
       <div class="mvs-title" data-t="mvsT2">Vizyon</div>
       <p data-t="mvsP2">HoReCa müşterilerimizin her an ulaşabileceği kadar yakın, her türlü sorunlarına çözüm üretebilecek kadar uzman, bu alanda Dünya'da tanınan kurumsal bir kuruluş olmak.</p>
     </div>
     <div class="mvs-card">
-      <div class="mvs-num">03</div>
       <div class="mvs-title" data-t="mvsT3">Strateji</div>
       <p data-t="mvsP3">Markanın var olan tecrübe ve vizyonunu kalite, fiyat ve hızdan oluşan güçlü yanlarıyla bütünleştirerek fonksiyonel çözümler üretmek ve her bütçeye uygun, iyi tasarlanmış ürünlerle mümkün olduğunca çok insanın erişebileceği bir marka olmak.</p>
     </div>
@@ -331,22 +325,20 @@ const T = {
     navCollections:'Koleksiyonlar', navStory:'Hakkımızda', navProjects:'Projeler',
     navUretim:'Üretim', navSurdurulebilirlik:'Sürdürülebilirlik', navContact:'İletişim', navSSS:'SSS',
     heroLabel:'Hakkımızda',
-    heroTitle:'Üretimden tasarıma,<br>baştan sona <em>kendimiz</em>',
+    heroTitle:'Üretimden tasarıma, baştan sona <em>kendimiz</em>',
     heroSub:'2007\'den bu yana BG Group çatısı altında, kendi tesislerimizde tasarlayıp ürettiğimiz ürünlerle Türkiye ve dünya genelinde hizmet veriyoruz.',
     introLabel:'BG Group',
     introP1:'<strong>bg group</strong>, 2007 yılından günümüze kontrakt tekstil, bahçe mobilyası ve ofis mobilyası sektörlerinde hizmet vermektedir.',
     introP2:'Kalıcı ve sağlam işbirlikleri odağında hareket eden bg group, zamanında ve hızlı teslimat ilkesiyle makine parkurunu sürekli güncellemekte, hammadde stoklarını eksiksiz takip etmektedir.',
     introP3:'İnsan ve çevre odaklı bir misyonu sahiplenerek, tüm ürünlerinde mümkün olduğunca <strong>geri dönüştürülebilir ham maddeler</strong> kullanmaktadır.',
     introP4:'Aksamayan, düzenli ve disiplinli bir iş karakterini şirket kültürü olarak benimseyen bg group, hizmet verdiği sektörlerde <strong>referans gösterilen bir kuruluş</strong> vizyonuna sahiptir.',
-    divLabel:'Grup Şirketleri',
-    divTitle:'Üç güçlü marka,<br>tek çatı altında',
     divCard1Stat:'8.000 m² · Yıllık 250.000 adet',
     divCard1Text:'Dış mekan mobilya gruplarını hem bahçe hem de proje mobilyaları sektörü için üretmekte olup, özellikle alüminyum fileli sandalye ve şezlong üretim kapasitesiyle Türkiye\'nin en büyüğü olma yolunda ilerlemektedir.',
     divCard2Stat:'1.500 m² · Yıllık 150.000 mt',
     divCard2Text:'Kontrakt, ofis ve dış mekan kumaşlarını öncelikle kendi markaları için üretmektedir. Yüksek kaliteli tekstil çözümleriyle sektörün güvenilir tedarikçisi konumundadır.',
     divCard3Stat:'2.400 m² · Yıllık 120.000 adet',
     divCard3Text:'Kendine özgü ofis koltuk ve kanepeleri üretimiyle faaliyetlerini proje odaklı sürdürmektedir. Kurumsal mekanlar için özel çözümler sunar.',
-    mvsLabel:'Kurumsal Kimlik', mvsTitle:'Misyon, Vizyon<br>ve Strateji',
+    mvsLabel:'Kurumsal Kimlik', mvsTitle:'Misyon, Vizyon ve Strateji',
     mvsT1:'Misyon', mvsT2:'Vizyon', mvsT3:'Strateji',
     mvsP1:'Faaliyet gösterdiğimiz sektörlerde, tasarım gücümüzü ve ürün kalitemizi sürekli geliştirerek, konforlu ve ekonomik ürünler üretmek.',
     mvsP2:'HoReCa müşterilerimizin her an ulaşabileceği kadar yakın, her türlü sorunlarına çözüm üretebilecek kadar uzman, bu alanda Dünya\'da tanınan kurumsal bir kuruluş olmak.',
@@ -361,22 +353,20 @@ const T = {
     navCollections:'Collections', navStory:'About Us', navProjects:'Projects',
     navUretim:'Production', navSurdurulebilirlik:'Sustainability', navContact:'Contact', navSSS:'FAQ',
     heroLabel:'About Us',
-    heroTitle:'Manufactured entirely <em>in-house</em>,<br>from concept to completion',
+    heroTitle:'Manufactured entirely <em>in-house</em>, from concept to completion',
     heroSub:'Since 2007, under the BG Group umbrella, we design and manufacture our products at our own facilities, serving Türkiye and the world.',
     introLabel:'BG Group',
     introP1:'<strong>bg group</strong> has been serving the contract textile, garden furniture and office furniture sectors since 2007.',
     introP2:'With a focus on lasting partnerships, bg group operates on a principle of on-time, rapid delivery — continuously updating its machinery and maintaining flawless raw material stocks.',
     introP3:'Embracing a human- and environment-centred mission, all products use <strong>recyclable raw materials</strong> wherever possible.',
     introP4:'bg group, which has adopted a consistent, disciplined business character as its corporate culture, holds a vision of being a <strong>reference organisation</strong> in the sectors it serves.',
-    divLabel:'Group Companies',
-    divTitle:'Three strong brands,<br>one roof',
     divCard1Stat:'8,000 m² · 250,000 units/year',
     divCard1Text:'Producing outdoor furniture groups for both garden and contract furniture sectors, it is on track to become Türkiye\'s largest producer of aluminium mesh chairs and sun loungers.',
     divCard2Stat:'1,500 m² · 150,000 mt/year',
     divCard2Text:'Produces contract, office and outdoor fabrics primarily for its own brands. A trusted supplier in the sector with high-quality textile solutions.',
     divCard3Stat:'2,400 m² · 120,000 units/year',
     divCard3Text:'Continues its project-focused activities with its distinctive office chairs and sofas, offering bespoke solutions for corporate spaces.',
-    mvsLabel:'Corporate Identity', mvsTitle:'Mission, Vision<br>and Strategy',
+    mvsLabel:'Corporate Identity', mvsTitle:'Mission, Vision and Strategy',
     mvsT1:'Mission', mvsT2:'Vision', mvsT3:'Strategy',
     mvsP1:'To continuously improve our design capability and product quality in our sectors, producing comfortable and economical products.',
     mvsP2:'To be close enough for our HoReCa clients to reach us at any moment, expert enough to solve any challenge, and to become a globally recognised corporate organisation in this field.',
