@@ -152,7 +152,7 @@
       transition: transform .75s cubic-bezier(.25,.46,.45,.94), filter .4s ease;
       filter: brightness(0.82);
     }
-    .col-card:hover .col-img-wrap img { transform: scale(1.05); filter: brightness(1); }
+    .col-card:hover .col-img-wrap img { transform: scale(1.12); filter: brightness(1); }
     .col-card-overlay {
       position: absolute; bottom: 0; left: 0; right: 0;
       padding: 36px 32px 32px;
@@ -199,7 +199,7 @@
       transition: transform .6s ease, filter .4s ease;
       filter: brightness(0.82);
     }
-    .prod-card:hover .prod-img-box img { transform: scale(1.05); filter: brightness(1); }
+    .prod-card:hover .prod-img-box img { transform: scale(1.12); filter: brightness(1); }
     .prod-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: 20px; font-weight: 300; margin-bottom: 2px;
@@ -240,7 +240,25 @@
 
     /* ═══ LANG TRANSITION ═══ */
     [data-t] { transition: opacity .18s ease; }
-  </style>
+  
+    /* ══ LIGHTBOX ══ */
+    #lb { display:none; position:fixed; inset:0; z-index:9000; background:rgba(0,0,0,.92);
+          align-items:center; justify-content:center; cursor:zoom-out; }
+    #lb.open { display:flex; }
+    #lb img { max-width:92vw; max-height:92vh; object-fit:contain; border-radius:2px;
+               box-shadow:0 32px 80px rgba(0,0,0,.6); pointer-events:none; }
+    #lb-close { position:fixed; top:20px; right:28px; color:#fff; font-size:32px;
+                 cursor:pointer; line-height:1; opacity:.8; user-select:none; }
+    #lb-close:hover { opacity:1; }
+    .col-img-wrap { position:relative; }
+    .col-zoom-btn { position:absolute; bottom:10px; right:10px; z-index:2;
+                     background:rgba(0,0,0,.45); color:#fff; border:none;
+                     width:34px; height:34px; border-radius:50%; cursor:pointer;
+                     display:flex; align-items:center; justify-content:center;
+                     opacity:0; transition:opacity .2s; font-size:14px; }
+    .col-card:hover .col-zoom-btn { opacity:1; }
+
+    </style>
 </head>
 <body>
 
@@ -284,54 +302,42 @@
   <!-- Category cards -->
   <div class="col-grid">
     <a href="kategori-oturma-grubu.html" class="col-card">
-      <div class="col-img-wrap">
-        <img src="burce-oturma-grubu-2.png" alt="Oturma Grupları">
-      </div>
+      <div class="col-img-wrap"><img src="burce-oturma-grubu-2.png" alt="Oturma Grupları"><button class="col-zoom-btn" onclick="openLb(this)" title="Büyüt">⤢</button></div>
       <div class="col-card-overlay">
         <div class="col-card-name" data-t="col1Name">Oturma Grupları</div>
         <div class="col-card-arrow">→</div>
       </div>
     </a>
     <a href="kategori-sehpalar.html" class="col-card">
-      <div class="col-img-wrap">
-        <img src="dido-sehpa.png" alt="Sehpalar">
-      </div>
+      <div class="col-img-wrap"><img src="dido-sehpa.png" alt="Sehpalar"><button class="col-zoom-btn" onclick="openLb(this)" title="Büyüt">⤢</button></div>
       <div class="col-card-overlay">
         <div class="col-card-name" data-t="col5Name">Sehpalar</div>
         <div class="col-card-arrow">→</div>
       </div>
     </a>
     <a href="kategori-bar-bistro.html" class="col-card">
-      <div class="col-img-wrap">
-        <img src="enzo-bar-masasi.png" alt="Bar &amp; Bistro">
-      </div>
+      <div class="col-img-wrap"><img src="enzo-bar-masasi.png" alt="Bar &amp; Bistro"><button class="col-zoom-btn" onclick="openLb(this)" title="Büyüt">⤢</button></div>
       <div class="col-card-overlay">
         <div class="col-card-name" data-t="col6Name">Bar &amp; Bistro</div>
         <div class="col-card-arrow">→</div>
       </div>
     </a>
     <a href="kategori-sezlonglar.html" class="col-card">
-      <div class="col-img-wrap">
-        <img src="lounger_tekli.jpg" alt="Şezlonglar">
-      </div>
+      <div class="col-img-wrap"><img src="lounger_tekli.jpg" alt="Şezlonglar"><button class="col-zoom-btn" onclick="openLb(this)" title="Büyüt">⤢</button></div>
       <div class="col-card-overlay">
         <div class="col-card-name" data-t="col2Name">Şezlonglar</div>
         <div class="col-card-arrow">→</div>
       </div>
     </a>
     <a href="kategori-masalar.html" class="col-card">
-      <div class="col-img-wrap">
-        <img src="Concept_Masa.png" alt="Masalar">
-      </div>
+      <div class="col-img-wrap"><img src="Concept_Masa.png" alt="Masalar"><button class="col-zoom-btn" onclick="openLb(this)" title="Büyüt">⤢</button></div>
       <div class="col-card-overlay">
         <div class="col-card-name" data-t="col3Name">Masalar</div>
         <div class="col-card-arrow">→</div>
       </div>
     </a>
     <a href="kategori-sandalyeler.html" class="col-card">
-      <div class="col-img-wrap">
-        <img src="armchair.jpg" alt="Sandalyeler">
-      </div>
+      <div class="col-img-wrap"><img src="armchair.jpg" alt="Sandalyeler"><button class="col-zoom-btn" onclick="openLb(this)" title="Büyüt">⤢</button></div>
       <div class="col-card-overlay">
         <div class="col-card-name" data-t="col4Name">Sandalyeler</div>
         <div class="col-card-arrow">→</div>
@@ -512,6 +518,33 @@
 
   const savedLang = localStorage.getItem('eg-lang') || 'tr';
   setLang(savedLang);
+</script>
+
+<!-- LIGHTBOX -->
+<div id="lb">
+  <span id="lb-close">✕</span>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<script>
+  /* ── LIGHTBOX ── */
+  function openLb(btn) {
+    event.preventDefault(); event.stopPropagation();
+    var img = btn.previousElementSibling;
+    document.getElementById('lb-img').src = img.src;
+    document.getElementById('lb').classList.add('open');
+  }
+  document.getElementById('lb').addEventListener('click', function(){
+    this.classList.remove('open');
+    document.getElementById('lb-img').src = '';
+  });
+  document.getElementById('lb-close').addEventListener('click', function(e){
+    e.stopPropagation();
+    document.getElementById('lb').classList.remove('open');
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') document.getElementById('lb').classList.remove('open');
+  });
 </script>
 </body>
 </html>
