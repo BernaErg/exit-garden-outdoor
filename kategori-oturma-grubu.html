@@ -183,10 +183,16 @@
       </div>
     </div>
 
-    <!-- PLACEHOLDER – ikinci ürün gelince dolacak -->
-    <div class="product-card" style="cursor:default;background:var(--cream-mid);">
-      <div class="product-card-overlay" style="background:rgba(28,22,18,.04); display:flex; align-items:center; justify-content:center;">
-        <span style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);" data-t="comingSoon">Yakında</span>
+    <!-- ATHENA -->
+    <div class="product-card" onclick="openModal('athena')">
+      <img class="product-card-img" src="athena-foto-1.png" alt="ATHENA Oturma Grubu"
+           onerror="this.src='athena-foto-2.png'; this.onerror=null;">
+      <div class="product-card-overlay">
+        <div class="product-card-name">ATHENA</div>
+        <div class="product-card-sub" data-t="cardSub">Oturma Grubu · 4 Parça</div>
+      </div>
+      <div class="product-card-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
     </div>
 
@@ -329,6 +335,39 @@
         { title:'2-Seat Sofa',  val:'136×78×H68 · 0.721 m³ · ×1' },
         { title:'Armchair',     val:'86×84×H130 · 0.940 m³ · ×2' },
         { title:'Coffee Table', val:'81×142×H66 · 0.759 m³ · ×1' },
+      ],
+    }
+
+    athena: {
+      name: 'ATHENA',
+      nameTR: 'ATHENA',
+      nameEN: 'ATHENA',
+      catTR: 'Oturma Grubu',
+      catEN: 'Seating Group',
+      photos: ['athena-foto-1.png','athena-foto-2.png','athena-foto-3.png','athena-specs.png'],
+      specsTR: [
+        { piece:'Üçlü Koltuk', w:'200 cm', d:'80 cm', h:'82 cm', kg:'26,80 kg' },
+        { piece:'İkili Koltuk', w:'138 cm', d:'80 cm', h:'82 cm', kg:'20,40 kg' },
+        { piece:'Tekli Koltuk', w:'80 cm',  d:'80 cm', h:'82 cm', kg:'22,60 kg' },
+        { piece:'Orta Sehpa',  w:'80 cm',  d:'140 cm',h:'65 cm', kg:'27,20 kg' },
+      ],
+      specsEN: [
+        { piece:'3-Seat Sofa',  w:'200 cm', d:'80 cm', h:'82 cm', kg:'26.80 kg' },
+        { piece:'2-Seat Sofa',  w:'138 cm', d:'80 cm', h:'82 cm', kg:'20.40 kg' },
+        { piece:'Armchair',     w:'80 cm',  d:'80 cm', h:'82 cm', kg:'22.60 kg' },
+        { piece:'Coffee Table', w:'80 cm',  d:'140 cm',h:'65 cm', kg:'27.20 kg' },
+      ],
+      shipTR: [
+        { title:'Üçlü Koltuk', val:'198×78×H70 · 1,081 m³ · ×1' },
+        { title:'İkili Koltuk', val:'140×72×H74 · 0,745 m³ · ×1' },
+        { title:'Tekli Koltuk', val:'90×80×H130 · 0,936 m³ · ×2' },
+        { title:'Orta Sehpa',  val:'81×141×H22 · 0,251 m³ · ×1' },
+      ],
+      shipEN: [
+        { title:'3-Seat Sofa',  val:'198×78×H70 · 1.081 m³ · ×1' },
+        { title:'2-Seat Sofa',  val:'140×72×H74 · 0.745 m³ · ×1' },
+        { title:'Armchair',     val:'90×80×H130 · 0.936 m³ · ×2' },
+        { title:'Coffee Table', val:'81×141×H22 · 0.251 m³ · ×1' },
       ],
     }
   };
