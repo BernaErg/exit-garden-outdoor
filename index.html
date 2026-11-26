@@ -1047,6 +1047,19 @@
     });
 
     localStorage.setItem('eg-lang', lang);
+
+    /* Update current hero product label immediately */
+    var lblEl = document.getElementById('heroProductLabel');
+    if (lblEl) {
+      var pLabels = ['ENZO Oturma Grubu', 'NİRVANA Oturma Grubu', 'TENEDOS Oturma Grubu'];
+      var pLabelsEN = ['ENZO Seating Group', 'NIRVANA Seating Group', 'TENEDOS Seating Group'];
+      var curIdx = window._heroSlideIdx !== undefined ? window._heroSlideIdx : 0;
+      lblEl.style.opacity = '0';
+      setTimeout(function() {
+        lblEl.textContent = lang === 'en' ? pLabelsEN[curIdx] : pLabels[curIdx];
+        lblEl.style.opacity = '1';
+      }, 150);
+    }
   }
 
   /* ── NAV: transparent on hero, solid on scroll ───────────── */
@@ -1115,9 +1128,11 @@
     var labelEl = document.getElementById('heroProductLabel');
 
     var i = 0;
+    window._heroSlideIdx = 0;
     setInterval(function() {
       var prev = slides[i];
       i = (i + 1) % slides.length;
+      window._heroSlideIdx = i;
       var next = slides[i];
       // Update product label
       if (labelEl) {
