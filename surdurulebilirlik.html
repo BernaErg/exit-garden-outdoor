@@ -128,9 +128,9 @@
 </nav>
 
 <section class="page-header">
-  <span class="sec-label">bg group · EXIT Outdoor Living</span>
-  <h1>Sürdürülebilirlik</h1>
-  <p class="lead">bg group, gelecek nesillere daha yaşanabilir bir dünya bırakma hedefiyle, her adımında çevresel duyarlılığı ön planda tutmaktadır.</p>
+  <span class="sec-label" data-t="secLabel">bg group · EXIT Outdoor Living</span>
+  <h1 data-t="pageH1">Sürdürülebilirlik</h1>
+  <p class="lead" data-t="pageLead">bg group, gelecek nesillere daha yaşanabilir bir dünya bırakma hedefiyle, her adımında çevresel duyarlılığı ön planda tutmaktadır.</p>
 </section>
 
 <section class="content fu">
@@ -139,7 +139,7 @@
     <div class="section-block">
       <div class="block-num">1</div>
       <div class="block-body">
-        <h2>Sürdürülebilir Malzeme Kullanımı</h2>
+        <h2 data-t="h2a">Sürdürülebilir Malzeme Kullanımı</h2>
         <p>Yenilenebilir ve çevre dostu sertifikalı ahşap ile geri dönüştürülmüş veya biyobozunur malzemelerin kullanımı, hem çevresel etkileri azaltmakta hem de doğal kaynak tüketimini minimize etmektedir.</p>
         <p>Doğru lojistik yönetimi sayesinde yerel malzemeleri tercih etmek, taşıma sürecinden kaynaklanan karbon ayak izini de önemli ölçüde azaltır.</p>
         <div class="spec-row">
@@ -153,7 +153,7 @@
     <div class="section-block">
       <div class="block-num">2</div>
       <div class="block-body">
-        <h2>Enerji Verimliliği</h2>
+        <h2 data-t="h2b">Enerji Verimliliği</h2>
         <p>Üretim süreçlerimizde yenilenebilir enerji kaynaklarına yönelerek, enerji tüketimini azaltmakta ve karbon salınımını minimize etmekteyiz.</p>
         <p>Kendi güneş enerjisi santraline sahip olan işletmemiz, bu alanda öncü kuruluşlardan biridir.</p>
         <div class="spec-row">
@@ -167,7 +167,7 @@
     <div class="section-block">
       <div class="block-num">3</div>
       <div class="block-body">
-        <h2>Uzun Ömürlü Tasarım</h2>
+        <h2 data-t="h2c">Uzun Ömürlü Tasarım</h2>
         <p>Sürdürülebilir mobilya üretiminde ürünlerin dayanıklılığı ve uzun ömürlü olması büyük önem taşır. Kaliteli malzemelerle ve zamansız tasarımlarla üretilen mobilyalar, daha uzun süre kullanılabilmekte ve bu da doğal kaynakların korunmasına katkı sağlamaktadır.</p>
         <div class="spec-row">
           <span class="spec-pill">Zamansız Tasarım</span>
@@ -179,7 +179,7 @@
     <div class="section-block">
       <div class="block-num">4</div>
       <div class="block-body">
-        <h2>Geri Dönüşüm ve Yeniden Kullanım</h2>
+        <h2 data-t="h2d">Geri Dönüşüm ve Yeniden Kullanım</h2>
         <p>Modüler tasarım prensibiyle hareket eden Ar-Ge departmanımız, ürünlerin yenilenme ya da tamir ihtiyacı duyduğunda minimum yeni malzeme tüketimini hedefler.</p>
         <p>Eski mobilyaların onarılabilir, farklı alanlarda kullanılabilir veya geri dönüştürülebilir olması, atık miktarını azaltmakta ve yeni malzeme ihtiyacını en aza indirmektedir.</p>
         <div class="spec-row">
@@ -192,7 +192,7 @@
     <div class="section-block">
       <div class="block-num">5</div>
       <div class="block-body">
-        <h2>Sosyal Sorumluluk</h2>
+        <h2 data-t="h2e">Sosyal Sorumluluk</h2>
         <p>Çalışan haklarına saygı, adil çalışma koşulları ve yerel topluluklarla iş birliği, sürdürülebilirliğin sosyal boyutunu oluşturur. Bu yaklaşım, çevresel etkilerin yanı sıra sosyal adalet ve toplumsal gelişimi de desteklemektedir.</p>
         <div class="spec-row">
           <span class="spec-pill">Adil Çalışma Koşulları</span>
@@ -251,10 +251,22 @@
 </footer>
 
 <script>
+  const T = {
+    tr: { pageTitle:'EXIT Outdoor Living — Sürdürülebilirlik', secLabel:'bg group · EXIT Outdoor Living', pageH1:'Sürdürülebilirlik', pageLead:'bg group, gelecek nesillere daha yaşanabilir bir dünya bırakma hedefiyle, her adımında sürdürülebilirliği önceliklendirir. Üretimden tasarıma, malzeme seçiminden lojistiğe kadar çevreye duyarlı bir yaklaşım benimsiyoruz.', h2a:'Sürdürülebilir Malzeme Kullanımı', h2b:'Enerji Verimliliği', h2c:'Uzun Ömürlü Tasarım', h2d:'Geri Dönüşüm ve Yeniden Kullanım', h2e:'Sosyal Sorumluluk', navCollections:'Koleksiyonlar', navStory:'Hakkımızda', navProjects:'Projeler', navEvents:'Etkinlikler', navUretim:'Üretim', navSurdurulebilirlik:'Sürdürülebilirlik', navContact:'İletişim', navSSS:'SSS' },
+    en: { pageTitle:'EXIT Outdoor Living — Sustainability', secLabel:'bg group · EXIT Outdoor Living', pageH1:'Sustainability', pageLead:'bg group prioritises sustainability at every step, with a commitment to leaving a more liveable world for future generations. We adopt an environmentally responsible approach from production and design to material selection and logistics.', h2a:'Sustainable Material Use', h2b:'Energy Efficiency', h2c:'Long-Lasting Design', h2d:'Recycling & Reuse', h2e:'Social Responsibility', navCollections:'Collections', navStory:'About Us', navProjects:'Projects', navEvents:'Events', navUretim:'Production', navSurdurulebilirlik:'Sustainability', navContact:'Contact', navSSS:'FAQ' }
+  };
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.title = T[lang].pageTitle;
+    document.querySelectorAll('[data-t]').forEach(el => { const k = el.dataset.t; if(T[lang][k] !== undefined) el.innerHTML = T[lang][k]; });
+    document.querySelectorAll('.nav-lang span[data-lang]').forEach(s => s.classList.toggle('on', s.dataset.lang === lang));
+    localStorage.setItem('eg-lang', lang);
+  }
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
   const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.1 });
   document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+  setLang(localStorage.getItem('eg-lang')||'tr');
 </script>
 </body>
 </html>

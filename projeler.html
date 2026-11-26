@@ -304,9 +304,9 @@
 
   <div class="nav-right">
     <div class="nav-lang">
-      <span class="on">TR</span>
+      <span class="on" data-lang="tr" onclick="setLang('tr')">TR</span>
       <span style="opacity:.3;cursor:default;">/</span>
-      <span>EN</span>
+      <span data-lang="en" onclick="setLang('en')">EN</span>
     </div>
     <svg class="nav-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
       <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.3"/>
@@ -320,9 +320,9 @@
   <div class="page-hero-bg"></div>
   <div class="page-hero-vignette"></div>
   <div class="page-hero-content">
-    <span class="page-hero-label">Referanslarımız</span>
-    <h1 class="page-hero-title">Projeler &amp; <em>Referanslar</em></h1>
-    <p class="page-hero-sub">Yurt içi ve yurt dışındaki lüks oteller, resort'lar ve kurumsal mekânlar için hayata geçirdiğimiz açık hava yaşam alanları.</p>
+    <span class="page-hero-label" data-t="heroLabel">Referanslarımız</span>
+    <h1 class="page-hero-title" data-t="heroTitle">Projeler &amp; <em>Referanslar</em></h1>
+    <p class="page-hero-sub" data-t="heroSub">Yurt içi ve yurt dışındaki lüks oteller, resort'lar ve kurumsal mekânlar için hayata geçirdiğimiz açık hava yaşam alanları.</p>
   </div>
 </div>
 
@@ -444,8 +444,8 @@
 
 <script>
   const T = {
-    tr: { navCollections:'Koleksiyonlar', navStory:'Hakkımızda', navProjects:'Projeler', navEvents:'Etkinlikler', navUretim:'Üretim', navSurdurulebilirlik:'Sürdürülebilirlik', navContact:'İletişim', navSSS:'SSS', pageTitle:'EXIT Outdoor Living — Projeler' },
-    en: { navCollections:'Collections', navStory:'About Us', navProjects:'Projects', navEvents:'Events', navUretim:'Production', navSurdurulebilirlik:'Sustainability', navContact:'Contact', navSSS:'FAQ', pageTitle:'EXIT Outdoor Living — Projects' }
+    tr: { navCollections:'Koleksiyonlar', navStory:'Hakkımızda', navProjects:'Projeler', navEvents:'Etkinlikler', navUretim:'Üretim', navSurdurulebilirlik:'Sürdürülebilirlik', navContact:'İletişim', navSSS:'SSS', pageTitle:'EXIT Outdoor Living — Projeler', heroLabel:'Referanslarımız', heroTitle:'Projeler &amp; <em>Referanslar</em>', heroSub:'Yurt içi ve yurt dışındaki lüks oteller, resort\'lar ve kurumsal mekânlar için hayata geçirdiğimiz açık hava yaşam alanları.' },
+    en: { navCollections:'Collections', navStory:'About Us', navProjects:'Projects', navEvents:'Events', navUretim:'Production', navSurdurulebilirlik:'Sustainability', navContact:'Contact', navSSS:'FAQ', pageTitle:'EXIT Outdoor Living — Projects', heroLabel:'Our References', heroTitle:'Projects &amp; <em>References</em>', heroSub:'Outdoor living spaces we have brought to life for luxury hotels, resorts and corporate venues at home and abroad.' }
   };
   function setLang(lang) {
     document.documentElement.lang = lang;

@@ -129,9 +129,9 @@
 </nav>
 
 <section class="page-header">
-  <span class="sec-label">bg group · EXIT Outdoor Living</span>
-  <h1>Dış Mekan Mobilya Üretimi</h1>
-  <p class="lead">bg group olarak, dış mekan mobilyaları alanında kalite, dayanıklılık ve tasarımı bir araya getiren çözümler sunuyoruz. Amacımız, dış mekan yaşam alanlarınıza hem estetik hem de uzun ömürlü ürünlerle değer katmaktır.</p>
+  <span class="sec-label"><span data-t="secLabel">bg group · EXIT Outdoor Living</span></span>
+  <h1 data-t="pageH1">Dış Mekan Mobilya Üretimi</h1>
+  <p class="lead" data-t="pageLead">bg group olarak, dış mekan mobilyaları alanında kalite, dayanıklılık ve tasarımı bir araya getiren çözümler sunuyoruz. Amacımız, dış mekan yaşam alanlarınıza hem estetik hem de uzun ömürlü ürünlerle değer katmaktır.</p>
 </section>
 
 <section class="content fu">
@@ -140,7 +140,7 @@
     <div class="section-block">
       <div class="block-num">01</div>
       <div class="block-body">
-        <h2>Malzeme ve Üretim Teknolojisinde Üstünlük</h2>
+        <h2 data-t="h2a">Malzeme ve Üretim Teknolojisinde Üstünlük</h2>
         <p>Mobilyalarımızın ana gövdesi, hafif ama son derece dayanıklı alüminyumdan üretilmektedir. Alüminyum yüzeyleri toz boya ile kaplayarak, ürünlerin korozyona ve dış etkilere karşı dayanıklılığını artırıyor, ömrünü uzatıyoruz.</p>
         <p>Fileli mobilyalarımızda, uluslararası standartlara uygun, dış mekan kullanımı için sertifikalandırılmış file malzemeler kullanıyoruz. Bu fileler, UV ışınlarına, neme ve aşınmaya karşı dayanıklılığıyla uzun ömürlü bir performans sunar.</p>
         <p>Ahşap detaylarda ise dış mekan koşullarına özel olarak seçilen iroko ağacını tercih ediyoruz. Doğal yapısıyla estetik bir dokunuş sunan iroko, dayanıklılığı sayesinde yıllarca sorunsuz bir kullanım sağlar.</p>
@@ -155,7 +155,7 @@
     <div class="section-block">
       <div class="block-num">02</div>
       <div class="block-body">
-        <h2>Tasarımdan Üretime Profesyonel Yaklaşım</h2>
+        <h2 data-t="h2b">Tasarımdan Üretime Profesyonel Yaklaşım</h2>
         <p>Üretim süreçlerimizde son teknoloji ekipmanlar ve uzman kadrolarla çalışıyoruz. Hassas CNC kesim, lazer kaynak ve polisaj gibi işlemler, ürünlerimizin hem sağlam hem de kusursuz bir görünüme sahip olmasını sağlar.</p>
         <p>Her aşamada uyguladığımız sıkı kalite kontrol, kullanıcı memnuniyetini en üst düzeyde tutar.</p>
         <div class="spec-row">
@@ -170,7 +170,7 @@
     <div class="section-block">
       <div class="block-num">03</div>
       <div class="block-body">
-        <h2>Dış Mekanda Yaşamı Güzelleştiriyoruz</h2>
+        <h2 data-t="h2c">Dış Mekanda Yaşamı Güzelleştiriyoruz</h2>
         <p>Modern ve zamansız tasarımlarımız, hem konforu hem de estetiği bir araya getiriyor. Bahçeler, teraslar, otel alanları ve kafe bahçeleri gibi dış mekanlara özel olarak tasarlanan mobilyalarımız, her ortamda uyum ve zarafet sağlar.</p>
         <p>bg group; dayanıklılığın, tasarımın ve işlevselliğin mükemmel uyumunu sunan dış mekan mobilyalarıyla yaşam alanlarınıza değer katmaya devam ediyor.</p>
         <div class="spec-row">
@@ -185,7 +185,7 @@
 </section>
 
 <section class="closing fu">
-  <p>"Siz de kaliteli ve şık bir dış mekan deneyimi için ürünlerimizi tercih edebilirsiniz."</p>
+  <p><span data-t="closing">"Siz de kaliteli ve şık bir dış mekan deneyimi için ürünlerimizi tercih edebilirsiniz."</span></p>
 </section>
 
 <footer>
@@ -231,10 +231,22 @@
 </footer>
 
 <script>
+  const T = {
+    tr: { pageTitle:'EXIT Outdoor Living — Üretim', secLabel:'bg group · EXIT Outdoor Living', pageH1:'Dış Mekan Mobilya Üretimi', pageLead:'bg group olarak, dış mekan mobilyaları alanında kalite, dayanıklılık ve tasarımı bir araya getiren çözümler sunuyoruz. Amacımız, dış mekan yaşam alanlarınıza hem estetik hem de uzun ömürlü ürünlerle değer katmaktır.', h2a:'Malzeme ve Üretim Teknolojisinde Üstünlük', h2b:'Tasarımdan Üretime Profesyonel Yaklaşım', h2c:'Dış Mekanda Yaşamı Güzelleştiriyoruz', closing:'"Siz de kaliteli ve şık bir dış mekan deneyimi için ürünlerimizi tercih edebilirsiniz."', navCollections:'Koleksiyonlar', navStory:'Hakkımızda', navProjects:'Projeler', navEvents:'Etkinlikler', navUretim:'Üretim', navSurdurulebilirlik:'Sürdürülebilirlik', navContact:'İletişim', navSSS:'SSS' },
+    en: { pageTitle:'EXIT Outdoor Living — Production', secLabel:'bg group · EXIT Outdoor Living', pageH1:'Outdoor Furniture Manufacturing', pageLead:'At bg group, we deliver solutions that unite quality, durability and design in outdoor furniture. Our goal is to add value to your outdoor living spaces with both aesthetically refined and long-lasting products.', h2a:'Excellence in Materials & Manufacturing Technology', h2b:'A Professional Approach from Design to Production', h2c:'Enhancing Life Outdoors', closing:'"Choose our products for a high-quality and stylish outdoor living experience."', navCollections:'Collections', navStory:'About Us', navProjects:'Projects', navEvents:'Events', navUretim:'Production', navSurdurulebilirlik:'Sustainability', navContact:'Contact', navSSS:'FAQ' }
+  };
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.title = T[lang].pageTitle;
+    document.querySelectorAll('[data-t]').forEach(el => { const k = el.dataset.t; if(T[lang][k] !== undefined) el.innerHTML = T[lang][k]; });
+    document.querySelectorAll('.nav-lang span[data-lang]').forEach(s => s.classList.toggle('on', s.dataset.lang === lang));
+    localStorage.setItem('eg-lang', lang);
+  }
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true });
   const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.1 });
   document.querySelectorAll('.fu').forEach(el => obs.observe(el));
+  setLang(localStorage.getItem('eg-lang')||'tr');
 </script>
 </body>
 </html>
