@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeler — EXIT Outdoor Living</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Philosopher:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --olive:       #626148;
+      --olive-dark:  #4a4a35;
+      --olive-light: #8a8a6a;
+      --border:      rgba(98,97,72,.2);
+      --muted:       rgba(28,22,18,.4);
+      --cream:       #F5F0E8;
+      --cream-mid:   #EDE5D6;
+      --cream-dark:  #E3D9C8;
+      --shadow:      rgba(28,22,18,.12);
+      --dark:        #1C1612;
+      --dark-mid:    #3A3228;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--dark);
+      color: var(--cream);
+      font-size: 13px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* ═══ ANNOUNCEMENT BAR ═══ */
+    .annbar {
+      background: var(--olive);
+      color: rgba(255,255,255,.88);
+      text-align: center;
+      padding: 9px 20px;
+      font-size: 10px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+    }
+
+    /* ═══ NAVIGATION ═══ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 4px 64px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+      transition: background .4s, padding .3s, top .4s, box-shadow .4s;
+      background: rgba(28,22,18,0.90);
+    }
+    nav.scrolled {
+      background: rgba(28,22,18,.97);
+      padding: 4px 64px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    nav.pinned { top: 0; }
+
+    .nav-logo { height:68px; width:auto; display:block; }
+    .logo-wordmark { display:flex; flex-direction:column; align-items:center; text-decoration:none; gap:3px; }
+    .logo-exit { font-family:'Philosopher',serif; font-size:24px; font-weight:400; letter-spacing:.18em; text-transform:uppercase; color:#fff; line-height:1; transition:color .2s; }
+    .logo-sub { font-family:'Philosopher',serif; font-size:9px; font-weight:400; letter-spacing:.40em; text-transform:uppercase; color:rgba(255,255,255,.55); line-height:1; transition:color .2s; }
+
+    .nav-divider { display:flex; align-items:center; gap:7px; width:100px; margin:0 auto 2px; }
+    .nav-divider::before, .nav-divider::after { content:''; flex:1; height:0.5px; background:rgba(255,255,255,.25); }
+    .nav-gem { width:4px; height:4px; border:0.5px solid rgba(255,255,255,.35); transform:rotate(45deg); flex-shrink:0; }
+
+    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links a {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: rgba(255,255,255,.75); position: relative;
+      transition: color .2s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute;
+      bottom: -4px; left: 0; right: 0; height: 1px;
+      background: rgba(255,255,255,.5);
+      transform: scaleX(0); transition: transform .3s ease;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+
+    .nav-right {
+      position: absolute; top: 50%; right: 64px;
+      transform: translateY(-50%);
+      display: flex; align-items: center; gap: 24px;
+    }
+    .nav-lang {
+      font-size: 10px; letter-spacing: .15em;
+      display: flex; gap: 6px; color: rgba(255,255,255,.4);
+    }
+    .nav-lang span { cursor: pointer; transition: color .2s; }
+    .nav-lang span.on { color: rgba(255,255,255,.85); border-bottom: 1px solid rgba(255,255,255,.5); padding-bottom: 1px; }
+    .nav-icon { cursor: pointer; opacity: .55; transition: opacity .2s; filter: invert(1); }
+    .nav-icon:hover { opacity: 1; }
+
+    /* ═══ PAGE HERO ═══ */
+    .page-hero {
+      position: relative;
+      height: 70vh; min-height: 480px;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+      background: var(--dark);
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('proje-gorsel.jpg');
+      background-size: cover;
+      background-position: center 40%;
+      filter: brightness(0.4);
+    }
+    .page-hero-vignette {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top,
+        rgba(28,22,18,.85) 0%,
+        rgba(28,22,18,.25) 60%,
+        transparent 100%);
+    }
+    .page-hero-content {
+      position: relative; z-index: 2;
+      padding: 0 80px 72px;
+    }
+    .page-hero-label {
+      display: block;
+      font-size: 10px; letter-spacing: .42em; text-transform: uppercase;
+      color: rgba(255,255,255,.5); margin-bottom: 16px;
+    }
+    .page-hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 5vw, 72px);
+      font-weight: 300; line-height: 1.0;
+      color: #fff;
+    }
+    .page-hero-title em { font-style: italic; }
+    .page-hero-sub {
+      margin-top: 20px;
+      font-size: 12px; letter-spacing: .08em;
+      color: rgba(255,255,255,.55);
+      max-width: 500px;
+      line-height: 1.8;
+    }
+
+    /* ═══ INTRO ═══ */
+    .intro {
+      padding: 72px 80px 56px;
+      max-width: 800px;
+    }
+    .intro h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px; font-weight: 300;
+      color: rgba(255,255,255,.85);
+      margin-bottom: 20px;
+    }
+    .intro p {
+      font-size: 13px; line-height: 1.9;
+      color: rgba(255,255,255,.45);
+      letter-spacing: .03em;
+    }
+
+    /* ═══ GALERİ ═══ */
+    .gallery-section {
+      padding: 0 0 80px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 4/3;
+    }
+    /* Portrait images get different ratio */
+    .gallery-item.portrait {
+      aspect-ratio: 3/4;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .7s ease, filter .5s ease;
+      filter: brightness(0.45);
+    }
+    .gallery-item:hover img {
+      filter: brightness(0.9);
+      transform: scale(1.05);
+    }
+    /* Zoom icon */
+    .gallery-zoom {
+      position: absolute; top: 16px; right: 16px;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 50%;
+      color: rgba(255,255,255,.7);
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity .3s, background .3s;
+      pointer-events: none;
+    }
+    .gallery-item:hover .gallery-zoom {
+      opacity: 1;
+    }
+
+    /* ═══ LIGHTBOX ═══ */
+    #lb {
+      display: none;
+      position: fixed; inset: 0; z-index: 9000;
+      background: rgba(0,0,0,.95);
+      align-items: center; justify-content: center;
+      cursor: zoom-out;
+    }
+    #lb.open { display: flex; }
+    #lb-img {
+      max-width: 90vw; max-height: 90vh;
+      object-fit: contain;
+      border-radius: 1px;
+      pointer-events: none;
+      box-shadow: 0 20px 80px rgba(0,0,0,.8);
+    }
+    #lb-close {
+      position: fixed; top: 24px; right: 32px;
+      color: rgba(255,255,255,.65); font-size: 28px;
+      cursor: pointer; user-select: none;
+      transition: color .2s;
+      line-height: 1;
+    }
+    #lb-close:hover { color: #fff; }
+    #lb-prev, #lb-next {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.65); font-size: 20px;
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background .2s, color .2s;
+      border-radius: 1px;
+    }
+    #lb-prev { left: 24px; }
+    #lb-next { right: 24px; }
+    #lb-prev:hover, #lb-next:hover { background: rgba(255,255,255,.18); color: #fff; }
+    #lb-counter {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      font-size: 10px; letter-spacing: .25em; color: rgba(255,255,255,.4);
+    }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+      background: var(--olive-dark);
+      color: rgba(255,255,255,.65);
+      padding: 60px 80px 40px;
+    }
+    .footer-inner {
+      display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr;
+      gap: 48px; max-width: 1200px; margin: 0 auto;
+    }
+    .footer-logo-col img { height: 56px; width: auto; opacity: .9; margin-bottom: 20px; display: block; }
+    .footer-logo-col p { font-size: 11px; line-height: 1.8; color: rgba(255,255,255,.45); max-width: 220px; }
+    .footer-col h4 {
+      font-size: 9px; letter-spacing: .35em; text-transform: uppercase;
+      color: rgba(255,255,255,.85); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { font-size: 12px; color: rgba(255,255,255,.45); transition: color .2s; }
+    .footer-col ul li a:hover { color: rgba(255,255,255,.85); }
+    .footer-bottom {
+      margin-top: 48px; padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 10px; color: rgba(255,255,255,.3); letter-spacing: .08em;
+    }
+
+    /* ═══ FADE IN ═══ */
+    .fu { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .fu.vis { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ░░ ANNOUNCEMENT BAR ░░ -->
+<div class="annbar">Türkiye'nin Lider Açık Hava Mobilyası Markası — 2007'den Bu Yana</div>
+
+<!-- ░░ NAVIGATION ░░ -->
+<nav id="mainNav">
+  <a href="index.html" class="logo-wordmark">
+    <img src="exit-garden-logo.png" alt="EXIT Garden" class="nav-logo">
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="koleksiyon.html" data-t="navCollections">Koleksiyonlar</a></li>
+    <li><a href="about.html" data-t="navStory">Hakkımızda</a></li>
+    <li><a href="projeler.html" class="active" data-t="navProjects">Projeler</a></li>
+    <li><a href="etkinlikler-fuarlar.html" data-t="navEvents">Etkinlikler</a></li>
+    <li><a href="uretim.html" data-t="navUretim">Üretim</a></li>
+    <li><a href="surdurulebilirlik.html" data-t="navSurdurulebilirlik">Sürdürülebilirlik</a></li>
+    <li><a href="iletisim.html" data-t="navContact">İletişim</a></li>
+    <li><a href="sss.html" data-t="navSSS">SSS</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="nav-lang">
+      <span class="on" data-lang="tr" onclick="setLang('tr')">TR</span>
+      <span style="opacity:.3;cursor:default;">/</span>
+      <span data-lang="en" onclick="setLang('en')">EN</span>
+    </div>
+    <svg class="nav-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <circle cx="7.5" cy="7.5" r="5.5" stroke="currentColor" stroke-width="1.3"/>
+      <path d="M12 12 L16 16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+    </svg>
+  </div>
+</nav>
+
+<!-- ░░ PAGE HERO ░░ -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-vignette"></div>
+  <div class="page-hero-content">
+    <span class="page-hero-label" data-t="heroLabel">Referanslarımız</span>
+    <h1 class="page-hero-title" data-t="heroTitle">Projeler &amp; <em>Referanslar</em></h1>
+    <p class="page-hero-sub" data-t="heroSub">Yurt içi ve yurt dışındaki lüks oteller, resort'lar ve kurumsal mekânlar için hayata geçirdiğimiz açık hava yaşam alanları.</p>
+  </div>
+</div>
+
+<!-- ░░ GALLERY ░░ -->
+<section class="gallery-section fu">
+  <div class="gallery-grid" id="galleryGrid">
+
+    <div class="gallery-item" data-idx="0">
+      <img src="pg-1.jpg" alt="Otel Havuz Terası">
+      <div class="gallery-zoom">⤢</div>
+    </div>
+
+    <div class="gallery-item" data-idx="1">
+      <img src="pg-2.jpg" alt="Havuzbaşı Lounge">
+      <div class="gallery-zoom">⤢</div>
+    </div>
+
+    <div class="gallery-item" data-idx="2">
+      <img src="pg-3.jpg" alt="Lüks Resort">
+      <div class="gallery-zoom">⤢</div>
+    </div>
+
+    <div class="gallery-item" data-idx="3">
+      <img src="pg-4.jpg" alt="Açık Hava Oturma">
+      <div class="gallery-zoom">⤢</div>
+    </div>
+
+    <div class="gallery-item" data-idx="4">
+      <img src="pg-5.jpg" alt="Otel Avlusu">
+      <div class="gallery-zoom">⤢</div>
+    </div>
+
+    <div class="gallery-item" data-idx="5">
+      <img src="pg-6.jpg" alt="Teras Lounge">
+      <div class="gallery-zoom">⤢</div>
+    </div>
+
+    <div class="gallery-item" data-idx="6">
+      <img src="pg-7.jpg" alt="Bahçe Düzenlemesi">
+      <div class="gallery-zoom">⤢</div>
+    </div>
+
+    <div class="gallery-item" data-idx="7">
+      <img src="pg-8.jpg" alt="Otel Lobisi">
+      <div class="gallery-zoom">⤢</div>
+    </div>
+
+    <div class="gallery-item" data-idx="8">
+      <img src="pg-9.jpg" alt="Altın Saat Havuzu">
+      <div class="gallery-zoom">⤢</div>
+    </div>
+
+    <div class="gallery-item" data-idx="9">
+      <img src="pg-10.jpg" alt="Gün Batımı Resort">
+      <div class="gallery-zoom">⤢</div>
+    </div>
+
+    <div class="gallery-item" data-idx="10">
+      <img src="pg-11.jpg" alt="Proje Alanı">
+      <div class="gallery-zoom">⤢</div>
+    </div>
+
+    <div class="gallery-item" data-idx="11">
+      <img src="pg-12.jpg" alt="Özel Proje">
+      <div class="gallery-zoom">⤢</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ░░ LIGHTBOX ░░ -->
+<div id="lb">
+  <span id="lb-close">✕</span>
+  <span id="lb-prev">‹</span>
+  <img id="lb-img" src="" alt="">
+  <span id="lb-next">›</span>
+  <div id="lb-counter"></div>
+</div>
+
+<!-- ░░ FOOTER ░░ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo-col">
+      <img src="exit-garden-logo.png" alt="EXIT Garden">
+      <p data-t="ftTagline">Dış mekân yaşamını sanata dönüştüren mobilya koleksiyonları. Türkiye'nin lider açık hava yaşamı markası.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-t="ftCol1">Koleksiyonlar</h4>
+      <ul>
+        <li><a href="koleksiyon.html" data-t="ftAll">Tüm Koleksiyonlar</a></li>
+        <li><a href="koleksiyon.html" data-t="ftSeating">Oturma Grupları</a></li>
+        <li><a href="koleksiyon.html" data-t="ftDining">Yemek Setleri</a></li>
+        <li><a href="koleksiyon.html" data-t="ftLounger">Şezlonglar</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-t="ftCol2">Marka</h4>
+      <ul>
+        <li><a href="about.html" data-t="ftAbout">Hikayemiz</a></li>
+        <li><a href="projeler.html" data-t="ftProjects">Projeler</a></li>
+        <li><a href="uretim.html" data-t="ftProd">Üretim</a></li>
+        <li><a href="surdurulebilirlik.html" data-t="ftSust">Sürdürülebilirlik</a></li>
+        <li><a href="ziyaret-edin.html">Showroom</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-t="ftCol3">İletişim</h4>
+      <ul>
+        <li><a href="iletisim.html" data-t="ftContact">Bize Ulaşın</a></li>
+        <li><a href="sss.html" data-t="ftFaq">SSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span data-t="ftCopyright">© 2024 BG International — EXIT Outdoor Living. Tüm hakları saklıdır.</span>
+    <span data-t="ftMotto">Türkiye'nin Lider Açık Hava Mobilyası Markası</span>
+  </div>
+</footer>
+
+<script>
+  const T = {
+    tr: { navCollections:'Koleksiyonlar', navStory:'Hakkımızda', navProjects:'Projeler', navEvents:'Etkinlikler', navUretim:'Üretim', navSurdurulebilirlik:'Sürdürülebilirlik', navContact:'İletişim', navSSS:'SSS', pageTitle:'EXIT Outdoor Living — Projeler', ftTagline:'Dış mekân yaşamını sanata dönüştüren mobilya koleksiyonları. Türkiye\'nin lider açık hava yaşamı markası.', ftCol1:'Koleksiyonlar', ftAll:'Tüm Koleksiyonlar', ftSeating:'Oturma Grupları', ftDining:'Yemek Setleri', ftLounger:'Şezlonglar', ftCol2:'Marka', ftAbout:'Hikayemiz', ftProjects:'Projeler', ftProd:'Üretim', ftSust:'Sürdürülebilirlik', ftCol3:'İletişim', ftContact:'Bize Ulaşın', ftFaq:'SSS', ftCopyright:'© 2024 BG International — EXIT Outdoor Living. Tüm hakları saklıdır.', ftMotto:'Türkiye\'nin Lider Açık Hava Mobilyası Markası', heroLabel:'Referanslarımız', heroTitle:'Projeler &amp; <em>Referanslar</em>', heroSub:'Yurt içi ve yurt dışındaki lüks oteller, resort\'lar ve kurumsal mekânlar için hayata geçirdiğimiz açık hava yaşam alanları.' },
+    en: { navCollections:'Collections', navStory:'About Us', navProjects:'Projects', navEvents:'Events', navUretim:'Production', navSurdurulebilirlik:'Sustainability', navContact:'Contact', navSSS:'FAQ', pageTitle:'EXIT Outdoor Living — Projects', ftTagline:'Furniture collections that turn outdoor living into art. Turkey\'s leading outdoor living brand.', ftCol1:'Collections', ftAll:'All Collections', ftSeating:'Seating Groups', ftDining:'Dining Sets', ftLounger:'Sun Loungers', ftCol2:'Brand', ftAbout:'About Us', ftProjects:'Projects', ftProd:'Production', ftSust:'Sustainability', ftCol3:'Contact', ftContact:'Get in Touch', ftFaq:'FAQ', ftCopyright:'© 2024 BG International — EXIT Outdoor Living. All rights reserved.', ftMotto:'Turkey\'s Leading Outdoor Furniture Brand', heroLabel:'Our References', heroTitle:'Projects &amp; <em>References</em>', heroSub:'Outdoor living spaces we have brought to life for luxury hotels, resorts and corporate venues at home and abroad.' }
+  };
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.title = T[lang].pageTitle || document.title;
+    document.querySelectorAll('[data-t]').forEach(el => { const k = el.dataset.t; if(T[lang][k] !== undefined) el.innerHTML = T[lang][k]; });
+    document.querySelectorAll('.nav-lang span[data-lang]').forEach(s => s.classList.toggle('on', s.dataset.lang === lang));
+    localStorage.setItem('eg-lang', lang);
+  }
+  /* ── NAV PIN ── */
+  var nav = document.getElementById('mainNav');
+  var annbarH = document.querySelector('.annbar') ? document.querySelector('.annbar').offsetHeight : 34;
+  window.addEventListener('scroll', function(){
+    if (window.scrollY > annbarH) {
+      nav.classList.add('pinned', 'scrolled');
+    } else {
+      nav.classList.remove('pinned', 'scrolled');
+    }
+  }, { passive: true });
+
+  /* ── GALLERY LIGHTBOX ── */
+  var items = document.querySelectorAll('.gallery-item');
+  var lb = document.getElementById('lb');
+  var lbImg = document.getElementById('lb-img');
+  var lbCounter = document.getElementById('lb-counter');
+  var currentIdx = 0;
+  var srcs = Array.from(items).map(function(item){ return item.querySelector('img').src; });
+
+  function openLb(idx) {
+    currentIdx = idx;
+    lbImg.src = srcs[idx];
+    lbCounter.textContent = (idx + 1) + ' / ' + srcs.length;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function prevImg() { openLb((currentIdx - 1 + srcs.length) % srcs.length); }
+  function nextImg() { openLb((currentIdx + 1) % srcs.length); }
+
+  items.forEach(function(item, i){
+    item.addEventListener('click', function(){ openLb(i); });
+  });
+
+  document.getElementById('lb-close').addEventListener('click', function(e){ e.stopPropagation(); closeLb(); });
+  document.getElementById('lb-prev').addEventListener('click', function(e){ e.stopPropagation(); prevImg(); });
+  document.getElementById('lb-next').addEventListener('click', function(e){ e.stopPropagation(); nextImg(); });
+  lb.addEventListener('click', closeLb);
+
+  document.addEventListener('keydown', function(e){
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') prevImg();
+    if (e.key === 'ArrowRight') nextImg();
+  });
+
+  /* ── FADE IN ── */
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('vis'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fu').forEach(function(el){ observer.observe(el); });
+  setLang(localStorage.getItem('eg-lang')||'tr');
+</script>
+</body>
+</html>
