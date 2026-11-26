@@ -141,35 +141,27 @@
   <!-- Fuar Fotoğraf Galerisi -->
   <div class="gallery-section fu" id="fuarGaleri">
     <p class="gallery-label" data-t="galleryLabel">Fotoğraflar</p>
-    <div class="gallery-grid" id="galleryGrid">
-      <!-- Fotoğraflar buraya eklenecek: fuar-foto-1.jpg, fuar-foto-2.jpg, ... -->
-      <div class="gallery-item" onclick="openLightbox(0)">
-        <img src="fuar-foto-1.jpg" alt="Fuar">
-        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(1)">
-        <img src="fuar-foto-2.jpg" alt="Fuar">
-        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(2)">
-        <img src="fuar-foto-3.jpg" alt="Fuar">
-        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(3)">
-        <img src="fuar-foto-4.jpg" alt="Fuar">
-        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(4)">
-        <img src="fuar-foto-5.jpg" alt="Fuar">
-        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
-      </div>
-      <div class="gallery-item" onclick="openLightbox(5)">
-        <img src="fuar-foto-6.jpg" alt="Fuar">
-        <div class="gallery-overlay"><div class="gallery-overlay-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
-      </div>
+    <div class="gallery-grid" id="galleryGrid" style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+      <div class="gallery-item" onclick="openGalleryLb(0)"><img src="fuar-foto-1.webp" alt="Fuar 1" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;cursor:zoom-in;"></div>
+      <div class="gallery-item" onclick="openGalleryLb(1)"><img src="fuar-foto-2.webp" alt="Fuar 2" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;cursor:zoom-in;"></div>
+      <div class="gallery-item" onclick="openGalleryLb(2)"><img src="fuar-foto-3.webp" alt="Fuar 3" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;cursor:zoom-in;"></div>
+      <div class="gallery-item" onclick="openGalleryLb(3)"><img src="fuar-foto-4.webp" alt="Fuar 4" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;cursor:zoom-in;"></div>
+      <div class="gallery-item" onclick="openGalleryLb(4)"><img src="fuar-foto-5.webp" alt="Fuar 5" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;cursor:zoom-in;"></div>
+      <div class="gallery-item" onclick="openGalleryLb(5)"><img src="fuar-foto-6.webp" alt="Fuar 6" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;cursor:zoom-in;"></div>
+      <div class="gallery-item" onclick="openGalleryLb(6)"><img src="fuar-foto-7.webp" alt="Fuar 7" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;cursor:zoom-in;"></div>
+      <div class="gallery-item" onclick="openGalleryLb(7)"><img src="fuar-foto-8.webp" alt="Fuar 8" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;cursor:zoom-in;"></div>
     </div>
   </div>
 </section>
+
+<!-- Gallery Lightbox -->
+<div id="galleryLb" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);flex-direction:column;align-items:center;justify-content:center;" onclick="closeGalleryLb()">
+  <button onclick="galleryPrev(event)" style="position:absolute;left:0;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);border:none;color:#fff;font-size:32px;padding:16px 12px;cursor:pointer;line-height:1;">‹</button>
+  <img id="galleryLbImg" src="" style="max-width:92vw;max-height:88vh;object-fit:contain;" onclick="event.stopPropagation()">
+  <div style="position:absolute;bottom:16px;color:rgba(255,255,255,.5);font-size:11px;letter-spacing:.18em;" id="galleryLbCounter">1 / 8</div>
+  <button onclick="galleryNext(event)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);border:none;color:#fff;font-size:32px;padding:16px 12px;cursor:pointer;line-height:1;">›</button>
+  <button onclick="closeGalleryLb()" style="position:absolute;top:16px;right:16px;background:rgba(0,0,0,.4);border:none;color:#fff;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:20px;line-height:1;">×</button>
+</div>
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
@@ -179,6 +171,8 @@
   <button class="lightbox-next" onclick="event.stopPropagation();moveLightbox(1)">›</button>
 </div>
 
+
+<div style="height:80px;background:linear-gradient(to bottom,var(--cream),var(--olive-dark));pointer-events:none;"></div>
 <footer>
   <div class="ft-top">
     <div><img class="ft-logo" src="exit-garden-logo.png" alt="EXIT Outdoor Living" onerror="this.style.display='none'"><p class="ft-tagline" data-t="ftTagline">Zamansız dış mekânlar için tasarlandı.<br>Türkiye ve Dünya Geneli Projeler<br>www.exitgarden.com</p><div class="ft-social"><a href="#" title="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a></div></div>
@@ -224,6 +218,30 @@
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')moveLightbox(-1);if(e.key==='ArrowRight')moveLightbox(1);});
 
   setLang(localStorage.getItem('eg-lang')||'tr');
+
+  // Gallery lightbox
+  const _galleryPhotos = ['fuar-foto-1.webp','fuar-foto-2.webp','fuar-foto-3.webp','fuar-foto-4.webp','fuar-foto-5.webp','fuar-foto-6.webp','fuar-foto-7.webp','fuar-foto-8.webp'];
+  let _galleryIdx = 0;
+  function openGalleryLb(i) {
+    _galleryIdx = i;
+    document.getElementById('galleryLbImg').src = _galleryPhotos[i];
+    document.getElementById('galleryLbCounter').textContent = (i+1) + ' / ' + _galleryPhotos.length;
+    document.getElementById('galleryLb').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeGalleryLb() {
+    document.getElementById('galleryLb').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  function galleryPrev(e) { e.stopPropagation(); openGalleryLb((_galleryIdx - 1 + _galleryPhotos.length) % _galleryPhotos.length); }
+  function galleryNext(e) { e.stopPropagation(); openGalleryLb((_galleryIdx + 1) % _galleryPhotos.length); }
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('galleryLb').style.display === 'flex') {
+      if (e.key === 'Escape') closeGalleryLb();
+      if (e.key === 'ArrowLeft') galleryPrev(e);
+      if (e.key === 'ArrowRight') galleryNext(e);
+    }
+  });
 </script>
 </body>
 </html>
