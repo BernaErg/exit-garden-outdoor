@@ -596,7 +596,43 @@
 
     /* ═══ LANG TRANSITION ═══ */
     [data-t] { transition: opacity .18s ease; }
-  </style>
+  
+    /* ══ PROJE GALERİ ══ */
+    .proje-gallery { padding: 0 0 64px; background: var(--cream); }
+    .proje-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+    .proje-item {
+      position: relative; overflow: hidden; cursor: pointer;
+      aspect-ratio: 4/3;
+    }
+    .proje-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      display: block;
+      transition: transform .6s ease, filter .4s ease;
+      filter: brightness(0.55);
+    }
+    .proje-item:hover img {
+      filter: brightness(1);
+      transform: scale(1.04);
+    }
+    .proje-item-overlay {
+      position: absolute; inset: 0; pointer-events: none;
+      background: rgba(0,0,0,0);
+      transition: background .4s;
+    }
+    /* Lightbox */
+    #proje-lb { display:none; position:fixed; inset:0; z-index:9000;
+                 background:rgba(0,0,0,.93); align-items:center; justify-content:center; cursor:zoom-out; }
+    #proje-lb.open { display:flex; }
+    #proje-lb img { max-width:92vw; max-height:92vh; object-fit:contain; border-radius:2px; pointer-events:none; }
+    #proje-lb-close { position:fixed; top:20px; right:28px; color:#fff; font-size:32px;
+                       cursor:pointer; opacity:.7; user-select:none; line-height:1; }
+    #proje-lb-close:hover { opacity:1; }
+
+    </style>
 </head>
 <body>
 
@@ -687,7 +723,7 @@
 <!-- ░░ PROJECTS TEASER ░░ -->
 <section class="fu" id="projects" style="margin-bottom:32px;">
   <div class="projects-teaser">
-    <img src="nirvana-takim.png" alt="EXIT Outdoor Living Projeler">
+    <img src="proje-gorsel.jpg" alt="EXIT Outdoor Living Projeler">
     <div class="projects-teaser-overlay"></div>
     <div class="projects-teaser-content">
       <span class="sec-label" data-t="projLabel" style="color:rgba(255,255,255,.75);">Projeler</span>
@@ -695,6 +731,45 @@
     </div>
   </div>
 </section>
+
+<!-- ░░ PROJE GALERİSİ ░░ -->
+<section class="proje-gallery fu">
+  <div class="proje-gallery-grid">
+    <div class="proje-item" onclick="projeLb(this)">
+      <img src="proje-1.jpg" alt="Otel Havuz Terası">
+    </div>
+    <div class="proje-item" onclick="projeLb(this)">
+      <img src="proje-2.jpg" alt="Havuzbaşı Lounge">
+    </div>
+    <div class="proje-item" onclick="projeLb(this)">
+      <img src="proje-3.jpg" alt="Avlu Oturma Alanı">
+    </div>
+    <div class="proje-item" onclick="projeLb(this)">
+      <img src="proje-4.jpg" alt="Açık Hava Kafe">
+    </div>
+    <div class="proje-item" onclick="projeLb(this)">
+      <img src="proje-5.jpg" alt="Spa Dinlenme Alanı">
+    </div>
+    <div class="proje-item" onclick="projeLb(this)">
+      <img src="proje-6.jpg" alt="Wellness Lounge">
+    </div>
+    <div class="proje-item" onclick="projeLb(this)">
+      <img src="proje-7.jpg" alt="Resort Havuz">
+    </div>
+    <div class="proje-item" onclick="projeLb(this)">
+      <img src="proje-8.jpg" alt="Gün Batımı Restoran">
+    </div>
+    <div class="proje-item" onclick="projeLb(this)">
+      <img src="proje-9.jpg" alt="Lüks Havuz Terası">
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="proje-lb">
+  <span id="proje-lb-close">✕</span>
+  <img id="proje-lb-img" src="" alt="">
+</div>
 
 <section class="fu" id="visit-fairs" style="margin-bottom:32px;">
   <div class="visit-fairs-grid">
@@ -1129,6 +1204,24 @@
       }, 250);
     }, 4000);
   })();
+</script>
+<script>
+  /* ── PROJE LİGHTBOX ── */
+  function projeLb(el) {
+    var img = el.querySelector('img');
+    document.getElementById('proje-lb-img').src = img.src;
+    document.getElementById('proje-lb').classList.add('open');
+  }
+  document.getElementById('proje-lb').addEventListener('click', function(){
+    this.classList.remove('open');
+  });
+  document.getElementById('proje-lb-close').addEventListener('click', function(e){
+    e.stopPropagation();
+    document.getElementById('proje-lb').classList.remove('open');
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') document.getElementById('proje-lb').classList.remove('open');
+  });
 </script>
 </body>
 </html>
