@@ -27,7 +27,7 @@
     .nav-divider { display:flex; align-items:center; gap:7px; width:100px; margin:0 auto 2px; }
     .nav-divider::before, .nav-divider::after { content:''; flex:1; height:0.5px; background:var(--olive); opacity:.45; }
     .nav-gem { width:4px; height:4px; border:0.5px solid var(--olive); transform:rotate(45deg); opacity:.6; flex-shrink:0; }
-    .nav-links { display:flex; gap:28px; list-style:none; }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
     .nav-links a { font-size:10px; font-weight:500; letter-spacing:.22em; text-transform:uppercase; color:var(--dark); position:relative; transition:color .2s; }
     .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--olive); transform:scaleX(0); transition:transform .3s ease; }
     .nav-links a:hover, .nav-links a.active { color:var(--olive); }
@@ -200,7 +200,8 @@
   <ul class="nav-links">
     <li><a href="koleksiyon.html" data-t="navCollections">Koleksiyonlar</a></li>
     <li><a href="about.html" class="active" data-t="navStory">Hakkımızda</a></li>
-    <li><a href="index.html#projects" data-t="navProjects">Projeler</a></li>
+    <li><a href="projeler.html" data-t="navProjects">Projeler</a></li>
+    <li><a href="etkinlikler-fuarlar.html" data-t="navEvents">Etkinlikler</a></li>
     <li><a href="uretim.html" data-t="navUretim">Üretim</a></li>
     <li><a href="surdurulebilirlik.html" data-t="navSurdurulebilirlik">Sürdürülebilirlik</a></li>
     <li><a href="iletisim.html" data-t="navContact">İletişim</a></li>
@@ -222,7 +223,7 @@
 <!-- HERO -->
 <section class="about-hero fu">
   <span class="hero-label" data-t="heroLabel">Hakkımızda</span>
-  <h1 class="about-page-title" data-t="aboutPageTitle">Bizi <em>Tanıyın</em></h1>
+  <h1 class="about-page-title" data-t="aboutPageTitle">Hakkımızda</h1>
 </section>
 
 <!-- ŞIRKET TANITIMI -->
@@ -296,10 +297,10 @@
     <div>
       <div class="ft-col-title" data-t="ftCol1">Koleksiyonlar</div>
       <ul class="ft-links">
-        <li><a href="koleksiyon.html" data-t="ftLink1a">Bahçe Mobilyaları</a></li>
+        <li><a href="koleksiyon.html" data-t="ftLink1a">Oturma Grupları</a></li>
         <li><a href="koleksiyon.html" data-t="ftLink1b">Şezlonglar</a></li>
-        <li><a href="koleksiyon.html" data-t="ftLink1c">Yemek Setleri</a></li>
-        <li><a href="koleksiyon.html" data-t="ftLink1d">Yan Masalar</a></li>
+        <li><a href="koleksiyon.html" data-t="ftLink1c">Yemek Setleri ve Bistrolar</a></li>
+        <li><a href="koleksiyon.html" data-t="ftLink1d">Sehpalar</a></li>
       </ul>
     </div>
     <div>
@@ -354,7 +355,7 @@ const T = {
     mvsP2:'HoReCa müşterilerimizin her an ulaşabileceği kadar yakın, her türlü sorunlarına çözüm üretebilecek kadar uzman, bu alanda Dünya\'da tanınan kurumsal bir kuruluş olmak.',
     mvsP3:'Markanın var olan tecrübe ve vizyonunu kalite, fiyat ve hızdan oluşan güçlü yanlarıyla bütünleştirerek fonksiyonel çözümler üretmek ve her bütçeye uygun, iyi tasarlanmış ürünlerle mümkün olduğunca çok insanın erişebileceği bir marka olmak.',
     ftTagline:'Zamansız dış mekânlar için tasarlandı.<br>Türkiye ve Dünya Geneli Projeler<br>www.exitgarden.com',
-    ftCol1:'Koleksiyonlar', ftLink1a:'Bahçe Mobilyaları', ftLink1b:'Şezlonglar', ftLink1c:'Yemek Setleri', ftLink1d:'Yan Masalar',
+    ftCol1:'Koleksiyonlar', ftLink1a:'Oturma Grupları', ftLink1b:'Şezlonglar', ftLink1c:'Yemek Setleri ve Bistrolar', ftLink1d:'Sehpalar',
     ftCol2:'Şirket', ftLink2a:'Hakkımızda', ftLink2b:'Üretim', ftLink2c:'Sürdürülebilirlik', ftLink2d:'Projeler', ftLink2e:'Showroom',
     ftCol3:'İletişim', ftCopyright:'© 2025 EXIT Outdoor Living. Tüm hakları saklıdır.', ftMotto:'Tasarım · Kalite · Deneyim'
   },
@@ -382,7 +383,7 @@ const T = {
     mvsP2:'To be close enough for our HoReCa clients to reach us at any moment, expert enough to solve any challenge, and to become a globally recognised corporate organisation in this field.',
     mvsP3:'To integrate the brand\'s existing experience and vision with its strengths in quality, price and speed, creating functional solutions and becoming a brand accessible to as many people as possible with well-designed products at every budget.',
     ftTagline:'Crafted for timeless outdoor spaces.<br>Türkiye and Worldwide Projects<br>www.exitgarden.com',
-    ftCol1:'Collections', ftLink1a:'Garden Furniture', ftLink1b:'Sun Loungers', ftLink1c:'Dining Sets', ftLink1d:'Side Tables',
+    ftCol1:'Collections', ftLink1a:'Seating Groups', ftLink1b:'Sun Loungers', ftLink1c:'Dining Sets & Bistro', ftLink1d:'Side Tables',
     ftCol2:'Company', ftLink2a:'About Us', ftLink2b:'Production', ftLink2c:'Sustainability', ftLink2d:'Projects', ftLink2e:'Showroom',
     ftCol3:'Contact', ftCopyright:'© 2025 EXIT Outdoor Living. All rights reserved.', ftMotto:'Design · Quality · Experience'
   }
