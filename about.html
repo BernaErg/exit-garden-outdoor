@@ -49,6 +49,13 @@
     .about-hero .brand-logo {
       width: 220px; height: auto;
     }
+    .about-page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(44px, 5.5vw, 80px);
+      font-weight: 300; line-height: 1.0;
+      color: var(--dark); margin-top: 8px;
+    }
+    .about-page-title em { font-style: italic; color: var(--olive-light); }
     .about-hero .hero-label {
       font-size: 10px; letter-spacing:.38em; text-transform:uppercase; color:var(--olive);
     }
@@ -146,6 +153,10 @@
     .value-text p { font-size:13px; line-height:1.85; color:var(--muted); }
 
     /* FOOTER */
+    .section-gradient-bridge.dark-to-green {
+      height: 120px;
+      background: linear-gradient(to bottom, var(--dark) 0%, var(--olive-dark) 100%);
+    }
     footer { background: var(--olive-dark); color:var(--cream); padding:88px 80px 40px; }
     .ft-top { display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:56px; padding-bottom:64px; border-bottom:1px solid rgba(255,255,255,.09); margin-bottom:36px; }
     .ft-logo { height:60px; width:auto; filter:brightness(0) invert(1); margin-bottom:24px; }
@@ -211,6 +222,7 @@
 <!-- HERO -->
 <section class="about-hero fu">
   <span class="hero-label" data-t="heroLabel">Hakkımızda</span>
+  <h1 class="about-page-title" data-t="aboutPageTitle">Bizi <em>Tanıyın</em></h1>
 </section>
 
 <!-- ŞIRKET TANITIMI -->
@@ -267,6 +279,8 @@
     </div>
   </div>
 </section>
+
+<div class="section-gradient-bridge dark-to-green"></div>
 
 <!-- FOOTER -->
 <footer>

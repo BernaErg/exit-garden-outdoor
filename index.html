@@ -166,6 +166,13 @@
       letter-spacing: .42em; text-transform: uppercase;
       color: rgba(255,255,255,.65); margin-bottom: 22px;
     }
+    .hero-product-label {
+      display: block;
+      font-size: 9px; letter-spacing: .5em; text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+      margin-bottom: 20px;
+      transition: opacity .4s ease;
+    }
     .hero-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(42px, 5.5vw, 78px);
@@ -635,17 +642,18 @@
 <section class="hero" id="hero">
   <div class="hero-bg">
     <video class="hero-slide is-video active" muted autoplay loop playsinline preload="auto">
-      <source src="enzo-video-1.mp4" type="video/mp4">
+      <source src="hero-enzo.mp4" type="video/mp4">
     </video>
     <video class="hero-slide is-video" muted loop playsinline preload="auto">
-      <source src="nirvana-hero-banner-3.mp4" type="video/mp4">
+      <source src="hero-nirvana.mp4" type="video/mp4">
     </video>
     <video class="hero-slide is-video" muted loop playsinline preload="auto">
-      <source src="sofa-story-video.mp4" type="video/mp4">
+      <source src="hero-tenedos.mp4" type="video/mp4">
     </video>
   </div>
   <div class="hero-vignette"></div>
   <div class="hero-content">
+    <span class="hero-product-label" id="heroProductLabel">ENZO Oturma Grubu</span>
     <h1 class="hero-title" data-t="heroTitle">Dış Mekanınızı<br><em>Özgürce</em><br>Tasarlayın</h1>
     <a href="#collections" class="hero-cta">
       <span data-t="heroCta">Koleksiyonları Keşfet</span> <span style="font-size:18px">→</span>
@@ -1100,11 +1108,24 @@
       setTimeout(function() { firstVid.classList.add('playing'); }, 1200);
     }
 
+    var productLabels = ['ENZO Oturma Grubu', 'NİRVANA Oturma Grubu', 'TENEDOS Oturma Grubu'];
+    var productLabelsEN = ['ENZO Seating Group', 'NIRVANA Seating Group', 'TENEDOS Seating Group'];
+    var labelEl = document.getElementById('heroProductLabel');
+
     var i = 0;
     setInterval(function() {
       var prev = slides[i];
       i = (i + 1) % slides.length;
       var next = slides[i];
+      // Update product label
+      if (labelEl) {
+        var lang = document.documentElement.lang || 'tr';
+        labelEl.style.opacity = '0';
+        setTimeout(function() {
+          labelEl.textContent = lang === 'en' ? productLabelsEN[i] : productLabels[i];
+          labelEl.style.opacity = '1';
+        }, 300);
+      }
 
       // Pre-seek next to start BEFORE transition begins
       if (next.tagName === 'VIDEO') next.currentTime = 0;
@@ -1129,7 +1150,7 @@
         if (prev.tagName === 'VIDEO') { prev.pause(); prev.classList.remove('playing'); }
         prev.classList.remove('active');
       }, 250);
-    }, 4000);
+    }, 5000);
   })();
 </script>
 </body>
