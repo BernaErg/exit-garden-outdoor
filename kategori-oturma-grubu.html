@@ -62,7 +62,7 @@
 
     /* Left: photo viewer */
     .modal-photos { flex:1; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#0a0a0a; }
-    .modal-photo-wrap { width:100%; height:100%; display:flex; align-items:center; justify-content:center; overflow:hidden; cursor:zoom-in; }
+    .modal-photo-wrap { width:100%; height:100%; display:flex; align-items:center; justify-content:center; overflow:hidden; cursor:default; }
     .modal-photo-wrap.zoomed { cursor:grab; }
     .modal-photo-wrap.zoomed.dragging { cursor:grabbing; }
     .modal-photo { max-width:100%; max-height:100%; object-fit:contain; transition:transform .25s ease; transform-origin:center center; user-select:none; }
@@ -305,7 +305,7 @@
       nameEN: 'ENZO',
       catTR: 'Oturma Grubu',
       catEN: 'Seating Group',
-      photos: ['enzo-oturma-grubu.png','enzo-video-poster.jpg','enzo2.png'],
+      photos: ['enzo-foto-1.webp','enzo-foto-2.webp','enzo-oturma-grubu.png'],
       specsTR: [
         { piece:'Üçlü Koltuk', w:'199,5 cm', d:'77 cm', h:'84 cm', kg:'31,50 kg' },
         { piece:'İkili Koltuk', w:'140 cm',   d:'77 cm', h:'74 cm', kg:'23,20 kg' },
@@ -441,13 +441,6 @@
       zoomScale = Math.min(4, Math.max(1, zoomScale + dir * 0.25));
       if (zoomScale === 1) { panX = 0; panY = 0; }
       applyTransform();
-    };
-
-    // Double-click to zoom
-    wrap.ondblclick = e => {
-      e.preventDefault();
-      if (zoomScale > 1) { zoomReset(); }
-      else { zoomScale = 2; applyTransform(); }
     };
 
     // Drag to pan
