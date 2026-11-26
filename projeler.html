@@ -45,14 +45,14 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 200;
-      padding: 8px 64px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+      padding: 4px 64px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
       transition: background .4s, padding .3s, top .4s, box-shadow .4s;
       background: rgba(28,22,18,0.90);
     }
     nav.scrolled {
       background: rgba(28,22,18,.97);
-      padding: 6px 64px;
+      padding: 4px 64px;
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
     nav.pinned { top: 0; }
@@ -443,6 +443,17 @@
 </footer>
 
 <script>
+  const T = {
+    tr: { navCollections:'Koleksiyonlar', navStory:'Hakkımızda', navProjects:'Projeler', navEvents:'Etkinlikler', navUretim:'Üretim', navSurdurulebilirlik:'Sürdürülebilirlik', navContact:'İletişim', navSSS:'SSS', pageTitle:'EXIT Outdoor Living — Projeler' },
+    en: { navCollections:'Collections', navStory:'About Us', navProjects:'Projects', navEvents:'Events', navUretim:'Production', navSurdurulebilirlik:'Sustainability', navContact:'Contact', navSSS:'FAQ', pageTitle:'EXIT Outdoor Living — Projects' }
+  };
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.title = T[lang].pageTitle || document.title;
+    document.querySelectorAll('[data-t]').forEach(el => { const k = el.dataset.t; if(T[lang][k] !== undefined) el.innerHTML = T[lang][k]; });
+    document.querySelectorAll('.nav-lang span[data-lang]').forEach(s => s.classList.toggle('on', s.dataset.lang === lang));
+    localStorage.setItem('eg-lang', lang);
+  }
   /* ── NAV PIN ── */
   var nav = document.getElementById('mainNav');
   var annbarH = document.querySelector('.annbar') ? document.querySelector('.annbar').offsetHeight : 34;
@@ -499,6 +510,7 @@
     });
   }, { threshold: 0.08 });
   document.querySelectorAll('.fu').forEach(function(el){ observer.observe(el); });
+  setLang(localStorage.getItem('eg-lang')||'tr');
 </script>
 </body>
 </html>

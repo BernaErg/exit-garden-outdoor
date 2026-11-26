@@ -30,7 +30,7 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       padding: 10px 64px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
       background: rgba(253,250,246,.97);
       border-bottom: 1px solid var(--border);
       transition: background .4s, padding .3s;
@@ -49,6 +49,7 @@
     .nav-links a:hover::after { transform: scaleX(1); }
     .nav-links a.active { color: var(--olive); }
     .nav-links a.active::after { transform: scaleX(1); }
+    .nav-logo { height:68px; width:auto; display:block; }
     .nav-right { position: absolute; top: 50%; right: 64px; transform: translateY(-50%); display: flex; align-items: center; gap: 24px; }
     .nav-lang { font-size: 10px; letter-spacing: .15em; display: flex; gap: 6px; color: var(--muted); }
     .nav-lang span { cursor: pointer; transition: color .2s; }
@@ -120,9 +121,9 @@
   </ul>
   <div class="nav-right">
     <div class="nav-lang">
-      <span class="on" data-lang="tr">TR</span>
+      <span class="on" data-lang="tr" onclick="setLang('tr')">TR</span>
       <span style="opacity:.3;cursor:default;">/</span>
-      <span data-lang="en">EN</span>
+      <span data-lang="en" onclick="setLang('en')">EN</span>
     </div>
   </div>
 </nav>
